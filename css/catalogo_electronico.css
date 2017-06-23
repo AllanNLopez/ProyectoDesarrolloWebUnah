@@ -7,3 +7,55 @@ body {
   margin-bottom: 40px;
 }
 
+
+
+
+.btnCentrado{
+	text-align: center;
+	padding-top: 40px;
+	
+}
+
+.cuadro-imagen{
+	width: 200px;
+	height: 200px;
+	border-width: 2px;
+	border-color: #00FF00;
+
+}
+
+
+.table-responsive{
+	 width: 100%;
+	 text-align: center;
+	 padding-left: 10%;
+	 padding-right: 10%;
+	
+
+
+}
+.icon-ok{
+	
+	color: #FFF;
+	background-color: #73CE57;
+	width: 30px;
+	height: 25px;
+	padding:5px;
+}
+
+.icon-no-ok{
+	
+	color: #FFF;
+	background-color: #F42929;
+	width: 30px;
+	height: 25px;
+	padding:5px;
+}
+
+#tbl-total{
+	width: 30%;
+
+}
+#div-tbl-total{
+	text-align: -webkit-right;
+}
