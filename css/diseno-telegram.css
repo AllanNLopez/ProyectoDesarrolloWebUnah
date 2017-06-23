@@ -1,0 +1,155 @@
+﻿
+
+body{
+	background: none;
+	
+    background-color: #dfe5ec;
+    }
+
+div{
+	overflow: visible;
+	}
+
+/*modicamos los margenes de todo el div de app*/
+.app{
+	top: 0px;
+	}
+
+/*para diseño de los efectos de cambio de color en los botones*/
+.area-activo{
+    color: #ffffff; 
+    background-color: #5682A3;  
+    }
+
+.area-activo:hover{
+    color: #ffffff; 
+    background-color: #497799;
+    text-decoration: none;
+    }
+
+/**/
+.conversation{
+	border-left: 2px;
+	border-color: #E9EBED;
+	background-color: #fff;
+	}
+/*modificando la primera columna del chat*/
+
+.side-one{
+	border-right: 2px;
+	border-color: #E9EBED;
+	}
+	/*modicamos el encabezado de la primera columna */
+#div-heading1{
+    padding: 0px 0px 0px 0px; 
+
+	}
+.heading{
+    height: 48px;
+    padding: 0px 0px 0px 0px;
+   
+    }
+
+#btn-menu{
+	border-radius: 0px;
+	background-color: #5682A3;
+	border-color: #5682A3;
+	text-align: left;
+	}
+#btn-menu:active {
+	background-color: #5682A3;
+	border-color: #5682A3;
+	}
+
+#btn-menu:hover{	
+	background-color: #497799;
+	border-color:#497799;
+	}
+#btn-menu:focus {
+      
+  	background-color: #5682A3;
+	border-color: #5682A3;
+	}
+
+#div-contenedor{
+    display: grid;
+    }
+.glyphicon{
+    display: inline;
+	}
+
+ #ddm-menu1{
+    min-width: 100%;
+    margin: 0px 0 0;
+    border-radius: 0px;
+	}
+/*la segunda columna del chat*/
+
+#div-heading2{
+
+
+}
+ #titulo-conversacion{
+    padding: 13px;
+    color: #fff;
+    text-decoration: none;
+
+
+	}
+#div-titulo-chat{
+	
+
+
+}
+#div-busqueda{
+	padding: 14px;
+	text-align: center;
+	
+	}
+#div-menu2{
+	padding: 0px;
+	display: grid;
+	
+	}
+#ddm-menu2{
+	min-width: 100%;
+	margin: 0px 0 0;
+	border-radius: 0px;
+}
+
+#btn-menu2{
+	border-radius: 0px;
+	background-color: #5682A3;
+	border-color: #5682A3;
+	
+	}
+#btn-menu2:active {
+	background-color: #5682A3;
+	border-color: #5682A3;
+	}
+
+#btn-menu2:hover{	
+	background-color: #497799;
+	border-color:#497799;
+	color: #fff;
+    text-decoration: none;
+	}
+#btn-menu2:focus {
+      
+  	background-color: #5682A3;
+	border-color: #5682A3;
+	color: #fff;
+    text-decoration: none;
+
+      
+	}
+	
+/*modificando el contorno del chat*/
+
+
+.message{
+	background-image: none;
+	border: 0px;
+
+     
+      }
