@@ -1,13 +1,33 @@
 
+h1, h2, h3, h4  {
+	font-family: 'Roboto Light';
+}
+
+
+.three-items-section{
+	margin:20px auto;
+	padding: 50px;
+}
+
 .menu-bar{
 	background-color: #fff;
 }
 
-.footer-section{
+.footer-section{  
 	padding-top: 30px;
 	padding-bottom: 50px;
 	background-color: #1C2833;
+}
 
+.footer-caption{
+	margin:10px auto;
+	color: white;
+}
+
+.footer-caption a{
+	color: #fff;
+	text-decoration: none;
+	margin:15px;
 }
 
 .square-links-white{
@@ -81,7 +101,7 @@
     /* opacity: 0.9; */
 }
 
-  .navbar-brand{
+.navbar-brand{
 	 
 }
 
@@ -105,3 +125,45 @@
 	color: #2E4053;	 
 }
 
+
+.white-text{
+	color: #fff;
+}
+
+.white-section{
+	background-color: #FBFCFC;
+
+}
+
+.parallax-caption{
+	color: #fff;
+	padding: 50px;
+}
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.parallax img {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
