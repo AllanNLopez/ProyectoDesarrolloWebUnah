@@ -59,3 +59,17 @@ body {
 #div-tbl-total{
 	text-align: -webkit-right;
 }
+
+.selected img {
+	opacity:0.5;
+}
+
+#contenedor{
+	padding-top: 30px;
+}
+
+#slider-thumbs{
+	padding-top: 20px;
+
+
+}
