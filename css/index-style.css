@@ -4,7 +4,6 @@ h1, h2, h3, h4  {
 }
 
 @media screen and (max-width: 480px) {
- 	 
  	#menu{
  		background-color: #2471A3;
  		border-color: #2471A3;
