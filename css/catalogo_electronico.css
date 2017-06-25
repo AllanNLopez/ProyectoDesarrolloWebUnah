@@ -7,9 +7,6 @@ body {
   margin-bottom: 40px;
 }
 
-
-
-
 .btnCentrado{
 	text-align: center;
 	padding-top: 40px;
@@ -73,3 +70,36 @@ body {
 
 
 }
+
+
+/*allan*/
+
+.slider-img{
+	max-height: 480px;
+}
+
+.slider-img-small{
+	height: 60px; 
+	width: 80px;
+}
+
+.detail-article-title{
+	padding-bottom: 5px;  
+	font-family: 'Roboto Light';
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.detail-article-description{
+	padding-top: 7px;
+	font-size: 12pt;
+	font-weight: normal;
+}
+
+.detail-article-price{
+	padding-bottom: 5px; 
+
+	font-family: 'Roboto Light';
+	font-size: 16pt;
+	font-weight: bold;
+ }
