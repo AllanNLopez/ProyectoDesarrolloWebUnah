@@ -30,6 +30,17 @@
 		  border-color: #AEB6BF;
 
 		}
+
+   		.form-label{
+   			font-size: 12pt;
+   			font-family: 'Roboto light';
+   			margin: 0px; 
+   		}
+
+   		.check-box{
+   			height: 15px;
+   		} 
+
    		.input-group-addon{
    			border-radius: 1px;
    			background-color: transparent; 
@@ -40,11 +51,20 @@
    			color: #4cae4c;
    			font-weight: bold;
    		}
+
+   		.forms-padding{
+   			padding-right: 5px;
+   			padding-left: 5px;
+   		}
+
+   		.square-panel{
+			background-color: #FBFCFC;
+		}
    	</style>
 
 </head>
 <body class="body">
-	<div style="margin-top: 40px;"></div>
+	<div style="margin-top: 15px;"></div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
@@ -52,65 +72,70 @@
 					<div class="row">
 						<div class="panel  square-panel">
 							<div class="panel-heading">
-								<img class="center-block" src="img/carry.png" height="60px;">
-							</div>
+								<img class="center-block" src="img/carry.png" height="45px;">
+							</div> 
 							<div class="panel-body">
-								<center>
-								<h3 style="font-family:'Roboto Light';">Inicio de sesión</h3><br>
-								</center>
-								<form action="catalogo.html">
-								  <div class="form-group">
-								    <div class="input-group">
-									  <span class="input-group-addon" id="basic-addon1">
-									  <i class="fa fa-envelope" aria-hidden="true"></i></span>
-									  <input type="text" class="form-control input-text-box" placeholder="Tu correo electrónico" aria-describedby="basic-addon1">
+								<!--cuerpo del panel -->
+								<form >
+									<div class="form-group col-xs-12 forms-padding">
+										<label class="form-label"> <i class="fa fa-user fa " aria-hidden="true"></i> Datos personales </label>
 									</div>
-								  </div>
-								   <div class="form-group">
-								    <div class="input-group">
-									  <span class="input-group-addon" id="basic-addon2">
-									  <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
-									  <input type="password" class="form-control input-text-box" placeholder="Tu contraseña" aria-describedby="basic-addon2">
+									<div class="form-group col-xs-6 forms-padding">
+										<input type="text" class="form-control input-text-box" name="name" id="txtNames"  placeholder="Ingresa tus nombres"/>  
 									</div>
-								  </div>  
-								  <div class="form-group ">
-								  		<div class="col-xs-9 ">
-								  			<div class="checkbox">
-											<label>
-										      <input type="checkbox"> Mantener sesión abierta
-										    </label>
-										 </div>
-								  		</div>
-								  		<div class="col-xs-3">
-								  				<button type="submit" class="btn btn-success">Acceder</button>
-								  		</div>
-								  </div>								  
+									<div class="form-group col-xs-6 forms-padding">
+										<input type="text" class="form-control input-text-box" name="name" id="txtLastname"  placeholder="Ingresa tu apellido"/>  
+									</div>
+									<div class="form-group col-xs-12 forms-padding">
+										<input type="text" class="form-control input-text-box" name="email" id="txtEmail"  placeholder="Ingresa tu correo electrónico"/>
+									</div>
+									<div class="form-group col-xs-12 forms-padding">
+										<input type="text" class="form-control input-text-box" name="phone" id="txtPhone"  placeholder="Ingresa tu número telefónico"/>
+									</div>
+									<div class="form-group col-xs-12 forms-padding">
+										<label class="form-label"> <i class="fa fa-lock" aria-hidden="true"></i> Datos de tu cuenta </label>
+									</div> 
+									<div class="form-group col-xs-12 forms-padding">
+										<input type="password" class="form-control input-text-box" name="phone" id="txtPassword"  placeholder="Ingresa tu contraseña"/>
+									</div>
+									<div class="form-group col-xs-12 forms-padding">
+										<input type="password" class="form-control input-text-box" name="phone" id="txtPasswordConfirm"  placeholder="Confirma tu contraseña"/>
+									</div>
+									<div class="form-group col-xs-12 forms-padding">
+										<label> <span style="font-weight: normal";>
+											<input type="checkbox" class="check-box"> &nbsp;He leído y acepto las 
+											<a href="#"> Términos y condiciones </a> de uso. </span>
+										</label>
+									</div> 
+
+									<div class="form-group col-xs-12 forms-padding">
+										<a href="#" target="" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrarse</a>
+									</div> 
 								</form>
-								<br><br>
-								<center>
-								<hr>
-								<button type="button" class="btn btn-primary">
-									<i class="fa fa-facebook-square" aria-hidden="true"></i>
-									Iniciar con facebook
-								</button>
-								<hr>
-								<ul class="list-inline">
-									<li><a href="#">Recuperar contraseña</a></li>
-									<li><a href="#">Registrarme</a></li>
-								</ul>
-							</div>
-							</center>
+							</div> 
 						</div> 
+
 					</div> <!-- fin de caja de login -->
 					<!-- bara de terminos y condiciones -->
 					<div class="row">
-						<ul class="list-inline ">
+						<center>
+						<ul class="list-inline"> 
+							<li><a href="#">Carry para MiPyMe</a></li>
+							<li>|</li>
+							<li><a href="registro-empleado.html">¿Buscas empleo?</a></li>
+						</ul>
+						</center>
+					</div>
+					<div class="row">
+						<center>
+						<ul class="list-inline">
 							<li><a href="#"><span class="fa fa-copyright" aria-hidden="true"></span> carry.com</a></li>
 							<li>|</li>
 							<li><a href="#">Términos y condiciones</a></li>
 							<li>|</li>
 							<li><a href="#">Ayuda</a></li>
 						</ul>
+						</center>
 					</div>
 				</div>
 			</div>
@@ -166,5 +191,17 @@
 	<!--Scripts -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $("input").blur(function(){
+        		 if ($('#txtNames').val() == '') {
+        		 	$('#txtNames').css('border-color', '#F32509');
+        		 }else
+        		 {
+        		 	$('#txtNames').css('border-color', '#A9CCE3');
+        		 }
+    		});
+		});
+	</script>
 </body>
 </html>

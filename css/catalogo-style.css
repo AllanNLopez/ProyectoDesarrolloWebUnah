@@ -106,24 +106,44 @@
 	background-color: #2471A3;
 }
 
+.badge-white{
+	background-color: #52BE80;
+	color: #fff;
+	margin-bottom: 10px;
+	font-size: 8pt;
+} 
+
+.popover{
+    width:200px;
+    height:auto;    
+}
+
 .navbar-inverse .navbar-nav li a{
 	background-color: transparent;
-	border-style: solid;
-	border-color: #F7F9F9 ;
+	border-style: none;
+	border-color: #34495E;
 	border-radius: 5px;
-	border-width: 1px;
+	border-width: 0.1px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	margin: 10px;
-	color: #fff;
-	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	color: #ECF0F1; 
+	font-size: 13pt;
+	text-decoration: none;
+}
+
+.navbar-btn {
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
 .navbar-inverse .navbar-nav li a:hover{
-	background-color: #fff;
-	color: #2E4053;	 
+	/*background-color: #fff;
+	color: #2E4053;	 */
+	color: #fff;
 }
 
 .body{
