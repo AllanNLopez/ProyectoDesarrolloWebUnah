@@ -12,70 +12,13 @@
    	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
    	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
    	<link rel="stylesheet" type="text/css" href="css/catalogo-style.css">
+   	<link rel="stylesheet" type="text/css" href="css/main-rules.css">
    	<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
-
-   	<style> 
-
-		.sidenav {
-		    height: auto;
-		    width: 250px;
-		    position: absolute;
-		    z-index: 1;
-		    top: 0;
-		    left: 0;
-		    background-color: #EAEDED;
-		    overflow-x: hidden;
-		    transition: 0.5s;
-		    padding-top: 60px;
-		}
-
-		.sidenav a {
-		    padding: 8px 8px 8px 32px;
-		    text-decoration: none;
-		    font-size: 25px;
-		    color: #818181;
-		    display: block;
-		    transition: 0.3s;
-		}
-
-		.sidenav a:hover, .offcanvas a:focus{
-		    color: #f1f1f1;
-		}
-
-		.sidenav .closebtn {
-		    position: absolute; 
-		    right: 25px;
-		    font-size: 36px;
-		    margin-left: 50px;
-		    color: #000;
-		}
-
-		.sidenav-small{
-			width: 99%;
-			height: 100%;
-			position: fixed;
-		}
-
-		#main {
-		    transition: margin-left .5s;
-		    padding: 16px;
-		    margin-left: 250px;
-		}
-
-		@media screen and (max-height: 450px) {
-		  .sidenav {
-		  	padding-top: 15px; 
-		  }
-		  .sidenav a {font-size: 18px;}
-		}
-		</style>
 
 </head>
 <body class="body">
 	<nav id="menu" class="navbar navbar-default navbar-fixed-top navbar-inverse ">
 	  <div class="container">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#small-menu" aria-expanded="false">
 	        <span class="sr-only">Toggle navigation</span>
@@ -84,15 +27,7 @@
 	        <span class="icon-bar"></span>
 	      </button>
 	      <a class="navbar-brand" href="#"><img alt="Brand" src="img/carry2.png" height="30px"></a>
-	      <button type="button" class="navbar-toggle collapsed" onclick="openNav();" data-toggle="collapse" data-target="" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
 	    </div>
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="small-menu">
 	    	<ul class="nav navbar-nav navbar-right">
 		        <li><a class="hidden" href="#">Acceder</a></li>
@@ -116,7 +51,7 @@
 	        				data-placement="bottom"     			data-toggle="popover" 
 	        				data-trigger="click" data-html="true"  
 	        				data-content="<a href='#'>Mi cuenta</a><br><a href='#'>Cerrar Sesion</a>">
-	        				<span class="fa fa-user-circle" aria-hidden="true"></span> Usuario</a>
+	        				<span class="fa fa-user-circle" aria-hidden="true"></span>  </a>
 				  	</div>
 	        	</li>  
 	      	</ul> 
@@ -149,35 +84,105 @@
 		<!-- <div class="row white-section">
 			<h1>Menu de categorias</h1>
 		</div> -->
-
+		<!--Side bar -->
 		<div id="mySidenav" class="sidenav"> 
 			<div class="row">
 				<div class="panel square-panel">
-				<div class="panel-body">
-					 <a href="javascript:void(0)" class="btn closebtn" onclick="closeNav()">close</a>
-		  <a href="#">About</a>
-		  <a href="#">Services</a>
-		  <a href="#">Clients</a>
-		  <a href="#">Contact</a>
+					<a href="javascript:void(0)" id="close-link"  class="btn closebtn pull-right" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
+					<div class="panel-body">
+		 				<div class="panel-group" id="accordionInterno" role="tablist" aria-multiselectable="true">
+							<div class="panel ">
+								<div class="panel-heading" role="tab" id="headingFiltro1">
+									<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro1" aria-expanded="true" aria-controls="collapseOne">
+									    <i class="fa fa-caret-down" aria-hidden="true"></i> Filtros busqueda 1
+									</a>
+									</h4>
+								</div>
+								<div id="collapseFiltro1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFiltro1">
+									<div class="panel-body">
+									   <div class="checkbox">
+											  <label>
+											    <input type="checkbox" value="">
+											    Option one is this and that&mdash;be sure to include why it's great
+											  </label>
+											</div>
+											<div class="checkbox disabled">
+											  <label>
+											    <input type="checkbox" value="" disabled>
+											    Option two is disabled
+											  </label>
+											</div>
+
+											<div class="radio">
+											  <label>
+											    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+											    Option one is this and that&mdash;be sure to include why it's great
+											  </label>
+											</div>
+											<div class="radio">
+											  <label>
+											    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+											    Option two can be something else and selecting it will deselect option one
+											  </label>
+											</div>
+											<div class="radio disabled">
+											  <label>
+											    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+											    Option three is disabled
+											  </label>
+											</div>
+									</div>
+								</div>
+							</div>
+						  	<div class="panel">
+							    <div class="panel-heading" role="tab" id="headingFiltro2">
+							      <h4 class="panel-title">
+							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro2" aria-expanded="false" aria-controls="collapseFiltro2">
+							         <i class="fa fa-caret-right" aria-hidden="true"></i> Filtros Busqueda 2
+							        </a>
+							      </h4>
+							    </div>
+							    <div id="collapseFiltro2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro2">
+							      <div class="panel-body">
+							        <ul> <li>Lorem ipsum dolor sit amet</li> <li>Consectetur adipiscing elit</li> <li>Integer molestie lorem at massa</li> <li>Facilisis in pretium nisl aliquet</li> <li>Nulla volutpat aliquam velit <ul> <li>Phasellus iaculis neque</li> <li>Purus sodales ultricies</li> <li>Vestibulum laoreet porttitor sem</li> <li>Ac tristique libero volutpat at</li> </ul> </li> <li>Faucibus porta lacus fringilla vel</li> <li>Aenean sit amet erat nunc</li> <li>Eget porttitor lorem</li> </ul>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="panel">
+							    <div class="panel-heading" role="tab" id="headingFiltro3">
+							      <h4 class="panel-title">
+							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro3" aria-expanded="false" aria-controls="collapseFiltro3">
+							          <i class="fa fa-caret-right" aria-hidden="true"></i> Filtros Busqueda 3
+							        </a>
+							      </h4>
+							    </div>
+							    <div id="collapseFiltro3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro3">
+							      <div class="panel-body">
+							        <ul> <li>Lorem ipsum dolor sit amet</li> <li>Consectetur adipiscing elit</li> <li>Integer molestie lorem at massa</li> <li>Facilisis in pretium nisl aliquet</li> <li>Nulla volutpat aliquam velit <ul> <li>Phasellus iaculis neque</li> <li>Purus sodales ultricies</li> <li>Vestibulum laoreet porttitor sem</li> <li>Ac tristique libero volutpat at</li> </ul> </li> <li>Faucibus porta lacus fringilla vel</li> <li>Aenean sit amet erat nunc</li> <li>Eget porttitor lorem</li> </ul>
+							      </div>
+							    </div>
+							  </div>
+
+						</div>
+					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 
+		<!--Contenedor principal derecho -->
 		<div id="main">
-	 			<div class="row">
-			<!-- Panel izquierdo: filtros de busqueda -->
-			 
-			<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 cols-margin">
-			<!-- Panel derecho: rejilla de articulos -->
+	 		<div class="row"> 			 
+				<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 cols-margin">
+				<!-- Panel derecho: rejilla de articulos -->
 				<div class="panel square-panel">
 					<div class="panel-body">
 						<!-- Inicio de rejilla -->
-							<div class="container-fluid">
+						<div class="container-fluid">
 								<!-- opciones visualizacion -->
 								<div class="row">
 									<div class="col-xs-6 col-md-6 col-lg-6">
-										<button  class="btn btn-default" onclick="openNav()">Opciones</button>
+										<button id="btnOpciones"  class="btn btn-default" onclick="openNav()">Opciones</button>
 									</div>
 									<div class="col-xs-6 col-md-6 col-lg-6 pull-right">
 										<form class="form-inline">
@@ -195,7 +200,7 @@
 								</div>
 								<!-- inicio de rejilla -->
 								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/pancakes-2413875_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -210,7 +215,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/landingpage/comidas.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -225,7 +230,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/pancakes-2413875_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -240,7 +245,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/fish-2366925_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -256,7 +261,7 @@
 										</div>
 									</div>
 
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/pancakes-2413875_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -271,7 +276,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/fish-2366925_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -286,7 +291,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/comidas/pancakes-2413875_640.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -301,7 +306,7 @@
 
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 cols-margin">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<img src="img/landingpage/comidas.jpg" width="100%">
 									  		<div class="panel-body nopadding">
@@ -316,7 +321,6 @@
 
 										</div>
 									</div>
-
 								</div><!--Fin de rejilla -->
 							<div class="row">
 								<center>
@@ -406,24 +410,12 @@
 	<!--Scripts -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
+	<script type="text/javascript" src="js/main-controller.js"></script>
+	<script>	
+		$(document).ready(function(){
+		    $('[data-toggle="popover"]').popover(); 
 
-});
-</script>
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    $("#mySidenav").addClass("sidenav-small");
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    $("#mySidenav").removeClass("sidenav-small");
-}
-</script>
+		});
+	</script> 
 </body>
 </html>
