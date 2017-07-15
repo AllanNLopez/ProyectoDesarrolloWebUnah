@@ -140,6 +140,8 @@
 						<ul class="list-inline">
 							<li><a href="#">Carry para MiPyMe</a></li>
 							<li>|</li>
+							<li><a href="login.html">¿Ya tienes cuenta? Inicia sesión aquí</a></li>
+							<li>|</li>
 							<li><a href="registro-empleado.html">¿Buscas empleo?</a></li>
 						</ul>
 						</center>
@@ -277,25 +279,31 @@
 			}
 		});
 	});
-
+//------------------------------------------------------------------------------
 	$("#button").click(function(event){
 		var form_data=$("#formulario-nuevo-usuario").serializeArray();
 		var error_free=true;
+		var suma = 0;
+
 		for (var input in form_data){
 			var element=$("#"+form_data[input]['name']);
 			var valid=element.hasClass("valid");
 			var error_element=$('#mensajeError');
 			if (!valid)
 			{
-				error_element.show();
+				suma++;
 				error_free=false;
 			}
-			else
-			{
-				error_element.hide();
-
-			}
 		}
+
+		if(suma==0){
+			error_element.hide();
+		}
+		else
+		{
+			error_element.show();
+		}
+
 		var valid = $('#checkTermino').is(':checked');
 		if (!valid)
 		{
@@ -306,7 +314,6 @@
 		{
 			$('#mensajeErrorTerminos').hide();
 		}
-
 
 		if (!error_free)
 		{
