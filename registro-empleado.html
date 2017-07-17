@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Registro Empleado</title>
+	<link rel="icon" href="img/logo.png">
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,6 +79,28 @@
 			color: #fff;
 		}
 
+		input.invalid, textarea.invalid {
+	  	border: 2px solid #C41E3A;
+		}
+
+		input.valid, textarea.valid {
+  		border: 2px solid green;
+		}
+
+		select.invalid {
+			border: 2px solid #C41E3A;
+		}
+
+		select.valid {
+			border: 2px solid green;
+		}
+
+		.error_show{
+			color: #C41E3A;
+			margin-left: 20px;
+			font-weight: normal;
+		}
+
    	</style>
 
 </head>
@@ -117,37 +140,40 @@
 
 							<div class="panel-body">
 								<!--cuerpo del panel -->
-								<form >
+								<form id="formulario">
 									<div class="form-group col-xs-12 forms-padding">
 										<label class="form-label"> <i class="fa fa-user fa " aria-hidden="true"></i> Aplicación para aspirantes </label>
 									</div>
 									<div class="form-group col-xs-6 forms-padding">
-										<input type="text" class="form-control input-text-box" name="name" id="txtNames"  placeholder="Ingresa tu nombre"/>
+										<input type="text" class="form-control input-text-box" name="txtNames" id="txtNames"  placeholder="Ingresa tu nombre"/>
 									</div>
 									<div class="form-group col-xs-6 forms-padding">
-										<input type="text" class="form-control input-text-box" name="name" id="txtLastname"  placeholder="Ingresa tu apellido"/>
+										<input type="text" class="form-control input-text-box" name="txtLastname" id="txtLastname"  placeholder="Ingresa tu apellido"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
-										<input type="text" class="form-control input-text-box" name="email" id="txtId"  placeholder="Ingresa tu número de identificación  "/>
+										<input type="text" class="form-control input-text-box" name="txtId" id="txtId"  placeholder="Ingresa tu número de identificación  "/>
 									</div>
-									<div class="form-group col-xs-3 forms-padding">
-										<select class="form-control input-text-box">
+									<div class="form-group col-xs-3 forms-padding" id="divDia">
+										<select class="form-control input-text-box" id="selectDia"
+										name="selectDia">
 											<option>Día</option>
 											<option>1</option>
 											<option>2</option>
 											<option>30</option>
 										</select>
 									</div>
-									<div class="form-group col-xs-5 forms-padding">
-										<select class="form-control input-text-box">
+									<div class="form-group col-xs-5 forms-padding" id="divMes">
+										<select class="form-control input-text-box" id="selectMes"
+										name="selectMes">
 											<option>Mes</option>
 											<option>Enero</option>
 											<option>febrero</option>
 											<option>Septiembre</option>
 										</select>
 									</div>
-									<div class="form-group col-xs-4 forms-padding">
-										<select class="form-control input-text-box">
+									<div class="form-group col-xs-4 forms-padding" id="divAño">
+										<select class="form-control input-text-box" id="selectAño"
+										name="selectAño">
 											<option>Año</option>
 											<option>1997</option>
 											<option>1996</option>
@@ -155,16 +181,17 @@
 										</select>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
-										<input type="text" class="form-control input-text-box" name="phone" id="txtPhone"  placeholder="Ingresa tu número telefónico"/>
+										<input type="text" class="form-control input-text-box" name="txtPhone" id="txtPhone"  placeholder="Ingresa tu número telefónico"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
-										<input type="text" class="form-control input-text-box" name="phone" id="txtMail"  placeholder="Ingresa tu correo electrónico"/>
+										<input type="text" class="form-control input-text-box" name="txtMail" id="txtMail"  placeholder="Ingresa tu correo electrónico"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
-										<textarea type="text" class="form-control input-text-box" name="phone" id="txtDomicilio" rows="2" placeholder="Indica tu domicilio actual" ></textarea>
+										<textarea type="text" class="form-control input-text-box" name="txtDomicilio" id="txtDomicilio" rows="2" placeholder="Indica tu domicilio actual" ></textarea>
 									</div>
-									<div class="form-group col-xs-12 forms-padding">
-										<select class="form-control input-text-box">
+									<div class="form-group col-xs-12 forms-padding" id="divOfertaLaboral">
+										<select class="form-control input-text-box" id="selectOfertaLaboral"
+										name="selectOfertaLaboral">
 											<option>Seleccione oferta laboral</option>
 											<option>Agente carry permanete</option>
 											<option>Agente carry recurrente</option>
@@ -173,8 +200,10 @@
 
 									<div class="form-group col-xs-12 forms-padding">
 										<label> <span style="font-weight: normal";>
-											<input type="checkbox" class="check-box"> &nbsp;He leído y acepto las
+											<span class="error_show" id="mensajeError">Revisa que tu forma no contenga errores.</span><br>
+											<input type="checkbox" class="check-box" id='checkTermino'> &nbsp;He leído y acepto las
 											<a href="#"> Términos y condiciones </a> de uso de este sitio. <br>Espera pacientemente, para completar este proceso nos comunicaremos contigo en menos de 48 horas.</span>
+											<br><span class="error_show" id="mensajeErrorTerminos">Debes leer y aceptar los términos y condiciones.</span>
 										</label>
 									</div>
 
@@ -329,6 +358,148 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script>
+	$(document).ready(function() {
+		$('#mensajeError').hide();
+		$('#mensajeErrorTerminos').hide();
+
+	  $('#txtNames').mouseleave('input', function() {
+	    var input = $(this);
+	    var re = /^[A-Za-z\s]+$/;
+	    var is_email = re.test(input.val());
+	    if (is_email) {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+	  $("#txtLastname").mouseleave('input', function() {
+	    var input = $(this);
+	    var re = /^[A-Za-z\s]+$/;
+	    var is_email = re.test(input.val());
+	    if (is_email) {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+		$("#txtId").mouseleave('input', function() {
+	    var input = $(this);
+	    var re = /\d{4}-\d{4}-\d{5}/;
+	    var is_email = re.test(input.val());
+	    if (is_email) {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+
+	  $('#txtMail').mouseleave('input', function() {
+	    var input = $(this);
+	    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	    var is_email = re.test(input.val());
+	    if (is_email) {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+	  $('#txtPhone').mouseleave('input', function() {
+	    var input = $(this);
+	    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+	    var is_email = re.test(input.val());
+	    if (is_email) {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+		$('#txtDomicilio').mouseleave('input', function() {
+	    var input = $(this);
+	    if (input.val() != '') {
+	      input.removeClass("invalid").addClass("valid");
+	    } else {
+	      input.removeClass("valid").addClass("invalid");
+	    }
+	  });
+
+		$('#divDia').mouseleave(function() {
+	    var input = $('#selectDia');
+	    if (input.val()=='Día') {
+				input.removeClass("valid").addClass("invalid");
+	    } else {
+				 input.removeClass("invalid").addClass("valid");
+	    }
+	  });
+
+		$('#divMes').mouseleave(function() {
+	  var input = $('#selectMes');
+	  if (input.val() != 'Mes') {
+	    input.removeClass("invalid").addClass("valid");
+	  } else {
+	    input.removeClass("valid").addClass("invalid");
+	  }
+	});
+
+	$('#divAño').mouseleave(function() {
+	  var input = $('#selectAño');
+	  if (input.val() != 'Año') {
+	    input.removeClass("invalid").addClass("valid");
+	  } else {
+	    input.removeClass("valid").addClass("invalid");
+	  }
+	});
+
+	$('#divOfertaLaboral').mouseleave(function() {
+	  var input = $('#selectOfertaLaboral');
+	  if (input.val() != 'Seleccione oferta laboral') {
+	    input.removeClass("invalid").addClass("valid");
+	  } else {
+	    input.removeClass("valid").addClass("invalid");
+	  }
+	});
+
+	});
+//------------------------------------------------------------------------------
+
+	$("#button").click(function(event) {
+	 	var form_data = $("#formulario").serializeArray();
+	  var suma = 0;
+
+	  for (var input in form_data) {
+	    var element = $("#" + form_data[input]['name']);
+	    var valid = element.hasClass("valid");
+	    if (!valid) {
+	      suma++;
+	    }
+	  }
+
+	  if (suma == 0) {
+	  	$('#mensajeError').hide();
+	  } else {
+	    $('#mensajeError').show();
+	  }
+
+	  var valid = $('#checkTermino').is(':checked');
+	  if (!valid) {
+	    $('#mensajeErrorTerminos').show();
+	  } else {
+	    $('#mensajeErrorTerminos').hide();
+	  }
+
+	  if (!error_free) {
+	    //event.preventDefault();
+	    //Hay errores
+	  } else {
+	    //alert('No errors: Form will be submitted');
+	    //Hacer algo si no hay errores
+	  }
+	});
+
 	</script>
 
 </body>
