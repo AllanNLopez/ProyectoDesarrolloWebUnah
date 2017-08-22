@@ -225,7 +225,7 @@
 			else{input.removeClass("valid").addClass("invalid");}
 		});
 
-		$("#txtLastname").on('input', function() {
+		$("#txtLastname").mouseleave('input', function() {
 			var input = $(this);
 			var re = /^[A-Za-z\s]+$/;
 			var is_email=re.test(input.val());
@@ -233,7 +233,7 @@
 			else{input.removeClass("valid").addClass("invalid");}
 		});
 
-		$('#txtEmail').on('input', function() {
+		$('#txtEmail').mouseleave('input', function() {
 			var input = $(this);
 			var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 			var is_email=re.test(input.val());
@@ -241,7 +241,7 @@
 			else{input.removeClass("valid").addClass("invalid");}
 		});
 
-		$('#txtPhone').on('input', function() {
+		$('#txtPhone').mouseleave('input', function() {
 			var input = $(this);
 			var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 			var is_email=re.test(input.val());
@@ -249,7 +249,7 @@
 			else{input.removeClass("valid").addClass("invalid");}
 		});
 
-		$('#txtPasswordConfirm').on('input', function() {
+		$('#txtPasswordConfirm').mouseleave('input', function() {
 			var input = $(this);
 			var password = $('#txtPassword').val();
 			if(input.val() == password && input.val()!='' )
@@ -264,7 +264,7 @@
 			}
 		});
 
-		$('#txtPassword').on('input', function() {
+		$('#txtPassword').mouseleave('input', function() {
 			var input = $(this);
 			var password = $('#txtPasswordConfirm').val();
 			if(input.val() == password && input.val()!='')
