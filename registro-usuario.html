@@ -217,7 +217,7 @@
 			$('#mensajeErrorTerminos').hide();
 
 
-		$('#txtNames').on('input', function() {
+		$('#txtNames').mouseleave('input', function() {
 			var input = $(this);
 			var re = /^[A-Za-z\s]+$/;
 			var is_email=re.test(input.val());
