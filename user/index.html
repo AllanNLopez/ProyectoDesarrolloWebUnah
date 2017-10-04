@@ -1,0 +1,324 @@
+<!DOCTYPE html> 
+<html> 
+   <head>     
+   	<title>Carry: Nombre de usuario</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta name="description" content="">
+  	<meta name="author" content="">
+
+   	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+   	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css"> 
+   	<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
+   	<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
+		<style>
+				.rscroll{
+					overflow-y: scroll;
+					height: 250px;
+				}
+
+				/*no tocar */
+				.navbar-inverse .navbar-brand{ 
+					color:#FFF; 
+				}
+				.btn-opciones{
+					padding-left: 25px;
+					padding-right:25px;
+			  }
+		</style>
+</head>
+<body class="body">
+	<nav id="menu" class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+		<div class="container">
+			<div class="navbar-header">
+					
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#small-menu" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a   class="navbar-brand btn-opciones" id="btnOpciones" onclick="openNav();" ><i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+				<a class="navbar-brand" href="#"><img alt="Brand" src="../img/carry2.png" height="30px"></a>
+				
+			</div>
+			<div class="collapse navbar-collapse" id="small-menu">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="hidden" href="#">Acceder</a></li>
+					<li><a class="hidden" href="#">Registrame</a></li>  
+					<li>
+						<div class="btn-group navbar-btn"  >
+							<a href="../catalogo/carrito_ordenes.html">
+								<span class="fa fa-shopping-basket" aria-hidden="true"></span>&nbsp;<span class="badge badge-white">4</span>
+							</a>
+							<a href="../catalogo/carrito_ordenes.html">
+								<span class="fa fa-bell" aria-hidden="true"></span>&nbsp;<span class="badge badge-white">4</span>
+							</a>
+							<a href="carrito_ordenes.html">
+								<span  class="fa fa-rocket" aria-hidden="true"></span>+
+							</a>
+							<a href="#">
+								<span class="fa fa-user-circle" aria-hidden="true"></span>  Usuario </a>
+							</a>		
+						</div>
+					</li>  
+				</ul> 
+				<form class="navbar-form navbar-left">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-btn">
+								<select class="form-control"  style="width: 110px;">
+									<option>Seleccione una</option>
+									<option>Restaurantes</option>
+									<option>Papelerías</option>
+									<option>Farmacias</option>
+									<option>Ropa y Calzado</option>
+									<option>Automóviles</option>
+								</select>
+							</div> 
+							<input type="text" class="form-control" aria-label="...">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							</div>
+						</div>
+					</div>
+				</form> 
+			</div><!-- /.navbar-collapse --> 
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div style="margin-top: 45px;"></div>
+	<!--inicio de contenedor principal de pagina -->
+	<div class="container-fluid"> 
+		<!-- side bar -->
+		<div id="mySidenav" class="sidenav"> 
+			<div class="row">
+				<div class="panel square-panel">
+					<a href="javascript:void(0)" id="close-link"  class="btn closebtn pull-right" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
+					<div class="panel-body">
+						<!--inicio de acordion-->
+		 				<div class="panel-group" id="accordionInterno" role="tablist" aria-multiselectable="true">
+						  <!--Inicio de primer panel de opciones: informacion personal -->
+							<div class="panel ">
+								<div class="panel-heading" role="tab" id="headingFiltro1">
+									<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro1" aria-expanded="true" aria-controls="collapseOne">
+											<i class="fa fa-user" aria-hidden="true"></i> Mi Cuenta
+									</a>
+									</h4>
+								</div>
+								<div id="collapseFiltro1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFiltro1">
+									<!-- contenido de la primer cinta de opciones -->
+									<div class="panel-body">
+										<!-- tab pills de seccio de informacion personal -->
+									   <ul class="nav nav-pills nav-stacked">
+										  <li class="active"><a href="#personalInfo" data-toggle="pill">Información de perfil</a></li>
+										  <li><a href="#misOrdenes" data-toggle="pill">Mis ordenes</a></li>
+										  <li><a href="#tab_c" data-toggle="pill">Mis facturas</a></li>
+											<li><a href="#tab_d" data-toggle="pill">Mi lista de deseos</a></li>
+											<li><a href="#tab_d" data-toggle="pill">Ms tiendas favoritas</a></li>
+										</ul>
+										<!-- fin tab pills de seccio de informacion personal -->
+									</div>
+								</div>
+							</div>
+							<!--Fin  de primer panel de opciones: informacion personal -->
+							<!--Inicio de segundo panel de opciones: Mi cuenta -->
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingFiltro2">
+									<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro2" aria-expanded="false" aria-controls="collapseFiltro2">
+												<i class="fa fa-shopping-bag" aria-hidden="true"></i> Mis Tiendas
+										</a>
+									</h4>
+								</div>
+								<div id="collapseFiltro2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro2">
+									<div class="panel-body  ">
+										<ul class="nav nav-pills nav-stacked">
+											<select class="form-control input-text-box">
+												<option>Seleccione una tienda</option>
+												<option value="1">Tienda 1</option>
+											</select>
+											<br>
+											<li ><a href="#">Mis articulos</a></li>
+											<li ><a href="#">Mis clientes</a></li> 
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--Fin de primer panel de opciones: informacion personal -->
+							<div class="panel">
+								<div class="panel-heading" role="tab" id="headingFiltro3">
+									<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro3" aria-expanded="false" aria-controls="collapseFiltro3">
+												<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Suscripción
+										</a>
+									</h4>
+								</div>
+								<div id="collapseFiltro3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro3">
+									<div class="panel-body">
+											<ul class="nav nav-pills nav-stacked">  
+												<li ><a href="#">Actual</a></li>
+												<li ><a href="#">Historial de pagos</a></li>  
+											</ul>
+									</div>
+								</div>
+							</div>
+							<!--Inicio de panel de boton de salida -->
+							<div class="panel ">
+								<div class="panel-body">
+									<center>
+											<button class="btn btn-danger">Cerrar sesion</button>
+									</center>
+								</div>	
+							</div>
+							  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Final del sidebar -->
+		<!--Contenedor principal derecho -->
+		<div id="main">
+	 		<div class="row"> 			 
+				<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 cols-margin">
+				<!-- Panel derecho: tabs -->
+					<div class="panel square-panel">
+						<div class="panel-body">
+							<!-- <button id="btnOpciones"  class="btn btn-default" onclick="openNav()">Opciones</button> -->
+							<div class="tab-content ">
+								<!-- Tab de informacion personal del usuario -->
+								<div class="tab-pane active col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" id="personalInfo">
+									<div class="col-xs-9 col-sm-10 forms-padding">
+										<h4>Información personal</h4>
+									</div>
+									<div class="col-xs-2 col-sm-2">
+											<button class="btn"><i class="fa fa-cog" aria-hidden="true"></i>  Editar</button>
+									</div> 
+									<div >   
+										<div class="form-group col-xs-12 forms-padding">
+											 
+										</div>
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="text" class="form-control input-text-box" id="txtNames"  placeholder="Ingresa tus nombres"/>
+										</div>
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="text" class="form-control input-text-box" id="txtLastname"  placeholder="Ingresa tu apellido"/>
+										</div>
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="text" class="form-control input-text-box" id="txtEmail"  placeholder="Ingresa tu correo electrónico"/>
+										</div>
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="text" class="form-control input-text-box" id="txtPhone"  placeholder="Ingresa tu número telefónico"/>
+										</div> 
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="password" class="form-control input-text-box" id="txtPassword"  placeholder="Ingresa tu contraseña"/>
+										</div>
+										<div class="form-group col-xs-12 forms-padding hidden">
+											<input type="password" class="form-control input-text-box" id="txtPasswordConfirm"  placeholder="Confirma tu contraseña"/>
+										</div>
+										<div class="form-group col-xs-12 forms-padding">
+											<div class="btn-toolbar pull-right" role="toolbar"  >
+												<div class="btn-group" role="group"  >
+													<button class="btn  ">Aceptar</button>
+												</div>
+												<div class="btn-group" role="group"  >
+													<button class="btn  ">Cancelar</button>
+												</div>
+											</div>
+										</div> 
+									</div>						
+								</div>
+								<!-- Tab de ordenes realizadas por el usuarios -->
+								<div class="tab-pane" id="misOrdenes">
+									<div class="col-xs-9 col-sm-6 forms-padding">
+										<h4>Mis ordenes</h4>
+									</div>
+									<div class="col-xs-2 col-sm-6 ">
+										<div class="btn-toolbar pull-right" role="toolbar" >
+											<div class="btn-group" role="group" >
+												<button class="btn" >EDitar</button>
+											</div>
+											<div class="btn-group" role="group" >
+												<button class="btn" >EDitar</button>
+											</div>
+											<div class="btn-group" role="group" >
+													<button class="btn" >EDitar</button>
+												</div>
+										</div>
+									</div> 
+								 
+								</div>
+								<div class="tab-pane" id="tab_c">
+											<h4>Pane C</h4>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+								</div>
+								<div class="tab-pane" id="tab_d">
+											<h4>Pane D</h4>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+								</div>
+							</div><!-- tab content -->
+						</div>
+					</div>
+				<!-- fin de panel derecho -->
+				</div>
+			</div> <!-- fin de seccion de ofertas -->
+		</div>
+
+		
+		<!--inicio de pie de pagina-->
+		<div class="row footer-section">
+			 <div class="container footer-caption">
+			 	<div class="row">
+			 		<center>
+			 		<a href="#">
+			 		<span class="fa fa-facebook-square" aria-hidden="true" style="font-size: 20px;"></span>
+			 		</a>
+			 		<a href="#">
+			 		<span class="fa fa-twitter-square" aria-hidden="true" style="font-size: 20px;"></span>
+			 		</a>
+			 		<a href="#">
+			 		<span class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;"></span>
+			 		</a>
+			 		<a href="#">
+			 		<span class="fa fa-instagram" aria-hidden="true" style="font-size: 20px;"></span>
+			 		</a>
+			 	</center>
+			 	</div>
+			 	<hr style=" border-color: #1F618D; border-width: 1px;">
+			 	<div class="row">
+			 		<center>
+				 		<div class="col-lg-3">
+				 			<a href="#">Conócenos</a>
+				 		</div>
+				 		<div class="col-lg-3">
+				 			<a href="#">Contáctanos</a>
+				 		</div>
+				 		<div class="col-lg-3">
+				 			<a href="#">Preguntas frecuentes</a>
+				 		</div>
+				 		<div class="col-lg-3">
+				 			<a href="#">Únete al equipo</a>
+				 		</div>
+			 		</center>
+			 	</div>
+			 	<div class="row">
+			 		<center>
+			 			<div style="margin-top: 50px;"></div>
+			 			<p><span class="fa fa-copyright" aria-hidden="true"></span> Derechos reservados 2017</p>
+			 		</center>
+			 	</div>
+			 </div>
+		</div>
+	</div> 
+	<!--Fin del contenedor de pagina--> 
+	<!--Scripts -->
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/main-controller.js"></script>
+	 
+</body>
+</html>
