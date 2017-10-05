@@ -69,6 +69,17 @@ function validarCampo(valor, tipoCampo, id) {
       } else {
         is_correct = false;
       }
+		case 'password':
+			var passwordConfirm = id+'Confirm';
+			if(input == $(passwordConfirm).val() && input != ''){
+				is_correct = true;
+				$(passwordConfirm).removeClass("invalid").addClass("valid");
+			}
+			else {
+				is_correct = false;
+				$(passwordConfirm).removeClass("valid").addClass("invalid");
+			}
+			break;
     default:
       break;
   }
@@ -103,7 +114,7 @@ function submitForm(formulario, tipoFormulario){
     }
   }
 
-  if(tipoFormulario=='RegistroEmpleado'){
+  if(tipoFormulario=='RegistroEmpleado' || 'RegistroUsuario'){
     if (suma == 0) {
       $('#mensajeError').hide();
     } else {
