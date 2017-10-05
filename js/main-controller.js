@@ -1,4 +1,14 @@
 
+
+$(document).ready(function(){
+	$('#carrito').DataTable({
+		"dom": '<"toolbar">frtip'
+	});
+
+
+});
+
+
 /*   funciones para ocultar y aparecer el sidebar  */
 if (screen.width <480) {
     	document.getElementById("mySidenav").style.width = "0";
