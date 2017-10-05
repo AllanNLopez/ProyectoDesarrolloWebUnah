@@ -135,16 +135,29 @@
 	<!--barra de estado -->
 	<div class="marcador">
 		<div class="row ">
-			<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4"> 
-				<div class="marcador-casilla col-xs-4 "> 
-					<span class="badge badge-marcador">500</span> items
+			<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3"> 
+				<div class=" col-xs-4 col-lg-3 hidden-xs cols-margin"> 
+					<div class="input-group">
+						<span class="input-group-addon marcador-numer" id="basic-addon1">#</span>
+						<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+					</div>
 				</div>
-				<div class="marcador-casilla col-xs-4 "> 
-					<span class="badge badge-marcador">500</span> min
+				<div class=" col-xs-4 col-lg-3 cols-margin"> 
+					<div class="input-group">
+						<span class="input-group-addon marcador-numer" id="basic-addon1"><i class="fa fa-clock-o" aria-hidden="true"></i>
+						</span>
+						<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+					</div>
 				</div>
-				<div class="marcador-casilla col-xs-4 "> 
-					L. <span class="badge badge-marcador">100.00</span>
-				</div>  
+				<div class=" col-xs-4 col-lg-3 cols-margin"> 
+					<div class="input-group">
+						<span class="input-group-addon marcador-numer" id="basic-addon1">L.</span>
+						<input type="text" class="form-control input-text-box marcador-numer" placeholder="12" aria-describedby="basic-addon1" readonly>
+					</div>
+				</div>
+				<div class=" col-xs-4 col-lg-3 cols-margin">  
+					<button type="button" class="btn btn-success" >Ordenar</button>
+				</div>
 				
 			</div>
 		</div>
@@ -157,7 +170,7 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/main-controller.js"></script>
-	<script src="../js/datatables.js"></script> 
+	<script src="../js/datatables.js"></script>  
 	
 </body>
 </html>

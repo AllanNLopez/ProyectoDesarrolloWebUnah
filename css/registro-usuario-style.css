@@ -1,0 +1,17 @@
+.check-box {
+  height: 15px;
+}
+
+.btn-success {
+  background-color: transparent;
+  color: #4cae4c;
+  font-weight: bold;
+}
+
+input.invalid, textarea.invalid {
+  border: 2px solid #C41E3A;
+}
+
+input.valid, textarea.valid {
+  border: 2px solid green;
+}

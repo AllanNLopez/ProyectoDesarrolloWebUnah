@@ -374,6 +374,12 @@
     font-size: 10pt;
 }
 
+.marcador-numer{
+    font-size: 12pt;  
+    text-align: right;
+    font-weight: bold;
+}
+
 
 
 /* Reglas para el carrito de compras */
