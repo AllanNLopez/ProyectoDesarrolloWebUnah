@@ -7,22 +7,51 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta name="description" content="">
+  	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
-	<link rel="stylesheet" type="text/css" href="../css/registro-empresa-style.css">
-	<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
+   	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+   	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+   	<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
+		<link rel="stylesheet" type="text/css" href="../css/registro-empleado-style.css">
+   	<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
+
+		<!-- iNCLUIR EL MAPA EN LA LINEA 272 -->
+
+   	<style type="text/css">
+
+   		.check-box{
+   			height: 15px;
+   		}
+
+   		.contenedor{
+		    background: url('../img/register/banner4.jpg') no-repeat center center fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;
+		}
+
+
+		h1, h2, h3, h4  {
+			font-family: 'Roboto Light';
+		}
+
+   	</style>
+   	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlo6NXGmYl_d4BAS_23HNm_K9qOoI5U7s&callback=initMap">
+	</script>
 
 </head>
 
 <body class="contenedor">
 
+
+
 	<div style="margin-top: 10px;"></div>
 	<div class="container">
+
 		<div class="row">
 			<div class=" col-xs-12 col-sm-6 col-lg-8 ">
 				<div class="row">
@@ -55,6 +84,7 @@
 	<!--Fin del contenedor-->
 
 	<div class="container-fluid">
+
 		<div style="margin-top: 50px;"></div>
 		<!--TABS DE REGISTRO-->
 		<div class="row" style="background-color: #EAEDED; min-height: 650px;">
@@ -71,59 +101,60 @@
 							<div class="tab-content  ">
 								<br>
 								<div class="tab-pane active" id="1">
-									<!-- tab 1-->
-									<center>
-										<h1 style="font-family: 'Amaranth'">Elige el plan que mejor te convenga</h1></center> <br>
-									<div class="">
-										<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 cols-margin">
-											<div class="panel square-panel square-panel-white">
-												<div class="panel-body">
-													<div class="offers-col-title">
-														<h2>Gestión de entregas</h2>
-													</div>
-													<div class="offers-col-prize">
-														L. 120.00
-														<br><span style="font-size: 12px;">El pago se hace cada mes y por adenlantado</span>
-													</div>
-													<div class="offers-col-sub-title">
-														Nosotros nos hacemos cargo de los pedidos que realizados por tus clientes.
-													</div>
-													<div class="offers-col-description">
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Catálogo electrónico privado</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Tu registras tus pedidos de rutina</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros entregamos tus pedidos</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros planificamos la entrega</p>
-													</div>
-													<div class="offers-col-test-caption">
-														<center>
-															<button class="btn btn-lg btn-warning-register">Suscribirme</button>
-														</center>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 cols-margin">
-											<div class="panel square-panel square-panel-white">
-												<div class="panel-body">
-													<div class="offers-col-title">
-														<h2>Catalogo electrónico</h2>
-													</div>
-													<div class="offers-col-prize">
-														L. 0.00
-														<br><span style="font-size: 12px;">El pago se hace cada mes y por adenlantado</span>
-													</div>
-													<div class="offers-col-sub-title">
-														Te brindamos el espacio para exhibir y vender tus productos y artículos.
-													</div>
-													<div class="offers-col-description">
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Catálogo electrónico privado</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Tu registras tus pedidos de rutina</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros entregamos tus pedidos</p>
-														<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros planificamos la entrega</p>
-													</div>
-													<div class="offers-col-test-caption">
-														<center>
-															<button class="btn btn-lg btn-warning-register">Probar por 15 días
+
+
+								<!-- tab 1-->
+									<center><h1 style="font-family: 'Amaranth'">Elige el plan que mejor te convenga</h1></center>	<br>
+								    <div class="">
+								    	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 cols-margin">
+								    		<div class="panel square-panel square-panel-white">
+								    			<div class="panel-body">
+								    				<div class="offers-col-title">
+								    					<h2>Gestión de entregas</h2>
+								    				</div>
+								    				<div class="offers-col-prize">
+								    					L. 120.00
+								    					<br><span style="font-size: 12px;">El pago se hace cada mes y por adenlantado</span>
+								    				</div>
+								    				<div class="offers-col-sub-title">
+								    					Nosotros nos hacemos cargo de los pedidos que realizados por tus clientes.
+								    				</div>
+								    				<div class="offers-col-description">
+								    					<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Catálogo electrónico privado</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Tu registras tus pedidos de rutina</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros entregamos tus pedidos</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros planificamos la entrega</p>
+								    				</div>
+								    				<div class="offers-col-test-caption">
+								    					<center>
+								    					<button   class="btn btn-lg btn-warning-register" >Suscribirme</button>
+								    					</center>
+								    				</div>
+								    			</div>
+								    		</div>
+								    	</div>
+								    	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 cols-margin">
+								    		<div class="panel square-panel square-panel-white">
+								    			<div class="panel-body">
+								    				<div class="offers-col-title">
+								    					<h2>Catalogo electrónico</h2>
+								    				</div>
+								    				<div class="offers-col-prize">
+								    					L. 0.00
+								    					<br><span style="font-size: 12px;">El pago se hace cada mes y por adenlantado</span>
+								    				</div>
+								    				<div class="offers-col-sub-title">
+								    					Te brindamos el espacio para exhibir y vender tus productos y artículos.
+								    				</div>
+								    				<div class="offers-col-description">
+								    					<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Catálogo electrónico privado</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Tu registras tus pedidos de rutina</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros entregamos tus pedidos</p>
+								    				 	<p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Nosotros planificamos la entrega</p>
+								    				</div>
+								    				<div class="offers-col-test-caption">
+								    					<center>
+								    					<button   class="btn btn-lg btn-warning-register" >Probar por 15 días
 														</button>
 														</center>
 													</div>
@@ -171,8 +202,10 @@
 									</center>
 								</div>
 								<div class="tab-pane" id="2">
-									<div class="container-fluid ">
-										<div class="col-xs-12 col-lg-7 cols-margin">
+
+								    <div class="container-fluid ">
+
+									 	<div class="col-xs-12 col-lg-7 cols-margin">
 											<div class="panel-body">
 												<h2>Gracias por elegir tu plan catalogo electrónico gratis.</h2>
 												<p>Te recordamos que este servicio gratuito tiene algunas restricciones, puedes acceder a todas las funcionalidades cuando quieras. Bienvenido
@@ -190,7 +223,9 @@
 											</div>
 
 										</div>
+
 										<div class="col-xs-12 col-lg-5 cols-margin">
+
 											<div class="panel square-panel square-panel-white">
 												<div class="panel-body">
 													<h4>Datos de tu empresa</h4>
@@ -248,18 +283,26 @@
 												<div class="panel-body">
 
 													<p>Necesitamos que nos digas claramente tu ubicación, para que nuestro personal sepa donde irá a recoger los artículos.</p>
-													<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d36818.342664972784!2d-87.18176043426892!3d14.074133555563462!2m
-													 3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2shn!4v1498890733935" width="100%" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
-												</div>
 
-											</div>
+													<!-- ______ -->
+													<!-- EN ESTA PARTE VA EL DIV DEL MAPA QUE CAPTURA LA POSICION -->
+
+													 <div class="google-maps " id="map"></div>
+
+									 			</div>
+
+
+									 		</div>
 
 										</div>
-									</div>
-									<center>
-										<div class="input-group">
-											<div class="input-group-btn">
-												<button type="button" class="btn btn-default">
+
+
+									 </div>
+
+									 <center>
+									 	<div class="input-group">
+									  		<div class="input-group-btn">
+									    	<button type="button" class="btn btn-default">
 									    		<a href="#2" data-toggle="tab"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar</a>
 									    	</button>
 												<button class="btn btn-default">3/4</button>
@@ -397,6 +440,8 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/main-controller.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/geolocalizacion.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#mensajeError').hide();
