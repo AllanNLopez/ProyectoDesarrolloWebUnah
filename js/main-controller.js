@@ -1,5 +1,5 @@
 
-
+/*
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover(); 
   
@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 
 });
-
+*/
 
 /*   funciones para ocultar y aparecer el sidebar  */
 if (screen.width <480) {
@@ -72,6 +72,7 @@ function validarCampo(valor, tipoCampo, id) {
       } else {
         is_correct = false;
       }
+			break;
 		case 'password':
 			var passwordConfirm = id+'Confirm';
 			if(input == $(passwordConfirm).val() && input != ''){
@@ -82,6 +83,12 @@ function validarCampo(valor, tipoCampo, id) {
 				is_correct = false;
 				$(passwordConfirm).removeClass("valid").addClass("invalid");
 			}
+			break;
+		case 'rtn':
+			is_correct = /[0-9]{14}/.test(input);
+			break;
+		case 'website':
+			is_correct = /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/.test(input);
 			break;
     default:
       break;
@@ -97,15 +104,15 @@ function validarCampo(valor, tipoCampo, id) {
 function validarSelect(id) {
   var id = '#' + id;
   var input = $(id).val();
-  if (input == 'Día' || input == 'Mes' || input == 'Año' || input == 'Seleccione oferta laboral') {
+  if (input == 'Día' || input == 'Mes' || input == 'Año' || input == 'Seleccione oferta laboral' || input == 'Seleccione un rubro o actividad') {
     $(id).removeClass("valid").addClass("invalid");
   } else {
     $(id).removeClass("invalid").addClass("valid");
   }
 }
 /*-----------------------Funcion para SUMBIT las forms------------------------*/
-function submitForm(formulario, tipoFormulario){
-  var  id = '#' + formulario;
+function submitForm(formulario) {
+  var id = '#' + formulario;
   var form_data = $(id).serializeArray();
   var suma = 0;
 
@@ -117,23 +124,40 @@ function submitForm(formulario, tipoFormulario){
     }
   }
 
-  if(tipoFormulario=='RegistroEmpleado' || 'RegistroUsuario'){
-    if (suma == 0) {
-      $('#mensajeError').hide();
-    } else {
-      $('#mensajeError').show();
-    }
+	if(id == '#formularioEmpresa2'){
+			suma = suma + validarForm('formularioEmpresa');
+	}
 
-    var valid = $('#checkTermino').is(':checked');
+  if (suma == 0) {
+    $('#mensajeError').hide();
+  } else {
+    $('#mensajeError').show();
+  }
+
+  var valid = $('#checkTermino').is(':checked');
+  if (!valid) {
+    $('#mensajeErrorTerminos').show();
+  } else {
+    $('#mensajeErrorTerminos').hide();
+  }
+
+  if (!$("#mensajeError").is(":visible") && !$("#mensajeErrorTerminos").is(":visible")) {
+    console.log('Hace algo con el submit');
+  }
+}
+
+function validarForm(formulario) {
+  var id = '#' + formulario;
+  var form_data = $(id).serializeArray();
+  var suma = 0;
+
+  for (var input in form_data) {
+    var element = $("#" + form_data[input]['name']);
+    var valid = element.hasClass("valid");
     if (!valid) {
-      $('#mensajeErrorTerminos').show();
-    } else {
-      $('#mensajeErrorTerminos').hide();
-    }
-
-    if(!$("#mensajeError").is(":visible") && !$("#mensajeErrorTerminos").is(":visible"))
-    {
-      console.log('Hace algo con el submit');
+      suma++;
     }
   }
+
+	return suma;
 }
