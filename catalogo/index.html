@@ -11,8 +11,9 @@
 
    	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
    	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css"> 
-   	<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
 		<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
 		<style>
 			.navbar-inverse .navbar-brand{ 
 					color:#FFF; 
@@ -95,99 +96,129 @@
 					<a href="javascript:void(0)" id="close-link"  class="btn closebtn pull-right" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
 					<div class="panel-body">
 		 				<div class="panel-group" id="accordionInterno" role="tablist" aria-multiselectable="true">
-							<div class="panel ">
+							<div class="panel  square-panel">
 								<div class="panel-heading" role="tab" id="headingFiltro1">
 									<h4 class="panel-title">
 									<a role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro1" aria-expanded="true" aria-controls="collapseOne">
-									    <i class="fa fa-caret-down" aria-hidden="true"></i>Filtrar categorías
+										<i class="fa fa-filter" aria-hidden="true"></i> Filtrar Categorias
 									</a>
 									</h4>
 								</div>
 								<!--Contenido de panel de categorias -->
 								<div id="collapseFiltro1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFiltro1">
 									<div class="panel-body">
+										<select class="form-control input-text-box">
+											<option>Departamento 1</option>
+											<option>Departamento 2</option>
+										</select>
  										<div class="checkbox">
-										  <label>
-										    <input type="checkbox" value="">Categoria 1
-										  </label> 
+										  <label><input type="checkbox" value="">Categoria 1</label> 
 										</div>
 										<div class="checkbox">
-										  <label>
-										    <input type="checkbox" value="">Categoria 2
-										  </label> 
+												<label><input type="checkbox" value="">Categoria 1</label> 
 										</div>
 										<div class="checkbox">
-										  <label>
-										    <input type="checkbox" value="">Categoria 3
-										  </label> 
+											<label><input type="checkbox" value="">Categoria 1</label> 
 										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="">Categoria 1</label> 
+										</div>
+										<div class="checkbox">
+												<label><input type="checkbox" value="">Categoria 1</label> 
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="">Categoria 1</label> 
+										</div>
+										
 									</div>
 								</div>
 							</div>
-						  	<div class="panel">
+						  	<div class="panel  square-panel">
 							    <div class="panel-heading" role="tab" id="headingFiltro2">
 							      <h4 class="panel-title">
 							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro2" aria-expanded="false" aria-controls="collapseFiltro2">
-							         <i class="fa fa-caret-right" aria-hidden="true"></i> Filtrar por Detalles
+												<i class="fa fa-filter" aria-hidden="true"></i> Filtrar por Detalles
 							        </a>
 							      </h4>
 							    </div>
 							    <div id="collapseFiltro2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro2">
 							   	   <!--Contenido de panel de detalles -->
 							      <div class="panel-body"> 
-						      	  <label class="btn btn-default">
-    <input type="checkbox" autocomplete="off"> Checkbox 1 (pre-checked)
-  </label>
-  <label class="btn btn-default">
-    <input type="checkbox" autocomplete="off"> Checkbox 2
-  </label>
-  <label class="btn btn-default">
-    <input type="checkbox" autocomplete="off"> Checkbox 3
-  </label>
-						      	  </div>
+											<div class="form-group">
+												<label>Selección de marcas</label>
+												<select class="form-control input-text-box selectpicker " data-live-search="true" data-size="8" multiple>
+													<option>Seleccione Marcas</option>
+													<option>Marca x</option><option>Marca y</option><option>Marca x</option><option>Marca z</option>
+													<option>Marca x</option><option>Marca x</option><option>Marca kx</option><option>Marca x</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Selección de Colores</label>
+												<select class="form-control input-text-box selectpicker " data-live-search="true" data-size="8" multiple>
+													<option>Seleccione Marcas</option>
+													<option>Item x</option><option>Item y</option><option>Item x</option><option>Item z</option>
+													<option>Item x</option><option>Item x</option><option>Item kx</option><option>Item x</option>
+												</select>
+											</div>
+											<div class="form-group">
+													<label>Selección de Tallas</label>
+													<select class="form-control input-text-box selectpicker " data-live-search="true" data-size="8" multiple>
+														<option>Seleccione Marcas</option>
+														<option>Item x</option><option>Item y</option><option>Item x</option><option>Item z</option>
+														<option>Item x</option><option>Item x</option><option>Item kx</option><option>Item x</option>
+													</select>
+												</div>
+											
+						      	</div>
 							    </div>
-							  </div>
+								</div>
+								<!-- Inicio de opciones de filtro por precio -->
 							  <div class="panel">
 							    <div class="panel-heading" role="tab" id="headingFiltro3">
 							      <h4 class="panel-title">
 							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro3" aria-expanded="false" aria-controls="collapseFiltro3">
-							          <i class="fa fa-caret-right" aria-hidden="true"></i> Filtrar por Precio
+													<i class="fa fa-filter" aria-hidden="true"></i> Filtrar por Precio
 							        </a>
 							      </h4>
 							    </div>
 							    <div id="collapseFiltro3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro3">
 							       <!--Contenido de panel de precio -->
-							      <div class="panel-body">
-							        <div class="radio">
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 
-									    Menor a L. 50.00 								     
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 
-									    Entre L. 50.00 y L. 100.00							     
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">  
-									    Entre L. 100.00 y 150
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">  
-									    Entre L. 150.00 y L. 200.00
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">  
-									    Entre L. 200.00 y L. 300.00
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">  
-									    Entre L. 300.00 y L. 500.00
-									  </label>
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">  
-									    Mayor a L. 500.00
-									  </label>
-									</div>
+							      <div class="panel-body"> 
+											<div class="form-group ">
+												<div class="col-xs-5 cols-margin">
+													<input type="text" class="form-control input-text-box " placeholder="Min"> 
+												</div>
+												<div class="col-xs-5 cols-margin">
+													<input type="text" class="form-control input-text-box " placeholder="Max"> 
+												</div>
+												<div class="col-xs-2 cols-margin">
+													<button type="button" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+												</div>
+											</div>
+											<br> 
+											<div class="radio">
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Menor a L. 50.00 								     
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 50.00 y L. 100.00							     
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 100.00 y 150
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 150.00 y L. 200.00
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 200.00 y L. 300.00
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 300.00 y L. 500.00
+												</label>
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Mayor a L. 500.00
+												</label>
+											</div>
 							      </div>
 							    </div>
 							  </div>
@@ -195,7 +226,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</div>
 
 		<!--Contenedor principal derecho -->
@@ -209,13 +240,18 @@
 						<div class="container-fluid">
 								<!-- opciones visualizacion -->
 								<div class="row">
-									<div class="col-xs-6 col-md-6 col-lg-10">
-										<!--<button id="btnOpciones"  class="btn btn-default" onclick="openNav()">Opciones</button>-->
+									<div class="col-xs-6 col-md-6 col-lg-6 cols-margin">
+										<div class="input-group">
+											<input type="text" class="form-control input-text-box hidden-xs" placeholder="Indicanos tu ciudad">
+											<span class="input-group-btn">
+												<button class="btn " type="button"><i class="fa fa-bullseye" aria-hidden="true"></i> Ubicar posición</button>
+											</span>
+										</div>
 									</div>
-									<div class="col-xs-6 col-md-6 col-lg-2 pull-right">
-										<form class="form-inline">
-											<div class="form-group"> 
-												 <select class="form-control input-text-box">
+									<div class="col-xs-6 col-md-6 col-lg-6 ">
+										<form class="form-inline pull-right">
+											<div class="form-group "> 
+												 <select class="form-control input-text-box ">
 												 	<option>Mostrar</option>
 												 	<option>Opcion 1</option>
 												 	<option>Opcion 1</option>
@@ -223,7 +259,7 @@
 												 </select>
 											</div>
 										</form>
-									<div style="margin-bottom: 20px;"></div>
+									<div style="margin-bottom: 50px;"></div>
 									</div>
 								</div>
 								<!-- inicio de rejilla -->
@@ -240,7 +276,18 @@
 													</div>  
 													<div class="store-article-price">L. 13,975.89</div>
 													<div class="store-article-goto"> 
-														<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+														<a tabindex="0" class="btn btn-success" role="button" data-toggle="popover" data-trigger="focus" 
+															 data-html="true" data-placement="top"															  
+															 data-content='
+															 	<div class="btn-group-vertical" role="group">
+																	<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito</button> 
+																</div>	
+																<div class="btn-group-vertical" role="group">
+																		<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir mis deseos</button> 
+																	</div>					 
+															 '>
+															35 min <i class="fa fa-chevron-right" aria-hidden="true"></i>
+														</a>
 													</div> 
 												</div> 
 										</div>
@@ -257,7 +304,7 @@
 												</div>  
 												<div class="store-article-price">L. 13,975.89</div>
 												<div class="store-article-goto"> 
-													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+													<button type="button" class="btn btn-danger">cerrado</button>
 												</div> 
 											</div> 
 										</div>
@@ -274,7 +321,20 @@
 												</div>  
 												<div class="store-article-price">L. 13,975.89</div>
 												<div class="store-article-goto"> 
-													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+														<div class="dropup">
+																<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																		35 min <i class="fa fa-chevron-right" aria-hidden="true"></i> 
+																</button>
+																<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+																	<li>
+																			<div class="btn-group-vertical center-block " role="group">
+																				<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito </button> 
+																				<button type="button" class="btn btn-success "><i class="fa fa-plus-square-o" aria-hidden="true"></i> Añadir a deseos </i></button>
+																				<button type="button" class="btn btn-success "><i class="fa fa-info" aria-hidden="true"></i> Ver más detalles </i></button> 
+																			</div>	
+																	</li> 
+																</ul>
+															</div>
 												</div> 
 											</div> 
 										</div>
@@ -397,12 +457,8 @@
 			</div>
 		</div> <!-- fin de seccion de ofertas -->
 
-
-
 		</div>
 		
-
-
 
 		<div class="row footer-section" id="pie">
 			 <div class="container footer-caption">
@@ -456,11 +512,9 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/main-controller.js"></script>
-	<script>	
-		$(document).ready(function(){
-		    $('[data-toggle="popover"]').popover(); 
-
-		}); 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	
+	<script>	 
 	</script> 
 </body>
 </html>

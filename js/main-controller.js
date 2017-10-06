@@ -1,9 +1,12 @@
 
 
 $(document).ready(function(){
+  $('[data-toggle="popover"]').popover(); 
+  
 	$('#carrito').DataTable({
 		"dom": '<"toolbar">frtip'
 	});
+
 
 
 });

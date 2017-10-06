@@ -91,11 +91,11 @@
 .nopadding{
     padding: 0px;
 }
-
+/* 
 .dropdown-menu{
-    background-color: #2471A3;
+    background-color: #E2F4F7;
 }
-
+ */
 .badge-white{
     background-color: #52BE80;
     color: #fff;
@@ -448,4 +448,4 @@
     border-radius: 4px;
     background-color: #F39407;
 }
-
+ 
