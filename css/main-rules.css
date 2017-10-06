@@ -374,7 +374,7 @@
     font-size: 10pt;
 }
 
-<<<<<<< HEAD
+
 
 .google-maps {
         position: relative;
@@ -382,7 +382,7 @@
         height: 0;
         overflow: hidden;
 }
-=======
+
 .marcador-numer{
     font-size: 12pt;  
     text-align: right;
@@ -443,4 +443,4 @@
     border-radius: 4px;
     background-color: #F39407;
 }
->>>>>>> 39dfe4faa7d31040d2e9a13b000a256fd8b3504b
+
