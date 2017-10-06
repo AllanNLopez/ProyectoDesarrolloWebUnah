@@ -1,0 +1,23 @@
+.check-box {
+  height: 15px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto Light';
+}
+
+input.invalid, textarea.invalid {
+  border: 2px solid #C41E3A;
+}
+
+input.valid, textarea.valid {
+  border: 2px solid green;
+}
+
+select.invalid {
+  border: 2px solid #C41E3A;
+}
+
+select.valid {
+  border: 2px solid green;
+}
