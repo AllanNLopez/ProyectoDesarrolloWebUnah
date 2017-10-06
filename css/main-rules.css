@@ -371,3 +371,11 @@
     background-color: #229954;
     font-size: 10pt;
 }
+
+
+.google-maps {
+        position: relative;
+        padding-bottom: 55%; 
+        height: 0;
+        overflow: hidden;
+}
