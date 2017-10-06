@@ -1,0 +1,31 @@
+input.invalid, textarea.invalid {
+  border: 2px solid #C41E3A;
+}
+
+input.valid, textarea.valid {
+  border: 2px solid green;
+}
+
+.check-box {
+  height: 15px;
+}
+
+.contenedor {
+  background: url('../img/register/banner4.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto Light';
+}
+
+select.invalid {
+  border: 2px solid #C41E3A;
+}
+
+select.valid {
+  border: 2px solid green;
+}

@@ -97,7 +97,7 @@
 
 									<div class="form-group col-xs-12 forms-padding">
 										<a 	href="#" target="" type="button" id="button"
-												onclick="submitForm('formulario-nuevo-usuario', 'RegistroUsuario')"
+												onclick="submitForm('formulario-nuevo-usuario')"
 												class="btn btn-primary btn-lg btn-block login-button">Registrarse</a>
 									</div>
 								</form>
@@ -184,61 +184,10 @@
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/main-controller.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#mensajeError').hide();
-			$('#mensajeErrorTerminos').hide();
-
-/*
-
-//------------------------------------------------------------------------------
-	$("#button").click(function(event){
-		var form_data=$("#formulario-nuevo-usuario").serializeArray();
-		var error_free=true;
-		var suma = 0;
-
-		for (var input in form_data){
-			var element=$("#"+form_data[input]['name']);
-			var valid=element.hasClass("valid");
-			var error_element=$('#mensajeError');
-			if (!valid)
-			{
-				suma++;
-				error_free=false;
-			}
-		}
-
-		if(suma==0){
-			error_element.hide();
-		}
-		else
-		{
-			error_element.show();
-		}
-
-		var valid = $('#checkTermino').is(':checked');
-		if (!valid)
-		{
-			error_free=false;
-			$('#mensajeErrorTerminos').show();
-		}
-		else
-		{
-			$('#mensajeErrorTerminos').hide();
-		}
-
-		if (!error_free)
-		{
-			//event.preventDefault();
-			//Hay errores
-		}
-		else
-		{
-			//alert('No errors: Form will be submitted');
-			//Hacer algo si no hay errores
-		}
-		*/
-	});
-
+		$(document).ready(function() {
+		  $('#mensajeError').hide();
+		  $('#mensajeErrorTerminos').hide();
+		});
 	</script>
 </body>
 </html>
