@@ -1,6 +1,9 @@
+
+
+
 var marker;
 var map;
-
+var infoWindow
 function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 14.987239525774244, lng: -86.81396484375},
@@ -26,7 +29,7 @@ map.setOptions({ draggableCursor:'crosshair',});
 });
 
 
-var infoWindow = new google.maps.InfoWindow({map: map});
+infoWindow = new google.maps.InfoWindow({map: map});
 
 // Try HTML5 geolocation.
 if (navigator.geolocation) {
@@ -103,7 +106,26 @@ $('a[data-toggle="tab"').on('click', function() {
 
 
 
+$("#myModal").on("shown.bs.modal", function () {
+    setTimeout(function(){
+        
+        x = map.getZoom();
+        c = map.getCenter();
+        google.maps.event.trigger(map, 'resize');
+        map.setZoom(15);
+        map.setCenter(c);
+        infoWindow.setPosition(c);
+        infoWindow.setContent('marca tu ubicacion mas exacta.');
+
+
+
+    },5);
+
+});
+
       
+
+
 
 
 
