@@ -1,5 +1,5 @@
 body {
-  padding-top: 60px;
+  margin-top: 45px;
   
 }
 
@@ -27,9 +27,6 @@ body {
 	 text-align: center;
 	 padding-left: 10%;
 	 padding-right: 10%;
-	
-
-
 }
 .icon-ok{
 	
@@ -67,15 +64,27 @@ body {
 
 #slider-thumbs{
 	padding-top: 20px;
-
-
 }
 
+/*allan
+*/ 
 
-/*allan*/
+@media screen and (min-width: 320px) {
+    .carousel-inner{
+		height: 200px;
+		width: 100%;
+	}
+} 
+
+@media screen and (min-width: 780px) {
+    .carousel-inner{
+		height: 380px;
+	}
+	
+} 
 
 .slider-img{
-	max-height: 480px;
+	max-height: 480px;  
 }
 
 .slider-img-small{

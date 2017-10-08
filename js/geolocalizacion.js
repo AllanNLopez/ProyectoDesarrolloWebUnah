@@ -8,24 +8,16 @@ function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 14.987239525774244, lng: -86.81396484375},
   zoom: 17
-
-
 });
 
 google.maps.event.addListener(map, 'click', function(event) {
   
   if (marker != null) clearMarker();
   addMarker(event.latLng, map);
-  
-
- 
 });
 
 google.maps.event.addListener(map, 'mousemove', function(event) {
 map.setOptions({ draggableCursor:'crosshair',});
-
-
-
 });
 
 
@@ -39,8 +31,6 @@ if (navigator.geolocation) {
       lng: position.coords.longitude
     };
 
-    
-
     infoWindow.setPosition(pos);
     infoWindow.setContent('marca tu ubicacion mas exacta.');
     map.setCenter(pos);
@@ -51,8 +41,6 @@ if (navigator.geolocation) {
   // Browser doesn't support Geolocation
   handleLocationError(false, infoWindow, map.getCenter());
 }
-
-
 
 }
 
