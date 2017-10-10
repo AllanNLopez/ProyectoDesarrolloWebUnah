@@ -12,6 +12,10 @@ $(document).ready(function(){
 });
 */
 
+$(document).ready(function() {
+  $('table.display').DataTable();
+} );
+
 /*   funciones para ocultar y aparecer el sidebar  */
 if (screen.width <480) {
     	document.getElementById("mySidenav").style.width = "0";

@@ -91,9 +91,6 @@ $('a[data-toggle="tab"').on('click', function() {
 });
 
 
-
-
-
 $("#myModal").on("shown.bs.modal", function () {
     setTimeout(function(){
         
