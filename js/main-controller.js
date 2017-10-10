@@ -1,8 +1,8 @@
 
 /*
 $(document).ready(function(){
-  $('[data-toggle="popover"]').popover(); 
-  
+  $('[data-toggle="popover"]').popover();
+
 	$('#carrito').DataTable({
 		"dom": '<"toolbar">frtip'
 	});
@@ -79,13 +79,20 @@ function validarCampo(valor, tipoCampo, id) {
 			break;
 		case 'password':
 			var passwordConfirm = id+'Confirm';
-			if(input == $(passwordConfirm).val() && input != ''){
-				is_correct = true;
+      /*
+      This regex will enforce these rules:
+      At least one upper case English letter, (?=.*?[A-Z])
+      At least one lower case English letter, (?=.*?[a-z])
+      At least one digit, (?=.*?[0-9])
+      At least one special character, (?=.*?[#?!@$%^&*-])
+      Minimum eight in length .{8,} (with the anchors)
+      */
+      is_correct = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input);
+			if(input == $(passwordConfirm).val() && is_correct){
 				$(passwordConfirm).removeClass("invalid").addClass("valid");
-			}
-			else {
-				is_correct = false;
+			} else {
 				$(passwordConfirm).removeClass("valid").addClass("invalid");
+        is_correct = false;
 			}
 			break;
 		case 'rtn':
