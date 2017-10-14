@@ -26,8 +26,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="small-menu">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="hidden" href="#">Acceder</a></li>
-					<li><a class="hidden" href="#">Registrame</a></li>  
+					<!-- <li><a class="hidden-login" href="#">Acceder</a></li>
+					<li><a class="hidden-login" href="#">Registrame</a></li>  --> 
 					<li>
 						<div class="btn-group navbar-btn"  >
 							<a href="../catalogo/carrito_ordenes.html">
@@ -68,63 +68,61 @@
 			</div><!-- /.navbar-collapse --> 
 		</div><!-- /.container-fluid -->
 	</nav>
-	<div style="margin-top: 20px;"></div>
+	<div style="margin-top: 60px;"></div>
 	<!--contenedor de pagina -->
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-6 col-lg-offset-3 cols-margin">
 				<table class="table" id="carrito">
 					<thead>
-						<th> </th> 
-						<th><i class="fa fa-caret-down" aria-hidden="true"></i> Ordenar alfabeticamente <i class="fa fa-caret-down" aria-hidden="true"></i></th> 
+						<th class="xs-hidden"> </th> 
+						<th><i class="fa fa-caret-down" aria-hidden="true"></i> Ordenar<i class="fa fa-caret-down" aria-hidden="true"></i></th> 
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart-offer-img" width="38%">
-								<input type="checkbox" class="flotante">
-								<img src="../img/comidas/fish-2366925_640.jpg" class="img-responsive"  >
+						<tr id="1234">
+							<td class="cart-offer-img  " > 
+								<img src="../img/comidas/fish-2366925_640.jpg" class="img-responsive "  >
 							</td>
-							<td class="cart-offer-detail"  width="62%">
-								<div class="cart-offer-title">Titulo de la oferta que pasa si me paso</div>
-								<div class="cart-offer-vendor"> 
-										<span class="badge cart-offer-badge">Marca</span>  
-										<span class="badge cart-offer-badge">vendedor</span>
-								</div> 
-								<div class="cart-offer-price">L. 628.99</div>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart-offer-img" width="38%"><img src="../img/comidas/pancakes-2413875_640.jpg" class="img-responsive" ></td>
-							<td class="cart-offer-detail"  width="62%">
-									<div class="cart-offer-title">Maestría grande</div>
-									<div class="cart-offer-vendor"> 
-											<span class="badge cart-offer-badge">Marca</span>  
-											<span class="badge cart-offer-badge">Don tito</span>
-									</div> 
-								<div class="cart-offer-price">L. 12000.00  </div>
+							<td class="cart-offer-detail"   >
+									<input type="checkbox" id="chk1234" class="flotante hidden">
+								<div class="cart-offer-title-sm" id="t1234">Titulo de la oferta que pasa si me paso</div> 
+								<div class="cart-offer-options">
+									<div class="btn-toolbar" role="toolbar" >
+										<div class="btn-group" role="group" >
+											<select class="offer-select" id="sel1234" >
+												<option>Cant</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+											</select>
+										</div> 
+										<div class="btn-group pull-right" role="group" >
+											<label class="cart-offer-price-sm" id="lbl1234" >L. 97.89</label>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
-						<tr>
-							<td class="cart-offer-img" width="38%"><img src="../img/comidas/rum-sm.jpg" class="img-responsive" ></td>
-							<td class="cart-offer-detail"  width="62%">
-								<div class="cart-offer-title">Rom abuelo 200ml</div>
-								<div class="cart-offer-vendor"> 
-										<span class="badge cart-offer-badge">Marca</span>  
-										<span class="badge cart-offer-badge">vendedor</span>
-										<span class="badge cart-offer-badge-off">Oferta</span>
-								</div> 
-								<div class="cart-offer-price">L. 120.00</div>
+						<tr id="45">
+							<td class="cart-offer-img  " > 
+								<img src="../img/comidas/rum-sm.jpg" class="img-responsive "  >
 							</td>
-						</tr>
-						<tr>
-							<td class="cart-offer-img" width="38%"><img src="../img/comidas/coffee-2371067_640.jpg" class="img-responsive" ></td>
-							<td class="cart-offer-detail"  width="62%">
-								<div class="cart-offer-title">Café expreso 20onz</div>
-								<div class="cart-offer-vendor"> 
-										<span class="badge cart-offer-badge">Marca</span>  
-										<span class="badge cart-offer-badge">Expreso americano</span>
-								</div> 
-								<div class="cart-offer-price">L. 45.00</div>
+							<td class="cart-offer-detail"   >
+								<input type="checkbox" id="chk45" class="flotante hidden">
+								<div class="cart-offer-title-sm" id="t45">Titulo de la oferta ideal</div> 
+								<div class="cart-offer-options">
+									<div class="btn-toolbar" role="toolbar" >
+										<div class="btn-group" role="group" >
+											<select class="offer-select" id="sel45" >
+												<option>Cant</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+											</select>
+										</div>  
+										<div class="btn-group pull-right" role="group" >
+											<label class="cart-offer-price-sm" id="lbl45">L. 38097.89</label>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
 					</tbody>
@@ -136,32 +134,39 @@
 	<!--Fin de contenedor de pagina-->
 	
 	<!--barra de estado -->
-	<div class="marcador">
-		<div class="row ">
-			<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3"> 
-				<div class="  col-lg-3 hidden-xs cols-margin"> 
-					<div class="input-group">
-						<span class="input-group-addon marcador-numer" id="basic-addon1"># </span>
-						<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
-					</div>
-				</div>
-				<div class="  col-lg-3 hidden-xs cols-margin"> 
-					<div class="input-group">
-						<span class="input-group-addon marcador-numer" id="basic-addon1"><i class="fa fa-clock-o" aria-hidden="true"></i>
-						</span>
-						<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
-					</div>
-				</div>
-				<div class=" col-xs-6 col-lg-3 cols-margin"> 
-					<div class="input-group">
-						<span class="input-group-addon marcador-numer" id="basic-addon1">L.</span>
-						<input type="text" class="form-control input-text-box marcador-numer" placeholder="12" aria-describedby="basic-addon1" readonly>
-					</div>
-				</div>
-				<div class=" col-xs-6 col-lg-3 cols-margin">  
-					<button type="button" class="btn btn-success" >Ordenar</button>
-				</div>
-				
+	<div class="billbox-container">
+		<div class="panel panel-default" style="margin-bottom:0px;">
+			<div class="panel-heading">
+					<center>
+					<p id="btn-billbox" value="toggle()"> 
+							<i class="fa fa-chevron-up" aria-hidden="true"></i> 
+							Tu cuenta al momento
+							<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					</p>
+				</center>
+			</div>
+			<div class="panel-body" id="billbox-body">
+					<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon marcador-numer" id="basic-addon1">Artículos: </span>
+								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon marcador-numer" id="basic-addon1">Minutos:</span>
+								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon marcador-numer" id="basic-addon1">Monto L.  </span>
+								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+							</div>
+						</div>
+						<div class="form-group "> 
+								<button type="button" class="btn btn-success center-block" >Listo para Ordenar <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+						</div>
 			</div>
 		</div>
 	</div>
@@ -172,8 +177,9 @@
 	</div>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script src="../js/datatables.js"></script>  	
 	<script type="text/javascript" src="../js/main-controller.js"></script>
-	<script src="../js/datatables.js"></script>  
+	<script type="text/javascript" src="../js/carrito-ordenes-ctr.js"></script>
 	
 </body>
 </html>

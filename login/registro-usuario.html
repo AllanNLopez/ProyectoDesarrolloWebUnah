@@ -64,7 +64,7 @@
 														class="form-control input-text-box"
 														name="txtPhone"
 														id="txtPhone"
-														onmouseout="validarCampo(txtPhone.value, 'phone', 'txtPhone')"
+														onmousedown="validarCampo(txtPhone.value, 'phone', 'txtPhone')"
 														placeholder="Ingresa tu número telefónico"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
@@ -75,7 +75,7 @@
 														class="form-control input-text-box"
 														name="txtPassword"
 														id="txtPassword"
-														onmouseout="validarCampo(txtPassword.value, 'password', 'txtPassword')"
+														onmousedown="validarCampo(txtPassword.value, 'password', 'txtPassword')"
 														placeholder="Ingresa tu contraseña"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
@@ -83,7 +83,7 @@
 														class="form-control input-text-box"
 														name="txtPasswordConfirm"
 														id="txtPasswordConfirm"
-														onmouseout="validarCampo(txtPassword.value, 'password', 'txtPassword')"
+														onmousedown="validarCampo(txtPassword.value, 'password', 'txtPassword')"
 														placeholder="Confirma tu contraseña"/>
 									</div>
 									<div class="form-group col-xs-12 forms-padding">
@@ -98,7 +98,7 @@
 									<div class="form-group col-xs-12 forms-padding">
 										<a 	href="#" target="" type="button" id="button"
 												onclick="submitForm('formulario-nuevo-usuario')"
-												class="btn btn-primary btn-lg btn-block login-button">Registrarse</a>
+												class="btn btn-primary btn-lg btn-block login-button" id="btn-reg-user">Registrarse</a>
 									</div>
 								</form>
 							</div>

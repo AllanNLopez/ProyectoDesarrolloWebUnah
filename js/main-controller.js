@@ -3,10 +3,7 @@
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
 
-	$('#carrito').DataTable({
-		"dom": '<"toolbar">frtip'
-	});
-
+	
 
 
 });
@@ -14,6 +11,7 @@ $(document).ready(function(){
 
 $(document).ready(function() {
   $('table.display').DataTable();
+
 } );
 
 /*   funciones para ocultar y aparecer el sidebar  */
@@ -172,3 +170,16 @@ function validarForm(formulario) {
 
 	return suma;
 }
+
+
+//eventos click
+
+$('#btn-reg-user').click(function(){
+    //Aqui por ejemplo capturar los valores de las cajas de texto del formulario y
+    //luego imprimer esos valores como prueba de que se capturaron, luego se enviaran como parametros
+    // para un query
+    alert("Se debera guardar");
+
+});
+
+

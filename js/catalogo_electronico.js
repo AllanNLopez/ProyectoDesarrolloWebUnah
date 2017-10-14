@@ -19,3 +19,7 @@ $('#myCarousel').on('slid', function (e) {
   $('[id^=carousel-selector-]').removeClass('selected');
   $('[id=carousel-selector-'+id+']').addClass('selected');
 });
+
+$("#btn-billbox").on( "click", function() {	 
+  $('#billbox-body').toggle("1000");
+});
