@@ -6,6 +6,10 @@
     display: none;
 }
 
+.hidden-login{
+    display: none;
+}
+
 #menu{
     background-color: #2471A3;
     border-color: #2471A3;
@@ -70,9 +74,6 @@
     text-align: right;
     float: left;
 }
-
-
-
 
 .white-section{
     background-color: #FBFCFC;
@@ -353,6 +354,17 @@
     border-radius: 2px;
 }
 
+
+
+
+.google-maps {
+    position: relative;
+    padding-bottom: 55%; 
+    height: 0;
+    overflow: hidden;
+}
+
+
 /* reglas para la cinta de resumen */
 
 .marcador{
@@ -380,15 +392,6 @@
     font-size: 10pt;
 }
 
-
-
-.google-maps {
-        position: relative;
-        padding-bottom: 55%; 
-        height: 0;
-        overflow: hidden;
-}
-
 .marcador-numer{
     font-size: 12pt;  
     text-align: right;
@@ -399,13 +402,13 @@
 
 /* Reglas para el carrito de compras */
 .cart-offer-img{
-    min-width: 38%;
-    width: 38%;
+    min-width: 30%;
+    width: 30%;
 }
 
 .cart-offer-detail{
-    min-width: 62%;
-    width: 62%;
+    min-width: 70%;
+    width: 70%;
 }
 
 .cart-offer-title{
@@ -415,6 +418,19 @@
     margin-bottom: 5px; 
     float: left;
     font-size: 15pt;  
+    text-align: left; 
+    width: 100%;
+    height: 45px;
+    font-family: 'Asap Condensed', sans-serif;
+}
+
+.cart-offer-title-sm{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 0px;
+    margin-bottom: 5px; 
+    float: left;
+    font-size: 12pt;  
     text-align: left; 
     width: 100%;
     height: 45px;
@@ -450,11 +466,54 @@
     background-color: #F39407;
 }
 
-.flotante{
-    position: absolute;
+.cart-offer-options{
+    width:100%;
     float: left;
-    padding: 10px;
-    transform: scale(2);
+    bottom: 0px;
+    padding: 5px;
 }
 
-  
+.flotante{ 
+    position: absolute;
+    padding: 5px;
+    margin: 10px;
+    transform: scale(2);
+    margin-top:20px;
+    margin-left: 10px;
+    right: 15px;
+}
+
+.cart-offer-price-sm{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    bottom: 0px;
+    float: left;
+    font-size: 12pt;  
+    text-align: right;
+    font-weight: bold;
+}
+.offer-select{
+    padding: 5px;
+}
+
+/* Marcador de cuenta */
+
+.billbox-container{
+    height: auto;
+    margin-bottom: 0px;
+    position:fixed;
+    bottom: 0px;
+    right: 5px;
+    background-color: #F2F4F4;
+    width: 320px; 
+    z-index: 20;
+}
+
+.billbox-panel{
+    margin-bottom: 0px;
+}
+ 
+.toolbar{
+    float: right;
+}
