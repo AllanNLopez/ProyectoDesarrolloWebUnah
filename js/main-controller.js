@@ -103,6 +103,8 @@ function validarCampo(valor, tipoCampo, id) {
   } else {
     $(id).removeClass("valid").addClass("invalid");
   }
+// modificando funcion para retonar el valor y aplicarlo para futuras soluciones
+  return is_correct;
 }
 
 function validarSelect(id) {

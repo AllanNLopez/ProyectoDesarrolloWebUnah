@@ -8,10 +8,12 @@ $(document).ready(function() {
 	});
 
 	$("#btnAceptar").click(function(){
-		$('.campoUsuario').attr("readonly",true);
-		dehabilitarbotones();
+		
+		validaCampos();
 		
 
+		
+		
 	});
 
 	$("#btnCancelar").click(function(){
@@ -32,6 +34,35 @@ $(document).ready(function() {
 		$("#btnCancelar").prop("disabled",true);
 		
 	}
+
+
+	function validaCampos(){
+
+		// removi el atributo "hiden" en la archivo user/index.html 
+		var camposValidos =	validarCampo($("#txtNames").val(), "nombre", "txtNames")&&
+							validarCampo($("#txtLastname").val(), "apellido", "txtLastname")&&
+							validarCampo($("#txtEmail").val(), "email", "txtEmail")&&
+							validarCampo($("#txtPhone").val(), "phone", "txtPhone")&&
+							validarCampo($("#txtPassword").val(), "password", "txtPassword")&&
+							validarCampo($("#txtPassword").val(), "password", "txtPassword");
+
+		
+		if( camposValidos){
+
+
+			console.log("campos validos");
+			$('.campoUsuario').attr("readonly",true);
+			dehabilitarbotones();
+			
+
+		}else{
+			console.log("campos invalidos");
+			habilitarbotones();
+			$('.campoUsuario').removeAttr("readonly");
+		}
+
+	}
+
 
 
 

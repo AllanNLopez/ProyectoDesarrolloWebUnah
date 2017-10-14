@@ -522,3 +522,15 @@
 .toolbar{
     float: right;
 }
+
+.valid{
+         border-color: #337ab7;
+        border-width: 3px;
+
+}
+
+.invalid{
+
+        border-color: #ff0000;
+        border-width: 3px;
+}
