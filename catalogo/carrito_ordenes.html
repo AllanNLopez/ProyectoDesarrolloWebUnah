@@ -89,8 +89,7 @@
 								<div class="cart-offer-options">
 									<div class="btn-toolbar" role="toolbar" >
 										<div class="btn-group" role="group" >
-											<select class="offer-select" id="sel1234" >
-												<option>Cant</option>
+											<select class="offer-select" id="sel1234" > 
 												<option value="1">1</option>
 												<option value="2">2</option>
 											</select>
@@ -112,8 +111,7 @@
 								<div class="cart-offer-options">
 									<div class="btn-toolbar" role="toolbar" >
 										<div class="btn-group" role="group" >
-											<select class="offer-select" id="sel45" >
-												<option>Cant</option>
+											<select class="offer-select" id="sel45" > 
 												<option value="1">1</option>
 												<option value="2">2</option>
 											</select>
@@ -148,20 +146,20 @@
 			<div class="panel-body" id="billbox-body">
 					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon marcador-numer" id="basic-addon1">Artículos: </span>
-								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+								<span class="input-group-addon marcador-numer" >Artículos: </span>
+								<input type="text" id="txtTotalArticulos" class="form-control input-text-box" placeholder="0.00" readonly >
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon marcador-numer" id="basic-addon1">Minutos:</span>
-								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+								<span class="input-group-addon marcador-numer" >Minutos:</span>
+								<input type="text" id="txtTiempoEstimando" class="form-control input-text-box" placeholder="0"  readonly>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon marcador-numer" id="basic-addon1">Monto L.  </span>
-								<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
+								<span class="input-group-addon marcador-numer" >Monto L.  </span>
+								<input type="text" id="txtTotalPagar" class="form-control input-text-box" placeholder="0.00"  readonly>
 							</div>
 						</div>
 						<div class="form-group "> 
@@ -176,10 +174,11 @@
 
 	</div>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-	<script src="../js/datatables.js"></script>  	
+	<script type="text/javascript" src="../js/datatables.js"></script>  
 	<script type="text/javascript" src="../js/main-controller.js"></script>
 	<script type="text/javascript" src="../js/carrito-ordenes-ctr.js"></script>
+		
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	
 </body>
 </html>
