@@ -13,9 +13,14 @@
 #menu{
     background-color: #2471A3;
     border-color: #2471A3;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }    
 
+.store-btn-addtocart{ 
+    position: absolute; 
+    right: 5px;
+    top: 0px;
+}
 
 .store-article-title{
     padding-left: 10px;

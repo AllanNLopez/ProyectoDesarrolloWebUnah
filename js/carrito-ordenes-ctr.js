@@ -1,6 +1,8 @@
 
+//variables globales
 var id=0;
 
+//inicializa la tabla con la que funciona el carrito de compras
 table= $('#carrito').DataTable({
     "dom": '<"toolbar">frtip',
     "paging": false
