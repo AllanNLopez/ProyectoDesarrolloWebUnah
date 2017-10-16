@@ -8,16 +8,12 @@ $(document).ready(function() {
 	});
 
 	$("#btnAceptar").click(function(){
-		
-		validaCampos();
-	
+		validaCampos();	
 	});
 
 	$("#btnCancelar").click(function(){
 		$('.campoUsuario').attr("readonly",true);
 		dehabilitarbotones();
-		
-
 	});
 
 	function habilitarbotones(){
@@ -29,13 +25,10 @@ $(document).ready(function() {
 	function dehabilitarbotones(){
 		$("#btnAceptar").prop("disabled",true);
 		$("#btnCancelar").prop("disabled",true);
-		
 	}
 
 
 	function validaCampos(){
-
-
 		validarCampo($("#txtNames").val(), "nombre", "txtNames");
 		validarCampo($("#txtLastname").val(), "apellido", "txtLastname");
 		validarCampo($("#txtEmail").val(), "email", "txtEmail");
@@ -51,20 +44,13 @@ $(document).ready(function() {
 							validarCampo($("#txtPhone").val(), "phone", "txtPhone")&&
 							validarCampo($("#txtPassword").val(), "password", "txtPassword")&&
 							validarCampo($("#txtPassword").val(), "password", "txtPassword");
-
 		
 		if( camposValidos){
-
-
 			console.log("campos validos");
 			
 			enviarInfo();
 			$('.campoUsuario').attr("readonly",true);
 			dehabilitarbotones();
-
-			
-			
-
 		}else{
 			console.log("campos invalidos");
 			habilitarbotones();
@@ -75,10 +61,7 @@ $(document).ready(function() {
 
 	function enviarInfo(){
 		//###### funcion donde la informacion ha sido validada y lista para enviar######## 
-
 	}
-
-
 
     $('table.display').DataTable(  ); 
 } );
