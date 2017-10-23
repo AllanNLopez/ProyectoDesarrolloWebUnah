@@ -38,7 +38,12 @@ function closeNav() {
   $("#mySidenav").removeClass("sidenav-small");
 }
 
-/*----------------------------Funciones de validacion-------------------------*/
+/*
+ * La funcion validarCampo sirve para comparar el valor de un input con el de una
+ * expresion regular. Los campos validados son los que pertenecen a las formas
+ * por ejemplo, nombre, apellido, correo etc.
+ */
+
 function validarCampo(valor, tipoCampo, id) {
   var input = valor;
   var id = '#' + id;
@@ -70,13 +75,13 @@ function validarCampo(valor, tipoCampo, id) {
     case 'password':
       var passwordConfirm = id + 'Confirm';
       /*
-      This regex will enforce these rules:
-      At least one upper case English letter, (?=.*?[A-Z])
-      At least one lower case English letter, (?=.*?[a-z])
-      At least one digit, (?=.*?[0-9])
-      At least one special character, (?=.*?[#?!@$%^&*-])
-      Minimum eight in length .{8,} (with the anchors)
-      */
+       * Esta expresion regular admite contraseñas con los siguientes parametros:
+       * At least one upper case English letter, (?=.*?[A-Z])
+       * At least one lower case English letter, (?=.*?[a-z])
+       * At least one digit, (?=.*?[0-9])
+       * At least one special character, (?=.*?[#?!@$%^&*-])
+       * Minimum eight in length .{8,} (with the anchors)
+       */
       is_correct = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(input);
       if (input == $(passwordConfirm).val() && is_correct) {
         $(passwordConfirm).removeClass("invalid").addClass("valid");
@@ -104,6 +109,10 @@ function validarCampo(valor, tipoCampo, id) {
   return is_correct;
 }
 
+/*
+ * La funcion validarSelect se utiliza en los campos que tienen una opcion
+ * default al momento de cargar el formularo, por ejemplo, Dia, Mes, Año, etc.
+ */
 function validarSelect(id) {
   var id = '#' + id;
   var input = $(id).val();
@@ -145,6 +154,11 @@ function submitForm(formulario, tipoFormulario) {
   }
 
   if (!$("#mensajeError").is(":visible") && !$("#mensajeErrorTerminos").is(":visible")) {
+    /*
+     * Se podria agregar establecer el siguiente bloque de codigo en una funcion
+     * aparte que reciba por parametro un tipoFormulario y dependiendo de este
+     * se establezca la ruta a usarse
+     */
     if (tipoFormulario = 'registroUsuario') {
       var data = $(id).serializeObject();
       $.ajax({
@@ -153,13 +167,13 @@ function submitForm(formulario, tipoFormulario) {
         crossDomain: true,
         contentType: 'application/json',
         data: JSON.stringify(data)
-      }).done(function(data){ })
+      }).done(function(data) {})
 
       $(id).trigger("reset");
       $(':input').removeClass('valid');
       alert("Usuario registrado exitosamente.");
     }
-    /*
+    /* NO BORRAR ESTE BLOQUE
       if(tipoFormulario='Empresa'){
         console.log((JSON.stringify($('#formularioEmpresa').serializeObject())));
       }
@@ -169,6 +183,10 @@ function submitForm(formulario, tipoFormulario) {
   }
 }
 
+/*
+ * La funcion validarForm fue creada para validar un formulario adicional, como es
+ * el caso de 'formulario-empresa' que contiene dos formularios.
+ */
 function validarForm(formulario) {
   var id = '#' + formulario;
   var form_data = $(id).serializeArray();
@@ -185,7 +203,11 @@ function validarForm(formulario) {
   return suma;
 }
 
-//------Funcion que toma los valores de una forma y les da un formato JSON------
+/*
+ * La siguiente funcion convierte un objeto a formato JSON. Normalmente es llamada
+ * luego de llamar a la funcion 'serializeArray'. La funcion serializeArray recibe
+ * un formulario y retorna un arreglo que NO ES formato JSON.
+ */
 $.fn.serializeObject = function() {
   var o = {};
   var a = this.serializeArray();
@@ -201,7 +223,6 @@ $.fn.serializeObject = function() {
   });
   return o;
 };
-//------------------------------------------------------------------------------
 
 //eventos click
 
