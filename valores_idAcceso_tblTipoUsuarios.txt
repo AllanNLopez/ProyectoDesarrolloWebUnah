@@ -1,0 +1,3 @@
+id - Usuario comun 	-	1
+id - Usuario empresa 	- 	2
+id - Usario empleado 	-	3
