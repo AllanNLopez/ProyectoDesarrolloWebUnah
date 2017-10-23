@@ -149,13 +149,15 @@ function submitForm(formulario, tipoFormulario) {
       var data = $(id).serializeObject();
       $.ajax({
         type: "POST",
-        url: "registro-usuario",
+        url: "registro-usuario/",
         crossDomain: true,
         contentType: 'application/json',
         data: JSON.stringify(data)
-      }).done(function(data) {
-        console.log(JSON.stringify(data));
-      })
+      }).done(function(data){ })
+
+      $(id).trigger("reset");
+      $(':input').removeClass('valid');
+      alert("Usuario registrado exitosamente.");
     }
     /*
       if(tipoFormulario='Empresa'){

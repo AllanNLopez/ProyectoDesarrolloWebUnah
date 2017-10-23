@@ -381,7 +381,7 @@ CREATE TABLE `tblusuarios` (
   `apellidos` varchar(25) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `correo` varchar(25) DEFAULT NULL,
-  `contrasena` varchar(16) DEFAULT NULL,
+  `contrasena` varchar(128) DEFAULT NULL,
   `codTipoUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
