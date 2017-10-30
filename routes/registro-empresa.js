@@ -45,13 +45,20 @@ router.post("/", urlEncodeParser, function(request, response) {
   //una sentencia sql y un arreglo con los parametros ? de la sentencia misma.
   realizarQuery(sql, values);
     
-  var sql2 = "SELECT codUsuario FROM tblusuarios WHERE correo=?";
-  var values2 = [request.body.txtEmail];
-  var respuesta2 = function(callback){
-      realizarQueryCB(sql2, values2, function(data){
+  //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarqueryCB"
+  //nos pueda retornar el resultado de la query
+  var obtenerDatos = function(query, val, callback){
+      realizarQueryCB(query, val, function(data){
           callback(data);
       });
     };
+    
+  var sql2 = "SELECT codUsuario FROM tblusuarios WHERE correo=?";
+  var values2 = [request.body.txtEmail];
+  var respuesta2;
+  obtenerDatos(sql2, values2, function(data){
+      respuesta2=data;
+  });
     
   var consulta = JSON.stringify(respuesta2);
   var codigo;
@@ -89,11 +96,10 @@ router.post("/", urlEncodeParser, function(request, response) {
       'Honduras'
     ];
     
-  var respuesta3 = function(callback){
-      realizarQueryCB(sql3, values3, function(data){
-          callback(data);
-      });
-    };
+  var respuesta3;
+  obtenerDatos(sql3, values3, function(data){
+      respuesta3=data;
+  });
     
   response.send(JSON.stringify(respuesta3));
    

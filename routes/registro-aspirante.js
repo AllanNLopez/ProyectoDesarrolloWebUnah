@@ -43,11 +43,18 @@ router.post("/", urlEncodeParser, function(request, response) {
   //una sentencia sql, un arreglo con los parametros ? de la sentencia misma y una funcion callback
   //ya que NodeJS trabaja con I/O asincronas, todo esto con el fin de retornar el resultado de la consulta.
   //  :v Deberia funcionar v:
-   var respuesta = function(callback){
-      realizarQueryCB(sql, values, function(data){
+  //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarqueryCB"
+  //nos pueda retornar el resultado de la query
+  var obtenerDatos = function(query, val, callback){
+      realizarQueryCB(query, val, function(data){
           callback(data);
       });
     };
+  
+  var respuesta;
+  obtenerDatos(sql, values, function(data){
+      respuesta=data;
+  });
 
   response.send(JSON.stringify(respuesta));
     
