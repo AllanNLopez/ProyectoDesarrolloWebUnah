@@ -36,3 +36,19 @@ exports.realizarQuery = function(sql, arreglo) {
     console.log("Query finalizada con exito.");
   })
 }
+
+
+/*
+* A esta funcion se le agrego un callback, para poder
+* retornar el result (lo que se obtuvo de la consulta)
+* con el fin de hacer el JSON stringify
+* para enviar la informacion cuando hay un success
+* al hacer la peticion AJAX
+*/
+exports.realizarQueryCB = function(sql, arreglo, cb) {
+  conexion.query(sql, arreglo, function(err, result) {
+    if (err) throw err;
+    console.log("Query finalizada con exito.");
+      cb(result);
+  })
+}

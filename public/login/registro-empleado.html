@@ -55,7 +55,7 @@
 
 						<div class="panel-body">
 							<!--cuerpo del panel -->
-							<form id="formulario">
+							<form id="formulario-nuevo-empleado">
 								<div class="form-group col-xs-12 forms-padding">
 									<label class="form-label"> <i class="fa fa-user fa " aria-hidden="true"></i> Aplicación para aspirantes </label>
 								</div>
@@ -65,7 +65,7 @@
 													name="txtNames"
 													id="txtNames"
 													onmouseout="validarCampo(txtNames.value, 'nombre', 'txtNames')"
-													placeholder="Ingresa tu nombre"/>
+													placeholder="Ingresa tu nombre">
 								</div>
 								<div class="form-group col-xs-6 forms-padding">
 									<input 	type="text"
@@ -73,7 +73,7 @@
 													name="txtLastname"
 													id="txtLastname"
 													onmouseout="validarCampo(txtLastname.value, 'apellido', 'txtLastname')"
-													placeholder="Ingresa tu apellido"/>
+													placeholder="Ingresa tu apellido">
 								</div>
 								<div class="form-group col-xs-12 forms-padding">
 									<input 	type="text"
@@ -81,31 +81,14 @@
 													name="txtId"
 													id="txtId"
 													onmouseout="validarCampo(txtId.value, 'id', 'txtId')"
-													placeholder="Ingresa tu identificación (0000-0000-00000)"/>
+													placeholder="Ingresa tu identificación (0000-0000-00000)">
 								</div>
-								<div class="form-group col-xs-3 forms-padding" id="divDia" onmouseout="validarSelect('selectDia')">
-									<select class="form-control input-text-box" id="selectDia" name="selectDia">
-											<option>Día</option>
-											<option>1</option>
-											<option>2</option>
-											<option>30</option>
-										</select>
-								</div>
-								<div class="form-group col-xs-5 forms-padding" id="divMes" onmouseout="validarSelect('selectMes')">
-									<select class="form-control input-text-box" id="selectMes" name="selectMes">
-											<option>Mes</option>
-											<option>Enero</option>
-											<option>febrero</option>
-											<option>Septiembre</option>
-										</select>
-								</div>
-								<div class="form-group col-xs-4 forms-padding" id="divAño" onmouseout="validarSelect('selectAño')">
-									<select class="form-control input-text-box" id="selectAño" name="selectAño">
-											<option>Año</option>
-											<option>1997</option>
-											<option>1996</option>
-											<option>1995</option>
-										</select>
+								<div class="form-group col-xs-12 forms-padding">
+								    <label for="fechaPicker">Ingresa tu fecha de nacimiento</label>
+									<input type="date"  
+									                id="fechaPicker" 
+									                name="fechaPicker"
+									                onmouseout="validarCampo(fechaPicker.value,'fecha','fechaPicker')">
 								</div>
 								<div class="form-group col-xs-12 forms-padding">
 									<input 	type="text"
@@ -113,7 +96,7 @@
 													name="txtPhone"
 													id="txtPhone"
 													onmouseout="validarCampo(txtPhone.value,'phone','txtPhone')"
-													placeholder="Ingresa tu número telefónico"/>
+													placeholder="Ingresa tu número telefónico">
 								</div>
 								<div class="form-group col-xs-12 forms-padding">
 									<input 	type="text"
@@ -121,7 +104,7 @@
 													name="txtMail"
 													id="txtMail"
 													onmouseout="validarCampo(txtMail.value,'email','txtMail')"
-													placeholder="Ingresa tu correo electrónico"/>
+													placeholder="Ingresa tu correo electrónico">
 								</div>
 								<div class="form-group col-xs-12 forms-padding">
 									<textarea type="text"
@@ -151,7 +134,7 @@
 
 								<div class="form-group col-xs-12 forms-padding">
 									<a href="#" target="" type="button" id="button" class="btn btn-primary btn-block"
-									onclick="submitForm('formulario', 'Otro')">Enviar</a>
+									onclick="submitForm('formulario-nuevo-empleado', 'registroEmpleado')">Enviar</a>
 								</div>
 							</form>
 						</div>

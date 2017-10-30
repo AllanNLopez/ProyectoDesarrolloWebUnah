@@ -59,6 +59,12 @@ function validarCampo(valor, tipoCampo, id) {
     case 'id':
       is_correct = /\d{4}-\d{4}-\d{5}/.test(input);
       break;
+    case 'fecha':
+      if (input !== '') {
+        is_correct = true;
+      } else {
+        is_correct = false;
+      }
     case 'phone':
       is_correct = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(input);
       break;
@@ -116,7 +122,7 @@ function validarCampo(valor, tipoCampo, id) {
 function validarSelect(id) {
   var id = '#' + id;
   var input = $(id).val();
-  if (input == 'Día' || input == 'Mes' || input == 'Año' || input == 'Seleccione oferta laboral' || input == 'Seleccione un rubro o actividad') {
+  if (input == 'Seleccione oferta laboral' || input == 'Seleccione un rubro o actividad') {
     $(id).removeClass("valid").addClass("invalid");
   } else {
     $(id).removeClass("invalid").addClass("valid");
@@ -167,11 +173,32 @@ function submitForm(formulario, tipoFormulario) {
         crossDomain: true,
         contentType: 'application/json',
         data: JSON.stringify(data)
-      }).done(function(data) {})
+      }).done(function(data){})
 
       $(id).trigger("reset");
       $(':input').removeClass('valid');
       alert("Usuario registrado exitosamente.");
+    }
+    if(tipoFormulario = 'registroEmpleado'){
+        var data = $(id).serializeObject();
+        
+        $.ajax({
+		url:"/enviar-mensaje",
+		method:"POST",
+		data:JSON.stringify(data),
+		dataType:"json",
+		success:function(response){
+			if (response.affectedRows == 1){
+				alert("Registro de aspirante exitoso");
+			}
+			else{
+				alert("Registro de aspirante fallido");
+			}
+		},
+		error:function(){
+
+		}
+	});
     }
     /* NO BORRAR ESTE BLOQUE
       if(tipoFormulario='Empresa'){
