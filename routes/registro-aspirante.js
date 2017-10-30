@@ -44,7 +44,7 @@ router.post("/", urlEncodeParser, function(request, response) {
   //ya que NodeJS trabaja con I/O asincronas, todo esto con el fin de retornar el resultado de la consulta.
   //  :v Deberia funcionar v:
    var respuesta = function(callback){
-      realizarQuery(sql, values, function(data){
+      realizarQueryCB(sql, values, function(data){
           callback(data);
       });
     };

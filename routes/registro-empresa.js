@@ -22,10 +22,17 @@ var urlEncodeParser = bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.post("/", urlEncodeParser, function(request, response) {
+    
+/* AQUI SE COMIENZA A REGISTRAR LA EMPRESA EN LA BASE DE DATOS
+* NO ESTOY SEGURO SI SE PUEDEN HACER VARIAS CONSULTAS EN UN MISMO METODO POST
+* NO HE PODIDO PROBAR PORQUE LAS VALIDACIONES DE LOS FORMULARIOS NO ME DEJAN
+* SI PUEDEN PROBARLO SERIA BUENO
+*
+*/    
 
   var hash = sha512(request.body.txtPassword);
   var contrasena = hash.toString('hex');
-  var codTipoUsuario = 1;
+  var codTipoUsuario = 2;
   var sql = "INSERT INTO tblusuarios(nombres,apellidos,telefono,correo,contrasena,codTipoUsuario) VALUES(?,?,?,?,?,?)";
   var values = [request.body.txtNames,
     request.body.txtLastname,
@@ -37,6 +44,59 @@ router.post("/", urlEncodeParser, function(request, response) {
   //Utilizamos la funcion realizarQuery que importamos, recibe como parametros
   //una sentencia sql y un arreglo con los parametros ? de la sentencia misma.
   realizarQuery(sql, values);
+    
+  var sql2 = "SELECT codUsuario FROM tblusuarios WHERE correo=?";
+  var values2 = [request.body.txtEmail];
+  var respuesta2 = function(callback){
+      realizarQueryCB(sql2, values2, function(data){
+          callback(data);
+      });
+    };
+    
+  var consulta = JSON.stringify(respuesta2);
+  var codigo;
+  for(var i=0;i<consulta.length;i++){
+      if(consulta.affectedRows == 1){
+        codigo = consulta[i].codUsuario;
+      }else{
+            console.log("falla");
+      }
+  }
+  
+  var rubro = request.body.selectRubro;
+  var codRubro;
+  if(rubro == 'Compra y venta'){codRubro=1;}
+  if(rubro == 'Panadería'){codRubro=2;}
+  if(rubro == 'Articulos de belleza'){codRubro=3;}
+  var sql3 = "INSERT INTO tblempresas(codEmpresa, rtn, nombreEmpresa, ubicacion, actividad, sitioweb, telefono, informacion, calificacion, activa, codUsuario, codRubro, mapslatitud, mapslongitud, mapsregion, mapsciudad, mapsdeparamento, mapspais) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  var values3 = [0,
+      request.body.txtRTN,
+      request.body.txtEmpresa,
+      request.body.txtDomicilio,
+      rubro,
+      request.body.txtWebsite,
+      request.body.txtPhone,
+      request.body.txtDescripcion,
+      5,
+      1,
+      codigo,
+      codRubro,
+      14.077739, 
+      -87.200250,
+      'Callejon Galeras',
+      'Tegucigalpa', 
+      'Francisco Morazan',
+      'Honduras'
+    ];
+    
+  var respuesta3 = function(callback){
+      realizarQueryCB(sql3, values3, function(data){
+          callback(data);
+      });
+    };
+    
+  response.send(JSON.stringify(respuesta3));
+   
 });
 
 module.exports = router;

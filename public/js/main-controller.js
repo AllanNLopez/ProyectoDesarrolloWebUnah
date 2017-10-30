@@ -200,15 +200,33 @@ function submitForm(formulario, tipoFormulario) {
 		}
 	});
     }
-    /* NO BORRAR ESTE BLOQUE
+    // NO BORRAR ESTE BLOQUE
       if(tipoFormulario='Empresa'){
-        console.log((JSON.stringify($('#formularioEmpresa').serializeObject())));
+        //console.log((JSON.stringify($('#formularioEmpresa').serializeObject())));
+        var data = $(id).serializeObject();
+          
+            $.ajax({
+            url:"registro-empresa/",
+            method:"POST",
+            data:JSON.stringify(data),
+            dataType:"json",
+            success:function(response){
+                if (response.affectedRows == 1){
+                    alert("Registro de empresa exitoso");
+                }
+                else{
+                    alert("Registro de empresa fallido");
+                }
+            },
+            error:function(){
+
+            }
+        });
       }
       console.log((JSON.stringify($(id).serializeObject())));
     }
-    */
-  }
 }
+//}
 
 /*
  * La funcion validarForm fue creada para validar un formulario adicional, como es
