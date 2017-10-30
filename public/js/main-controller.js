@@ -183,7 +183,7 @@ function submitForm(formulario, tipoFormulario) {
         var data = $(id).serializeObject();
         
         $.ajax({
-		url:"/enviar-mensaje",
+		url:"registro-aspirante/",
 		method:"POST",
 		data:JSON.stringify(data),
 		dataType:"json",
