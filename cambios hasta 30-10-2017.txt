@@ -1,0 +1,5 @@
+Cambios hechos al proyecto
+-Se agrego una nueva funcion llamada "realizarQueryCB", solo se le agrego un callback a la ya existente "realizarQuery" en ./modulos/conexion.
+-Dos nuevas tablas en la base de datos: tblAspirantes, tblTipoAspirante.
+-Algunos cambios en elementos html :v.
+-Routes nuevas:registro-aspirante, registro-empresa

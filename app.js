@@ -1,7 +1,10 @@
 var express = require('express');
 var path = require('path');
 var app = express();
+
 var registroUsuario = require('./routes/registro-usuario');
+var registroAspirante = require('./routes/registro-aspirante');
+var registroEmpresa = require('./routes/registro-empresa');
 
 /*
  * En los imports esta var registroUsuario = require('./routes/registro-usuario')
@@ -28,6 +31,9 @@ app.use('/', express.static(__dirname + "/public/"));
  */
 
 app.use('/login/registro-usuario', registroUsuario);
+app.use('/login/registro-aspirante', registroAspirante);
+app.use('/login/registro-empresa', registroEmpresa);
+
 app.listen(3000, () => {
   console.log('Servidor iniciado en puerto 3000.');
 });
