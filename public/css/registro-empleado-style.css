@@ -11,7 +11,7 @@ input.invalid, textarea.invalid {
 }
 
 input.valid, textarea.valid {
-  border: 2px solid green;
+  border: 3px solid #000080;
 }
 
 select.invalid {

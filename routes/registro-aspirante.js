@@ -26,6 +26,7 @@ router.post("/", urlEncodeParser, function(request, response) {
   var codTipoAspirante;
   if(tipoAspirante == 'Agente carry permanente'){codTipoAspirante=1;}
   if(tipoAspirante == 'Agente carry recurrente'){codTipoAspirante=2;}
+  console.log(request.body.txtNames);
   var sql = "INSERT INTO tblaspirantes(codAspirante, nombre, apellido, identificacion, nacimiento, telefono, correo, domicilio, codTipoAspirante_fk) VALUES (?,?,?,?,STR_TO_DATE(?, '%m-%d-%Y'),?,?,?,?)";
   var values = [
     0,
@@ -36,7 +37,6 @@ router.post("/", urlEncodeParser, function(request, response) {
     request.body.txtPhone,
     request.body.txtEmail,
     request.body.txtDomicilio,
-    contrasena,
     codTipoAspirante
   ];
   //Utilizamos la funcion realizarQueryCB que importamos, recibe como parametros
@@ -50,14 +50,14 @@ router.post("/", urlEncodeParser, function(request, response) {
           callback(data);
       });
     };
-  
+
   var respuesta;
   obtenerDatos(sql, values, function(data){
       respuesta=data;
   });
 
   response.send(JSON.stringify(respuesta));
-    
+
 });
 
 module.exports = router;
@@ -67,7 +67,7 @@ module.exports = router;
 *var getOffers = function (email, callback) {
 *    var branchObj = require('./file2.js');
 *    branchObj.getUserBranch(email, function(data){
-*        This data stack 2  
+*        This data stack 2
 *        callback(data);
 *    });
 *           };

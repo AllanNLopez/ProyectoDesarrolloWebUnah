@@ -60,11 +60,14 @@ function validarCampo(valor, tipoCampo, id) {
       is_correct = /\d{4}-\d{4}-\d{5}/.test(input);
       break;
     case 'fecha':
-      if (input !== '') {
+      if (input) {
         is_correct = true;
+        //alert(input);
       } else {
         is_correct = false;
+      //  alert(input);
       }
+      break;
     case 'phone':
       is_correct = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(input);
       break;
@@ -165,7 +168,7 @@ function submitForm(formulario, tipoFormulario) {
      * aparte que reciba por parametro un tipoFormulario y dependiendo de este
      * se establezca la ruta a usarse
      */
-    if (tipoFormulario = 'registroUsuario') {
+    if (tipoFormulario == 'registroUsuario') {
       var data = $(id).serializeObject();
       $.ajax({
         type: "POST",
@@ -173,15 +176,15 @@ function submitForm(formulario, tipoFormulario) {
         crossDomain: true,
         contentType: 'application/json',
         data: JSON.stringify(data)
-      }).done(function(data){})
+      }).done(function(data){});
 
       $(id).trigger("reset");
       $(':input').removeClass('valid');
       alert("Usuario registrado exitosamente.");
     }
-    if(tipoFormulario = 'registroEmpleado'){
+    if(tipoFormulario == 'registroEmpleado'){
         var data = $(id).serializeObject();
-        
+
         $.ajax({
 		url:"registro-aspirante/",
 		method:"POST",
@@ -201,10 +204,10 @@ function submitForm(formulario, tipoFormulario) {
 	});
     }
     // NO BORRAR ESTE BLOQUE
-      if(tipoFormulario='Empresa'){
+      if(tipoFormulario=='Empresa'){
         //console.log((JSON.stringify($('#formularioEmpresa').serializeObject())));
         var data = $(id).serializeObject();
-          
+
             $.ajax({
             url:"registro-empresa/",
             method:"POST",

@@ -564,3 +564,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+INSERT INTO tbltipousuarios (codTipoUsuario, tipoUsuario, idAcceso) VALUES (NULL, 'Usuario comun', '1'), (NULL, 'Usuario empleado', '2'),(NULL, 'Usuario empresa','3');
