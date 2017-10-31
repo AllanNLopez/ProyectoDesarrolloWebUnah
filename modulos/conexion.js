@@ -50,20 +50,6 @@ exports.realizarQuery = function(sql, arreglo) {
 * para enviar la informacion cuando hay un success
 * al hacer la peticion AJAX
 */
-/*exports.realizarQrCB = function(sql, arreglo, cb) {
-    var resultado;
-  conexion.query(sql, arreglo, function(err, result) {
-    if (err) throw err;
-    console.log("Query finalizada con exito.");
-      cb();
-          resultado=result;
-          return result;
-      console.log("resultado= "+JSON.stringify(resultado));
-      console.log("result= "+JSON.stringify(result));
-  })
-     console.log("resultado= "+JSON.stringify(resultado));
-    //return resultado;
-}*/
 
 
 exports.realizarQrCB = function(sql, arreglo, callback) {

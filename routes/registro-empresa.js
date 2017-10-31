@@ -53,16 +53,10 @@ router.post("/user", urlEncodeParser, function (request, response) {
     
     var sql2 = "SELECT codUsuario FROM tblusuarios WHERE correo=?";
     var values2 = [request.body.txtEmail];
-    /*conexion.query(sql2,values2,function(err, filas, campos){
-				if (err) throw err;
-				//response.send(JSON.stringify(filas));
-                var aux = JSON.stringify(filas)
-                for(var i=0;i<aux.length;i++){
-                  codigo = aux[i].codUsuario;
-                  console.log(codigo);
-                }
-			}
-		);*/
+    
+    //funcion de callback
+    //mas abajo se envia esta funcion como parametro a la funcion realizarQrCB
+    //Para saber mas de su funcionamiento ver en ./modulos/conexion.js
     var handleResult = function (err, result) {
         if (err) {
             console.error(err.stack || err.message);
