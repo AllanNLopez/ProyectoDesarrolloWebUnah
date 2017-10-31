@@ -217,6 +217,9 @@ function submitForm(formulario, tipoFormulario) {
                 $(id).trigger("reset");
                 $(':input').removeClass('valid');
                 alert("Usuario registrado exitosamente.");
+            
+            //funcional hasta este punto
+            //registra el usuario que manejara la empresa sin problemas
 
             /*$.ajax({
                 url: "/registro-empresa/empresa",
