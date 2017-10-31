@@ -5,11 +5,22 @@
 var express = require('express');
 var bodyParser = require("body-parser");
 var sha512 = require('sha512');
+var mysql = require('mysql');
+
+var conexion = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "carry"
+});
+//var async = require('async');
 /*
  * Importamos la funcion realizarQuery para facilitar la insercion de informacion
  * en la base de datos
  */
-var realizarQueryCB = require('../modulos/conexion').realizarQueryCB;
+var realizarQuery = require('../modulos/conexion').realizarQuery;
+
+var codigo;
 /*
  * Creamos una funcion router que exportaremos luego que nos permitira importarla
  * en otros archivos.
@@ -21,7 +32,7 @@ var urlEncodeParser = bodyParser.urlencoded({
 
 router.use(bodyParser.json());
 
-router.post("/", urlEncodeParser, function(request, response) {
+router.post("/user", urlEncodeParser, function(request, response) {
     
 /* AQUI SE COMIENZA A REGISTRAR LA EMPRESA EN LA BASE DE DATOS
 * NO ESTOY SEGURO SI SE PUEDEN HACER VARIAS CONSULTAS EN UN MISMO METODO POST
@@ -29,14 +40,13 @@ router.post("/", urlEncodeParser, function(request, response) {
 * SI PUEDEN PROBARLO SERIA BUENO
 *
 */    
-
   var hash = sha512(request.body.txtPassword);
   var contrasena = hash.toString('hex');
-  var codTipoUsuario = 2;
+  var codTipoUsuario = 3;
   var sql = "INSERT INTO tblusuarios(nombres,apellidos,telefono,correo,contrasena,codTipoUsuario) VALUES(?,?,?,?,?,?)";
   var values = [request.body.txtNames,
     request.body.txtLastname,
-    request.body.txtPhone,
+    request.body.txtPhoneUser,
     request.body.txtEmail,
     contrasena,
     codTipoUsuario
@@ -45,10 +55,43 @@ router.post("/", urlEncodeParser, function(request, response) {
   //una sentencia sql y un arreglo con los parametros ? de la sentencia misma.
   realizarQuery(sql, values);
     
-  //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarqueryCB"
+    
+    
+    
+  var sql2 = "SELECT codUsuario FROM tblusuarios WHERE correo=?";
+  var values2 = [request.body.txtEmail];
+  conexion.query(sql2,values2,function(err, filas, campos){
+				if (err) throw err;
+				//response.send(JSON.stringify(filas));
+                var aux = JSON.stringify(filas)
+                for(var i=0;i<aux.length;i++){
+                  codigo = aux[i].codUsuario;
+                  console.log(codigo);
+                }
+			}
+		);
+  /*var handleResult = function (err, result) {
+    if (err) {
+        console.error(err.stack || err.message);
+        return;
+    }
+      for(var i=0;i<result.length;i++){
+          codigo = result[i].codUsuario;
+          console.log(codigo);
+      }
+      
+};
+
+  realizarQrCB(sql2, values2, handleResult);*/ 
+});
+
+router.post("/empresa", urlEncodeParser, function(resquest, response){
+    
+    /*
+    //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarQrCB"
   //nos pueda retornar el resultado de la query
   var obtenerDatos = function(query, val, callback){
-      realizarQueryCB(query, val, function(data){
+      realizarQrCB(query, val, function(data){
           callback(data);
       });
     };
@@ -61,6 +104,7 @@ router.post("/", urlEncodeParser, function(request, response) {
   });
     
   var consulta = JSON.stringify(respuesta2);
+    console.log("consulta= "+consulta);
   var codigo;
   for(var i=0;i<consulta.length;i++){
       if(consulta.affectedRows == 1){
@@ -76,7 +120,7 @@ router.post("/", urlEncodeParser, function(request, response) {
   if(rubro == 'Panadería'){codRubro=2;}
   if(rubro == 'Articulos de belleza'){codRubro=3;}
   var sql3 = "INSERT INTO tblempresas(codEmpresa, rtn, nombreEmpresa, ubicacion, actividad, sitioweb, telefono, informacion, calificacion, activa, codUsuario, codRubro, mapslatitud, mapslongitud, mapsregion, mapsciudad, mapsdeparamento, mapspais) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-  var values3 = [0,
+  var values3 = ['',
       request.body.txtRTN,
       request.body.txtEmpresa,
       request.body.txtDomicilio,
@@ -102,7 +146,7 @@ router.post("/", urlEncodeParser, function(request, response) {
   });
     
   response.send(JSON.stringify(respuesta3));
-   
+   */ 
 });
 
 module.exports = router;
