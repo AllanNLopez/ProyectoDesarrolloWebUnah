@@ -38,6 +38,8 @@ exports.realizarQuery = function(sql, arreglo) {
 }
 
 
+
+
 /*
 * A esta funcion se le agrego un callback, para poder
 * retornar el result (lo que se obtuvo de la consulta)

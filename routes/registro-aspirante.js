@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
  * Importamos la funcion realizarQuery para facilitar la insercion de informacion
  * en la base de datos
  */
-var realizarQueryCB = require('../modulos/conexion').realizarQueryCB;
+var realizarQuery = require('../modulos/conexion').realizarQuery;
 /*
  * Creamos una funcion router que exportaremos luego que nos permitira importarla
  * en otros archivos.
@@ -27,36 +27,36 @@ router.post("/", urlEncodeParser, function(request, response) {
   if(tipoAspirante == 'Agente carry permanente'){codTipoAspirante=1;}
   if(tipoAspirante == 'Agente carry recurrente'){codTipoAspirante=2;}
   console.log(request.body.txtNames);
-  var sql = "INSERT INTO tblaspirantes(codAspirante, nombre, apellido, identificacion, nacimiento, telefono, correo, domicilio, codTipoAspirante_fk) VALUES (?,?,?,?,STR_TO_DATE(?, '%m-%d-%Y'),?,?,?,?)";
+  var sql = "INSERT INTO tblaspirantes(codAspirante, nombre, apellido, identificacion, nacimiento, telefono, correo, domicilio, codTipoAspirante_fk) VALUES (?,?,?,?,STR_TO_DATE(?, '%Y-%m-%d'),?,?,?,?)";
   var values = [
-    0,
+    '',
     request.body.txtNames,
     request.body.txtLastname,
     request.body.txtId,
     request.body.fechaPicker,
     request.body.txtPhone,
-    request.body.txtEmail,
+    request.body.txtMail,
     request.body.txtDomicilio,
     codTipoAspirante
   ];
+    console.log("valores= "+values);
   //Utilizamos la funcion realizarQueryCB que importamos, recibe como parametros
   //una sentencia sql, un arreglo con los parametros ? de la sentencia misma y una funcion callback
   //ya que NodeJS trabaja con I/O asincronas, todo esto con el fin de retornar el resultado de la consulta.
   //  :v Deberia funcionar v:
   //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarqueryCB"
   //nos pueda retornar el resultado de la query
-  var obtenerDatos = function(query, val, callback){
+    realizarQuery(sql,values);
+  /*var obtenerDatos = function(query, val, callback){
       realizarQueryCB(query, val, function(data){
           callback(data);
       });
-    };
+    };*/
 
-  var respuesta;
+  /*var respuesta;
   obtenerDatos(sql, values, function(data){
       respuesta=data;
-  });
-
-  response.send(JSON.stringify(respuesta));
+  });*/
 
 });
 
