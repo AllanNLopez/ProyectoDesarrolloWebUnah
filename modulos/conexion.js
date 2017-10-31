@@ -39,3 +39,40 @@ exports.realizarQuery = function(sql, arreglo) {
       
   });
 }
+
+
+
+
+/*
+* A esta funcion se le agrego un callback, para poder
+* retornar el result (lo que se obtuvo de la consulta)
+* con el fin de hacer el JSON stringify
+* para enviar la informacion cuando hay un success
+* al hacer la peticion AJAX
+*/
+/*exports.realizarQrCB = function(sql, arreglo, cb) {
+    var resultado;
+  conexion.query(sql, arreglo, function(err, result) {
+    if (err) throw err;
+    console.log("Query finalizada con exito.");
+      cb();
+          resultado=result;
+          return result;
+      console.log("resultado= "+JSON.stringify(resultado));
+      console.log("result= "+JSON.stringify(result));
+  })
+     console.log("resultado= "+JSON.stringify(resultado));
+    //return resultado;
+}*/
+
+
+exports.realizarQrCB = function(sql, arreglo, callback) {
+    var resultado;
+  conexion.query(sql, arreglo, function(err, result) {
+    if (err){
+        return callback(err);
+    }
+      callback(null, result);
+      console.log("Query finalizada con exito.");
+  });
+}
