@@ -100,7 +100,7 @@ function validarCampo(valor, tipoCampo, id) {
             }
             break;
         case 'rtn':
-            is_correct = /[0-9]{14}/.test(input);
+            is_correct = /\d{4}-\d{4}-\d{6}/.test(input);
             break;
         case 'website':
             is_correct = /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/.test(input);
@@ -134,6 +134,7 @@ function validarSelect(id) {
 /*-----------------------Funcion para SUMBIT las forms------------------------*/
 function submitForm(formulario, tipoFormulario) {
     var id = '#' + formulario;
+    var id2;
     console.log(id);
     var form_data = $(id).serializeArray();
     console.log(form_data);
@@ -149,6 +150,7 @@ function submitForm(formulario, tipoFormulario) {
 
     if (id == '#formularioEmpresa2') {
         suma = suma + validarForm('formularioEmpresa');
+        id2= '#formularioEmpresa';
     }
 
     if (suma === 0) {
@@ -202,11 +204,27 @@ function submitForm(formulario, tipoFormulario) {
         if (tipoFormulario == 'Empresa') {
             //console.log((JSON.stringify($('#formularioEmpresa').serializeObject())));
             var data = $(id).serializeObject();
-
+            var data2 = $(id2).serializeObject();
+            //consle.log()
+            
             $.ajax({
-                url: "registro-empresa/",
+                type: "POST",
+                url: "registro-empresa/user",
+                crossDomain: true,
+                contentType: 'application/json',
+                data: JSON.stringify(data)
+            }).done(function (data) {});
+                $(id).trigger("reset");
+                $(':input').removeClass('valid');
+                alert("Usuario registrado exitosamente.");
+            
+            //funcional hasta este punto
+            //registra el usuario que manejara la empresa sin problemas
+
+            /*$.ajax({
+                url: "/registro-empresa/empresa",
                 method: "POST",
-                data: JSON.stringify(data),
+                data: JSON.stringify(data2),
                 dataType: "json",
                 success: function (response) {
                     if (response.affectedRows == 1) {
@@ -218,9 +236,10 @@ function submitForm(formulario, tipoFormulario) {
                 error: function () {
 
                 }
-            });
+            });*/
         }
         console.log((JSON.stringify($(id).serializeObject())));
+        console.log((JSON.stringify($(id2).serializeObject())));
     }
 }
 //}
