@@ -1,6 +1,9 @@
 
 $(document).ready(function() {
 	//####agregar funcionalidad de editar#######
+
+	extraersDatosdeBD();
+
 	$("#btnEditar").click(function(){
 		$('.campoUsuario').removeAttr("readonly");
 		habilitarbotones();
@@ -66,4 +69,35 @@ $(document).ready(function() {
     $('table.display').DataTable(  ); 
 } );
 
+
+function extraersDatosdeBD(){
+
+		var parametro="codigo=1";
+
+	$.ajax({
+		
+		url:"/user/getdatos",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"GET",
+		dataType:"json",
+		success:function(respuesta){
+							$("#txtNames").val(respuesta[0].nombres);
+							$("#txtLastname").val(respuesta[0].apellidos);
+							$("#txtEmail").val(respuesta[0].correo);
+							$("#txtPhone").val(respuesta[0].telefono);
+							$("#txtPassword").val();
+							$("#txtPassword").val();
+			
+
+			}
+		,
+		error:function(e){
+			alert("Error: " + JSON.stringify(e));
+		}
+	} );
+
+
+}
 
