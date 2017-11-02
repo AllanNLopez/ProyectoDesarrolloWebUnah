@@ -57,7 +57,13 @@ function validarCampo(valor, tipoCampo, id) {
             is_correct = /^[A-Za-z\'\s\.\,]+$/.test(input);
             break;
         case 'id':
-            is_correct = /\d{4}-\d{4}-\d{5}/.test(input);
+            if (/\d{4}-\d{4}-\d{5}/.test(input) && (input.length == 15)) {
+              is_correct = true;
+              //console.log(is_correct);
+            }
+            else {
+              is_correct = false;
+            }
             break;
         case 'fecha':
             if (input) {
@@ -188,6 +194,7 @@ function submitForm(formulario, tipoFormulario) {
         }
         if (tipoFormulario == 'registroEmpleado') {
             var data = $(id).serializeObject();
+            //console.log(data);
             $.ajax({
                 type: "POST",
                 url: "registro-aspirante/",
@@ -206,7 +213,7 @@ function submitForm(formulario, tipoFormulario) {
             var data = $(id).serializeObject();
             var data2 = $(id2).serializeObject();
             //consle.log()
-            
+
             $.ajax({
                 type: "POST",
                 url: "registro-empresa/user",
@@ -217,7 +224,7 @@ function submitForm(formulario, tipoFormulario) {
                 $(id).trigger("reset");
                 $(':input').removeClass('valid');
                 alert("Usuario registrado exitosamente.");
-            
+
             //funcional hasta este punto
             //registra el usuario que manejara la empresa sin problemas
 

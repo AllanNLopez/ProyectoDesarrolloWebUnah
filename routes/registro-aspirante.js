@@ -22,14 +22,15 @@ router.use(bodyParser.json());
 
 router.post("/", urlEncodeParser, function(request, response) {
 
+  //console.log('CONSULTA A REGSItro Aspirante realizada');
+
   var tipoAspirante = request.body.selectOfertaLaboral;
   var codTipoAspirante;
   if(tipoAspirante == 'Agente carry permanente'){codTipoAspirante=1;}
   if(tipoAspirante == 'Agente carry recurrente'){codTipoAspirante=2;}
   console.log(request.body.txtNames);
-  var sql = "INSERT INTO tblaspirantes(codAspirante, nombre, apellido, identificacion, nacimiento, telefono, correo, domicilio, codTipoAspirante_fk) VALUES (?,?,?,?,STR_TO_DATE(?, '%Y-%m-%d'),?,?,?,?)";
+  var sql = "INSERT INTO tblaspirantes(codAspirante, nombre, apellido, identificacion, nacimiento, telefono, correo, domicilio, codTipoAspirante_fk) VALUES (NULL,?,?,?,STR_TO_DATE(?, '%Y-%m-%d'),?,?,?,?)";
   var values = [
-    '',
     request.body.txtNames,
     request.body.txtLastname,
     request.body.txtId,
