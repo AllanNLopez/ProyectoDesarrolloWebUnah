@@ -59,6 +59,7 @@ exports.realizarQrCB = function(sql, arreglo, callback) {
         return callback(err);
     }
       callback(null, result);
+      
       console.log("Query finalizada con exito.");
   });
 }

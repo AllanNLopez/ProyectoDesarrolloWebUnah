@@ -567,3 +567,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO tblTipoUsuarios (codTipoUsuario, tipoUsuario, idAcceso) VALUES (NULL, 'Usuario comun', '1'), (NULL, 'Usuario empleado', '2'),(NULL, 'Usuario empresa','3');
+INSERT INTO tblUsuarios (codUsuario, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario) VALUES
+(1, 'oscar', 'vasquez', '+50412345678', 'asd@gmail.com', 'asd.123', 1);
+
+--

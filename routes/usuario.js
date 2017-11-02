@@ -11,7 +11,7 @@ var urlEncodeParser = bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 
-realizarQueryCB = require('../modulos/conexion').realizarQueryCB;
+realizarQrCB = require('../modulos/conexion').realizarQrCB;
 
 router.get('/',function(peticion,repuesta){
 	
@@ -22,11 +22,11 @@ router.get('/',function(peticion,repuesta){
 
 router.get('/getdatos',function(peticion,respuesta){
 	console.log("consiguiendo datos");
-	
 	var sql = "SELECT codUsuario as codigo, nombres, apellidos, correo, telefono, contrasena FROM tblUsuarios WHERE codUsuario=?";
     var values = [peticion.query.codigo];
     
-    realizarQueryCB(sql, values, function(data){
+    realizarQrCB(sql, values, function(valor ,data){
+        
          respuesta.send(data);
 
      });
