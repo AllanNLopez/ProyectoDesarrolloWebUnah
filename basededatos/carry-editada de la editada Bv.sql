@@ -567,3 +567,31 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO tblTipoUsuarios (codTipoUsuario, tipoUsuario, idAcceso) VALUES (NULL, 'Usuario comun', '1'), (NULL, 'Usuario empleado', '2'),(NULL, 'Usuario empresa','3');
+
+INSERT INTO `tbltipoaspirante` (`codTipoAspirante`, `tipoAspirante`) VALUES ('1', 'Agente Carry permanente.'), ('2', 'Agente Carry recurrente.');
+
+
+
+
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Agricultura y ganadería');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Alimentos y bebidas');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Alquileres');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Art. limpieza e higiene');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Artículos del hogar');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Audiovisuales');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Automotores');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Combustibles y lubricantes');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Deporte y recreación');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Equipo médico y laboratorio');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Construcción y edificación');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Suministros de oficina');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Equipos de seguridad');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Herramientas');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Equipos e insumos de Informática');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Joyería y orfebrería');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Maquinarias');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Publicidad');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Servicio de salud');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Vigilancia y seguridad');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Textil e indumentaria');
+INSERT INTO `tblrubro` (`codRubro`, `rubro`) VALUES (NULL, 'Telefonía y comunicaciones');

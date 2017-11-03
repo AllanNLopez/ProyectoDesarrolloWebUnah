@@ -111,8 +111,8 @@ function geocodeLatLng(geocoder, map, infowindow, latlng) {
               });
               infowindow.setContent(results[1].formatted_address);
               infowindow.open(map, marker);
-
-              imprimirDatosObtenido(results ,latlng);//funcion para imprimir los datos obtenidos
+              setDireccionMaps(results,latlng);
+              //imprimirDatosObtenido(results ,latlng);//funcion para imprimir los datos obtenidos
 
             } else {
               window.alert('Resultados no encontrados');
@@ -126,7 +126,7 @@ function geocodeLatLng(geocoder, map, infowindow, latlng) {
 
 
 
-
+/*
 function imprimirDatosObtenido(results,latlng){
         var lat = latlng.lat();
         var lng = latlng.lng();
@@ -137,6 +137,7 @@ function imprimirDatosObtenido(results,latlng){
         console.log(results[1].address_components[3].long_name);
 
 }
+*/
 
 $('a[data-toggle="tab"').on('click', function() {
     setTimeout(function(){
