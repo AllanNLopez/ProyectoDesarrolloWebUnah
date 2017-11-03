@@ -40,14 +40,16 @@ router.post("/", urlEncodeParser, function(request, response) {
     request.body.txtDomicilio,
     codTipoAspirante
   ];
-    console.log("valores= "+values);
+  //  console.log("valores= "+values);
   //Utilizamos la funcion realizarQueryCB que importamos, recibe como parametros
   //una sentencia sql, un arreglo con los parametros ? de la sentencia misma y una funcion callback
   //ya que NodeJS trabaja con I/O asincronas, todo esto con el fin de retornar el resultado de la consulta.
   //  :v Deberia funcionar v:
   //Utilizamos esta funcion "obtenerDatos" para que la funcion "realizarqueryCB"
   //nos pueda retornar el resultado de la query
-    realizarQuery(sql,values);
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
   /*var obtenerDatos = function(query, val, callback){
       realizarQueryCB(query, val, function(data){
           callback(data);

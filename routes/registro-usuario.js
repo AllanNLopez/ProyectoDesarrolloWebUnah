@@ -36,7 +36,10 @@ router.post("/", urlEncodeParser, function(request, response) {
   ];
   //Utilizamos la funcion realizarQuery que importamos, recibe como parametros
   //una sentencia sql y un arreglo con los parametros ? de la sentencia misma.
-  realizarQuery(sql, values);
+  //realizarQuery(sql, values);
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
 });
 
 module.exports = router;

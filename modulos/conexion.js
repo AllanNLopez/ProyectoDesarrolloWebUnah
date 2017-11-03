@@ -32,9 +32,10 @@ exports.conexion;
  * La funcion realizarQuery recibe como parametros una sentencia SQL y un arreglo de argumentos
  * Con esta funcion pueden hacerse INSERTS, SELECTS, DELETS, ETC.
  */
-exports.realizarQuery = function(sql, arreglo) {
-  conexion.query(sql, arreglo, function(err, result) {
+exports.realizarQuery = function(sql, arreglo, callback) {
+  conexion.query(sql, arreglo, (err, result) => {
     if (err) throw err;
+    callback(result);
     //console.log(JSON.stringify(result)+'DESDE realizarQuery');
     //return result;
   });

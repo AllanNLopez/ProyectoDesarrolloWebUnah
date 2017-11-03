@@ -184,34 +184,54 @@ function submitForm(formulario, tipoFormulario) {
          * aparte que reciba por parametro un tipoFormulario y dependiendo de este
          * se establezca la ruta a usarse
          */
-        if (tipoFormulario == 'registroUsuario') {
-            var data = $(id).serializeObject();
-            $.ajax({
-                type: "POST",
-                url: "registro-usuario/",
-                crossDomain: true,
-                contentType: 'application/json',
-                data: JSON.stringify(data)
-            }).done(function (data) {});
 
-            $(id).trigger("reset");
-            $(':input').removeClass('valid');
-            alert("Usuario registrado exitosamente.");
+
+        if (tipoFormulario == 'registroUsuario') {
+          var data = $(id).serializeObject();
+          $.ajax({
+              url: "registro-usuario/",
+              method: "POST",
+              data: JSON.stringify(data),
+              crossDomain: true,
+              contentType: 'application/json',
+              dataType: "json",
+              success: function(respuesta) {
+                if (respuesta.affectedRows == 1){
+                  $(id).trigger("reset");
+                  $(':input').removeClass('valid');
+                  alert("Usuario registrado exitosamente.");
+                }
+              },
+            error: function(e) {
+              alert("Ocurrio un error.");
+              console.log(JSON.stringify(e));
+            }
+          });
         }
+
+
         if (tipoFormulario == 'registroEmpleado') {
             var data = $(id).serializeObject();
-            //console.log(data);
+
             $.ajax({
-                type: "POST",
-                url: "registro-aspirante/",
+                url: "registro-aspirante//",
+                method: "POST",
+                data: JSON.stringify(data),
                 crossDomain: true,
                 contentType: 'application/json',
-                data: JSON.stringify(data)
-            }).done(function (data) {});
-
-            $(id).trigger("reset");
-            $(':input').removeClass('valid');
-            alert("Aspirante registrado exitosamente.");
+                dataType: "json",
+                success: function(respuesta) {
+                  if (respuesta.affectedRows == 1){
+                    $(id).trigger("reset");
+                    $(':input').removeClass('valid');
+                    alert("Aspirante registrado exitosamente.");
+                  }
+                },
+              error: function(e) {
+                alert("Ocurrio un error.");
+                console.log(JSON.stringify(e));
+              }
+            });
         }
         // NO BORRAR ESTE BLOQUE
         if (tipoFormulario == 'Empresa') {
