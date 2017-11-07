@@ -1,3 +1,5 @@
+var array;
+
 /*
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
@@ -59,7 +61,6 @@ function validarCampo(valor, tipoCampo, id) {
         case 'id':
             if (/\d{4}-\d{4}-\d{5}/.test(input) && (input.length == 15)) {
               is_correct = true;
-              //console.log(is_correct);
             }
             else {
               is_correct = false;
@@ -106,7 +107,12 @@ function validarCampo(valor, tipoCampo, id) {
             }
             break;
         case 'rtn':
-            is_correct = /\d{4}-\d{4}-\d{6}/.test(input);
+            if (/\d{4}-\d{4}-\d{6}/.test(input) && (input.length == 16)) {
+              is_correct = true;
+            }
+            else {
+              is_correct = false;
+            }
             break;
         case 'website':
             is_correct = /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/.test(input);
@@ -131,7 +137,7 @@ function validarCampo(valor, tipoCampo, id) {
 function validarSelect(id) {
     var id = '#' + id;
     var input = $(id).val();
-    if (input == 'Seleccione oferta laboral' || input == 'Seleccione un rubro o actividad') {
+    if (input === 'Seleccione oferta laboral' || input === 'Seleccione un rubro o actividad') {
         $(id).removeClass("valid").addClass("invalid");
     } else {
         $(id).removeClass("invalid").addClass("valid");
@@ -178,34 +184,54 @@ function submitForm(formulario, tipoFormulario) {
          * aparte que reciba por parametro un tipoFormulario y dependiendo de este
          * se establezca la ruta a usarse
          */
-        if (tipoFormulario == 'registroUsuario') {
-            var data = $(id).serializeObject();
-            $.ajax({
-                type: "POST",
-                url: "registro-usuario/",
-                crossDomain: true,
-                contentType: 'application/json',
-                data: JSON.stringify(data)
-            }).done(function (data) {});
 
-            $(id).trigger("reset");
-            $(':input').removeClass('valid');
-            alert("Usuario registrado exitosamente.");
+
+        if (tipoFormulario == 'registroUsuario') {
+          var data = $(id).serializeObject();
+          $.ajax({
+              url: "registro-usuario/",
+              method: "POST",
+              data: JSON.stringify(data),
+              crossDomain: true,
+              contentType: 'application/json',
+              dataType: "json",
+              success: function(respuesta) {
+                if (respuesta.affectedRows == 1){
+                  $(id).trigger("reset");
+                  $(':input').removeClass('valid');
+                  alert("Usuario registrado exitosamente.");
+                }
+              },
+            error: function(e) {
+              alert("Ocurrio un error.");
+              console.log(JSON.stringify(e));
+            }
+          });
         }
+
+
         if (tipoFormulario == 'registroEmpleado') {
             var data = $(id).serializeObject();
-            //console.log(data);
+
             $.ajax({
-                type: "POST",
-                url: "registro-aspirante/",
+                url: "registro-aspirante//",
+                method: "POST",
+                data: JSON.stringify(data),
                 crossDomain: true,
                 contentType: 'application/json',
-                data: JSON.stringify(data)
-            }).done(function (data) {});
-
-            $(id).trigger("reset");
-            $(':input').removeClass('valid');
-            alert("Aspirante registrado exitosamente.");
+                dataType: "json",
+                success: function(respuesta) {
+                  if (respuesta.affectedRows == 1){
+                    $(id).trigger("reset");
+                    $(':input').removeClass('valid');
+                    alert("Aspirante registrado exitosamente.");
+                  }
+                },
+              error: function(e) {
+                alert("Ocurrio un error.");
+                console.log(JSON.stringify(e));
+              }
+            });
         }
         // NO BORRAR ESTE BLOQUE
         if (tipoFormulario == 'Empresa') {
@@ -213,7 +239,64 @@ function submitForm(formulario, tipoFormulario) {
             var data = $(id).serializeObject();
             var data2 = $(id2).serializeObject();
             //consle.log()
+            Object.assign(data2, array);
+            //console.log(pedirValores);
+            //console.log('SERIIALZED:::::');
+            //console.log(data);
+            //data2.nuevoValor = 'NUEVO valor!';
+            //console.log(data2);
+            Object.assign(data, data2);
+            //console.log(data);
+            //console.log('REGISTRO EMPRESA TRIGGERED');
 
+            $.ajax({
+                url: "registro-empresa/user",
+                method: "POST",
+                data: JSON.stringify(data),
+                crossDomain: true,
+                contentType: 'application/json',
+                dataType: "json",
+                success: function(respuesta) {
+                  if (respuesta.affectedRows == 1){
+                    alert("Usuario agregado con exito.")
+                    $(id).trigger('reset');
+                    $(id2).trigger('reset');
+                    $(':input').removeClass('valid');
+                    $(':select').removeClass('valid');
+            			}
+                },
+              error: function(e) {
+                alert("Ocurrio un error.");
+                console.log(JSON.stringify(e));
+              }
+            });
+
+            /*
+            $.ajax({
+              url: "/listas",
+              data: "",
+              method: "POST",
+              dataType: "json",
+              success: function(respuesta) {
+                $('#contenedorTodo').html("");
+                for (var i = 0; i < respuesta.length; i++) {
+                  var str = respuesta[i].titulo_lista;
+                  var res = str.replace(" ", "-");
+                  $('#contenedorTodo').append(`<div class="col-md-4">
+                    <div class="well list" id="` + res + `">
+                      <h4>` + respuesta[i].titulo_lista + `</h4>
+                    </div>
+                  </div>`);
+                }
+                cargarTarjetas();
+              },
+              error: function(e) {
+                alert("Error: " + JSON.stringify(e));
+              }
+            });
+
+            */
+            /*
             $.ajax({
                 type: "POST",
                 url: "registro-empresa/user",
@@ -224,6 +307,7 @@ function submitForm(formulario, tipoFormulario) {
                 $(id).trigger("reset");
                 $(':input').removeClass('valid');
                 alert("Usuario registrado exitosamente.");
+              */
 
             //funcional hasta este punto
             //registra el usuario que manejara la empresa sin problemas
@@ -245,8 +329,8 @@ function submitForm(formulario, tipoFormulario) {
                 }
             });*/
         }
-        console.log((JSON.stringify($(id).serializeObject())));
-        console.log((JSON.stringify($(id2).serializeObject())));
+        //console.log((JSON.stringify($(id).serializeObject())));
+        //console.log((JSON.stringify($(id2).serializeObject())));
     }
 }
 //}
@@ -301,3 +385,14 @@ $('#btn-reg-user').click(function () {
     alert("Se debera guardar");
 
 });
+
+function setDireccionMaps(results,latlng){
+        array = {
+          latitud : latlng.lat(),
+          longitud : latlng.lng(),
+          region: results[1].address_components[0].long_name,
+          ciudad: results[1].address_components[1].long_name,
+          departamento: results[1].address_components[2].long_name,
+          pais: results[1].address_components[3].long_name
+        };
+}

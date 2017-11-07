@@ -231,17 +231,39 @@
 													<h4>Datos de tu empresa</h4>
 													<form id="formularioEmpresa">
 														<div class="form-group col-xs-12 forms-padding">
-															<input type="text" class="form-control input-text-box" name="txtRTN" id="txtRTN" onkeyup="validarCampo(txtRTN.value,'rtn','txtRTN')" placeholder="Escribe tu registro tributario nacional (0000-0000-000000)"/>
+															<input type="text" class="form-control input-text-box" name="txtRTN" id="txtRTN" onkeyup="validarCampo(txtRTN.value,'rtn','txtRTN')" placeholder="Escribe tu RTN (0000-0000-000000)"/>
 														</div>
 														<div class="form-group col-xs-12 forms-padding">
 															<input type="text" class="form-control input-text-box" name="txtEmpresa" id="txtEmpresa" onkeyup="validarCampo(txtEmpresa.value,'nombre','txtEmpresa')" placeholder="Nombre de tu empresa  " />
 														</div>
-														<div class="form-group col-xs-12 forms-padding" id="divRubro" onmousedown="validarSelect('selectRubro')">
+														<div class="form-group col-xs-12 forms-padding" id="divRubro" onchange="validarSelect('selectRubro')">
 															<select class="form-control input-text-box" id="selectRubro" name="selectRubro">
 																	<option>Seleccione un rubro o actividad</option>
-																	<option>Compra y venta </option>
-																	<option>Panadería</option>
+																	<option>Alquileres</option>
+																	<option>Agricultura y ganadería</option>
+																	<option>Alimentos y bebidas</option>
 																	<option>Articulos de belleza</option>
+																	<option>Art. limpieza e higiene</option>
+																	<option>Artículos del hogar</option>
+																	<option>Audiovisuales</option>
+																	<option>Automotores</option>
+																	<option>Combustibles y lubricantes</option>
+																	<option>Compra y venta</option>
+																	<option>Deporte y recreación</option>
+																	<option>Equipo médico y laboratorio</option>
+																	<option>Construcción y edificación</option>
+																	<option>Suministros de oficina</option>
+																	<option>Equipos de seguridad</option>
+																	<option>Herramientas</option>
+																	<option>Equipos e insumos de Informática</option>
+																	<option>Joyería y orfebrería</option>
+																	<option>Maquinarias</option>
+																	<option>Panadería</option>
+																	<option>Publicidad</option>
+																	<option>Servicio de salud</option>
+																	<option>Vigilancia y seguridad</option>
+																	<option>Textil e indumentaria</option>
+																	<option>Telefonía y comunicaciones</option>
 																</select>
 														</div>
 														<div class="form-group col-xs-12 forms-padding">
