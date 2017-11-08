@@ -212,9 +212,9 @@ function submitForm(formulario, tipoFormulario) {
 
         if (tipoFormulario == 'registroEmpleado') {
             var data = $(id).serializeObject();
-
+            console.log(data);
             $.ajax({
-                url: "registro-aspirante//",
+                url: "registro-aspirante/",
                 method: "POST",
                 data: JSON.stringify(data),
                 crossDomain: true,
@@ -222,6 +222,7 @@ function submitForm(formulario, tipoFormulario) {
                 dataType: "json",
                 success: function(respuesta) {
                   if (respuesta.affectedRows == 1){
+                      console.log(respuesta);
                     $(id).trigger("reset");
                     $(':input').removeClass('valid');
                     alert("Aspirante registrado exitosamente.");

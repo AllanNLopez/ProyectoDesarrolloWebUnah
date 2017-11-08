@@ -10,30 +10,18 @@ var urlEncodeParser = bodyParser.urlencoded({
 
 router.use(bodyParser.json());
 
+var realizarQuery = require('../modulos/conexion').realizarQuery;
 
-realizarQrCB = require('../modulos/conexion').realizarQrCB;
-
-router.get('/',function(peticion,repuesta){
-	
-	
-
-});
-
-
-router.get('/getdatos',function(peticion,respuesta){
+router.post('/', urlEncodeParser, function(peticion,respuesta){
 	console.log("consiguiendo datos");
-	var sql = "SELECT codUsuario as codigo, nombres, apellidos, correo, telefono, contrasena FROM tblUsuarios WHERE codUsuario=?";
-    var values = [peticion.query.codigo];
-    
-    realizarQrCB(sql, values, function(valor ,data){
-        
+	var sql = "SELECT codUsuario as codigo, nombres, apellidos, telefono, correo, contrasena FROM tblUsuarios WHERE codUsuario=?";
+    var values = [peticion.body.codigo];
+    console.log(values);
+    realizarQuery(sql, values, function(data){
          respuesta.send(data);
-
      });
 
 });
-
-
 
 
 

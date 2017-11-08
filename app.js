@@ -34,7 +34,7 @@ app.use('/', express.static(__dirname + "/public/"));
 app.use('/login/registro-usuario', registroUsuario);
 app.use('/login/registro-aspirante', registroAspirante);
 app.use('/login/registro-empresa', registroEmpresa);
-app.use( "/user", usuario);
+app.use('/user/usuario', usuario);
 
 
 		//Tam

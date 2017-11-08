@@ -72,23 +72,26 @@ $(document).ready(function() {
 
 function extraersDatosdeBD(){
 
-		var parametro="codigo=1";
+		var parametro="codigo=14";
 
 	$.ajax({
 		
-		url:"/user/getdatos",
+		url:"usuario/",
 		//Tambien se puede utilizar el siguiente patron:
 		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
 		data: parametro,
-		method:"GET",
+		method:"POST",
 		dataType:"json",
 		success:function(respuesta){
-							$("#txtNames").val(respuesta[0].nombres);
-							$("#txtLastname").val(respuesta[0].apellidos);
-							$("#txtEmail").val(respuesta[0].correo);
-							$("#txtPhone").val(respuesta[0].telefono);
+            for(var i=0;i<respuesta.length;i++){
+                            console.log(respuesta[i]);
+							$("#txtNames").val(respuesta[i].nombres);
+							$("#txtLastname").val(respuesta[i].apellidos);
+							$("#txtEmail").val(respuesta[i].telefono);
+							$("#txtPhone").val(respuesta[i].correo);
 							$("#txtPassword").val();
 							$("#txtPassword").val();
+            }
 			
 
 			}
