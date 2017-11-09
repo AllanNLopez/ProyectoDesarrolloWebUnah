@@ -534,3 +534,9 @@
         border-color: #ff0000;
         border-width: 3px;
 }
+
+.image-small{
+    height: 110px;
+    width: 120px;
+    margin: 5px;
+}
