@@ -10,13 +10,13 @@
   	<meta name="author" content="">
 
    	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-   	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css"> 
+   	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
 		<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/main-rules.css">
 		<style>
-			.navbar-inverse .navbar-brand{ 
-					color:#FFF; 
+			.navbar-inverse .navbar-brand{
+					color:#FFF;
 			}
 
 			.btn-opciones{
@@ -29,7 +29,17 @@
 				width: 700px;
 
 			}
-		</style>		 
+
+			.oculto {
+				display: none;
+			}
+
+			.footer-position{
+				position: absolute;
+				bottom: 0;
+			}
+
+		</style>
 
 
 </head>
@@ -49,7 +59,7 @@
 				<div class="collapse navbar-collapse" id="small-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a class="hidden" href="#">Acceder</a></li>
-						<li><a class="hidden" href="#">Registrame</a></li>  
+						<li><a class="hidden" href="#">Registrame</a></li>
 						<li>
 							<div class="btn-group navbar-btn"  >
 								<a href="../catalogo/carrito_ordenes.html">
@@ -63,10 +73,10 @@
 								</a>
 								<a href="../user">
 									<span class="fa fa-user-circle" aria-hidden="true"></span>  Usuario </a>
-								</a>		
+								</a>
 							</div>
-						</li>  
-					</ul> 
+						</li>
+					</ul>
 					<form class="navbar-form navbar-left">
 						<div class="form-group">
 							<div class="input-group">
@@ -79,15 +89,15 @@
 										<option>Ropa y Calzado</option>
 										<option>Automóviles</option>
 									</select>
-								</div> 
+								</div>
 								<input type="text" class="form-control" aria-label="...">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 								</div>
 							</div>
 						</div>
-					</form> 
-				</div><!-- /.navbar-collapse --> 
+					</form>
+				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 	</nav>
 	<div style="margin-top: 45px;"></div>
@@ -96,7 +106,7 @@
 			<h1>Menu de categorias</h1>
 		</div> -->
 		<!--Side bar -->
-		<div id="mySidenav" class="sidenav"> 
+		<div id="mySidenav" class="sidenav">
 			<div class="row">
 				<div class="panel square-panel">
 					<a href="javascript:void(0)" id="close-link"  class="btn closebtn pull-right" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -118,24 +128,24 @@
 											<option>Departamento 2</option>
 										</select>
  										<div class="checkbox">
-										  <label><input type="checkbox" value="">Categoria 1</label> 
+										  <label><input type="checkbox" value="">Categoria 1</label>
 										</div>
 										<div class="checkbox">
-												<label><input type="checkbox" value="">Categoria 1</label> 
+												<label><input type="checkbox" value="">Categoria 1</label>
 										</div>
 										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label> 
+											<label><input type="checkbox" value="">Categoria 1</label>
 										</div>
 										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label> 
+											<label><input type="checkbox" value="">Categoria 1</label>
 										</div>
 										<div class="checkbox">
-												<label><input type="checkbox" value="">Categoria 1</label> 
+												<label><input type="checkbox" value="">Categoria 1</label>
 										</div>
 										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label> 
+											<label><input type="checkbox" value="">Categoria 1</label>
 										</div>
-										
+
 									</div>
 								</div>
 							</div>
@@ -149,7 +159,7 @@
 							    </div>
 							    <div id="collapseFiltro2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro2">
 							   	   <!--Contenido de panel de detalles -->
-							      <div class="panel-body"> 
+							      <div class="panel-body">
 											<div class="form-group">
 												<label>Selección de marcas</label>
 												<select class="form-control input-text-box selectpicker " data-live-search="true" data-size="8" multiple>
@@ -174,7 +184,7 @@
 														<option>Item x</option><option>Item x</option><option>Item kx</option><option>Item x</option>
 													</select>
 												</div>
-											
+
 						      	</div>
 							    </div>
 								</div>
@@ -189,25 +199,25 @@
 							    </div>
 							    <div id="collapseFiltro3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiltro3">
 							       <!--Contenido de panel de precio -->
-							      <div class="panel-body"> 
+							      <div class="panel-body">
 											<div class="form-group ">
 												<div class="col-xs-5 cols-margin">
-													<input type="text" class="form-control input-text-box " placeholder="Min"> 
+													<input type="text" class="form-control input-text-box " placeholder="Min">
 												</div>
 												<div class="col-xs-5 cols-margin">
-													<input type="text" class="form-control input-text-box " placeholder="Max"> 
+													<input type="text" class="form-control input-text-box " placeholder="Max">
 												</div>
 												<div class="col-xs-2 cols-margin">
 													<button type="button" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
 												</div>
 											</div>
-											<br> 
+											<br>
 											<div class="radio">
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Menor a L. 50.00 								     
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Menor a L. 50.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 50.00 y L. 100.00							     
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 50.00 y L. 100.00
 												</label>
 												<label>
 													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 100.00 y 150
@@ -232,19 +242,19 @@
 						</div>
 					</div>
 				</div>
-			
-			</div> 
+
+			</div>
 		</div>
 
 		<!--Contenedor principal derecho -->
 		<div id="main">
-	 		<div class="row"> 			 
+	 		<div class="row">
 				<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 cols-margin">
 				<!-- Panel derecho: rejilla de articulos -->
 				<div class="panel square-panel">
 					<div class="panel-body">
 						<!-- Inicio de rejilla -->
-						<div class="container-fluid">
+						<div class="container-fluid" style="min-height: 698px">
 								<!-- opciones visualizacion -->
 								<div class="row">
 									<div class="col-xs-6 col-md-6 col-lg-6 cols-margin">
@@ -257,7 +267,7 @@
 									</div>
 									<div class="col-xs-6 col-md-6 col-lg-6 ">
 										<form class="form-inline pull-right">
-											<div class="form-group "> 
+											<div class="form-group ">
 												 <select class="form-control input-text-box ">
 												 	<option>Mostrar</option>
 												 	<option>Opcion 1</option>
@@ -270,7 +280,8 @@
 									</div>
 								</div>
 								<!-- inicio de rejilla -->
-								<div class="row">
+								<div class="row" id="rejillaItems">
+									<!--
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
 										<div class="store-btn-addtocart">
@@ -280,27 +291,27 @@
 										<img class="store-article-img" src="../img/comidas/81uY3301ujL._SL1500_.jpg" width="100%">
 									  		<div class="panel-body nopadding">
 									    		 <div class="cart-offer-title">Pancakes Rosa Maria </div>
-									    		 <div class="cart-offer-vendor"> 
-														<span class="badge cart-offer-badge">Marca</span>  
+									    		 <div class="cart-offer-vendor">
+														<span class="badge cart-offer-badge">Marca</span>
 														<span class="badge cart-offer-badge">Expreso americano</span>
 														<span class="badge cart-offer-badge-off">Oferta</span>
-													</div>  
+													</div>
 													<div class="store-article-price">L. 13,975.89</div>
-													<div class="store-article-goto"> 
-														<a tabindex="0" class="btn btn-success" role="button" data-toggle="popover" data-trigger="focus" 
-															 data-html="true" data-placement="top"															  
+													<div class="store-article-goto">
+														<a tabindex="0" class="btn btn-success" role="button" data-toggle="popover" data-trigger="focus"
+															 data-html="true" data-placement="top"
 															 data-content='
 															 	<div class="btn-group-vertical" role="group">
-																	<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito</button> 
-																</div>	
+																	<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito</button>
+																</div>
 																<div class="btn-group-vertical" role="group">
-																		<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir mis deseos</button> 
-																	</div>					 
+																		<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir mis deseos</button>
+																	</div>
 															 '>
 															35 min <i class="fa fa-chevron-right" aria-hidden="true"></i>
 														</a>
-													</div> 
-												</div> 
+													</div>
+												</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -308,16 +319,16 @@
 											<img class="store-article-img" src="../img/comidas/pancakes-2413875_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-danger">cerrado</button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -325,29 +336,29 @@
 											<img class="store-article-img" src="../img/comidas/fish-2366925_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 														<div class="dropup">
 																<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																		35 min <i class="fa fa-chevron-right" aria-hidden="true"></i> 
+																		35 min <i class="fa fa-chevron-right" aria-hidden="true"></i>
 																</button>
 																<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 																	<li>
 																			<div class="btn-group-vertical center-block " role="group">
-																				<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito </button> 
+																				<button type="button" class="btn btn-success "><i class="fa fa-cart-plus" aria-hidden="true"></i> Añadir al carrito </button>
 																				<button type="button" class="btn btn-success "><i class="fa fa-plus-square-o" aria-hidden="true"></i> Añadir a deseos </i></button>
-																				<button type="button" class="btn btn-success "><i class="fa fa-info" aria-hidden="true"></i> Ver más detalles </i></button> 
-																			</div>	
-																	</li> 
+																				<button type="button" class="btn btn-success "><i class="fa fa-info" aria-hidden="true"></i> Ver más detalles </i></button>
+																			</div>
+																	</li>
 																</ul>
 															</div>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -355,16 +366,16 @@
 											<img class="store-article-img" src="../img/comidas/fish-2366925_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -372,16 +383,16 @@
 											<img class="store-article-img" src="../img/comidas/fish-2366925_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -389,16 +400,16 @@
 											<img class="store-article-img" src="../img/comidas/fish-2366925_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -406,16 +417,16 @@
 											<img class="store-article-img" src="../img/comidas/fish-2366925_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Pancakes Rosa Maria </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
 													<span class="badge cart-offer-badge">Expreso americano</span>
 													<span class="badge cart-offer-badge-off">Oferta</span>
-												</div>  
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
@@ -423,40 +434,25 @@
 											<img class="store-article-img" src="../img/comidas/coffee-2371067_640.jpg" width="100%">
 											<div class="panel-body nopadding">
 												<div class="cart-offer-title">Cafe mañanero 25 onz </div>
-													<div class="cart-offer-vendor"> 
-													<span class="badge cart-offer-badge">Marca</span>  
-													<span class="badge cart-offer-badge">Expreso americano</span> 
-												</div>  
+													<div class="cart-offer-vendor">
+													<span class="badge cart-offer-badge">Marca</span>
+													<span class="badge cart-offer-badge">Expreso americano</span>
+												</div>
 												<div class="store-article-price">L. 13,975.89</div>
-												<div class="store-article-goto"> 
+												<div class="store-article-goto">
 													<button type="button" class="btn btn-success">35 min <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-												</div> 
-											</div> 
+												</div>
+											</div>
 										</div>
 									</div>
-								  
- 
- 
+
+
+								-->
 								</div><!--Fin de rejilla -->
 							<div class="row">
 								<center>
 								<nav aria-label="Page navigation">
-									  <ul class="pagination">
-									    <li>
-									      <a href="#" aria-label="Previous">
-									        <span aria-hidden="true">&laquo;</span>
-									      </a>
-									    </li>
-									    <li><a href="#">1</a></li>
-									    <li><a href="#">2</a></li>
-									    <li><a href="#">3</a></li>
-									    <li><a href="#">4</a></li>
-									    <li><a href="#">5</a></li>
-									    <li>
-									      <a href="#" aria-label="Next">
-									        <span aria-hidden="true">&raquo;</span>
-									      </a>
-									    </li>
+									  <ul id="pagination"class="pagination-sm">
 									  </ul>
 								</nav>
 								</center>
@@ -494,7 +490,7 @@
 						<input type="text" class="form-control input-text-box" placeholder="12" aria-describedby="basic-addon1" readonly>
 					</div>
 				</div>
-				<div class="form-group "> 
+				<div class="form-group ">
 						<button type="button" class="btn btn-success center-block" >Listo para Ordenar <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 				</div>
 			</div>
@@ -556,25 +552,27 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Escoge una ubicacion exacta de donde te encuentras</h4>
 				</div>
-				<div class="modal-body ">		
+				<div class="modal-body ">
 					<div class="google-maps" id="map"></div>
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
 
 
 	<!--Scripts -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../js/main-controller.js"></script>
+	<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
+	<script type="text/javascript" src="../js/catalogo-index-controller.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <!-- 	<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlo6NXGmYl_d4BAS_23HNm_K9qOoI5U7s&callback=initMap">
 	</script>
 	<script type="text/javascript" src="../js/geolocalizacion.js"></script> -->
 	<script>
-		$("#btn-billbox").on( "click", function() {	 
+		$("#btn-billbox").on( "click", function() {
     $('#billbox-body').toggle("1000");
   });
 

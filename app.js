@@ -7,6 +7,8 @@ var registroAspirante = require('./routes/registro-aspirante');
 var registroEmpresa = require('./routes/registro-empresa');
 var usuario = require('./routes/usuario');
 
+var catalogo = require('./routes/catalogo');
+
 /*
  * En los imports esta var registroUsuario = require('./routes/registro-usuario')
  * Esto lo que nos permite es segmentar la funcionalidad dependiendo de las rutas
@@ -35,6 +37,7 @@ app.use('/login/registro-usuario', registroUsuario);
 app.use('/login/registro-aspirante', registroAspirante);
 app.use('/login/registro-empresa', registroEmpresa);
 app.use('/user/usuario', usuario);
+app.use('/catalogo', catalogo);
 
 
 		//Tam
