@@ -356,17 +356,17 @@ function validarForm(formulario) {
 
 function userLogin(user, pass) {
     var data = "correo="+user+"&"+"contrasena="+pass;
+    console.log(data);
     
     $.ajax({
         url: "auth/signin",
         method: "POST",
         data: data,
-        crossDomain: true,
-        contentType: 'application/json',
         dataType: "json",
         success: function (respuesta) {
+            console.log(respuesta.length);
             
-            if (respuesta.affectedRows == 1) {
+            if (respuesta.length >0) {
                 window.location.replace("../catalogo/index.html");
                 var datos = "codigo="+respuesta[0].codUsuario+"&"+"tipo="+respuesta[0].codUsuario;
                 return datos;
@@ -383,6 +383,7 @@ function userLogin(user, pass) {
 $("#btn-acceder").click(function(){
     var mail = $("#txtMail").val();
     var pass = $("#txtPass").val();
+
 
     var data = userLogin(mail, pass);
     $.ajax({

@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 function extraersDatosdeBD(){
 
-		var parametro="codigo=14";
+		var parametro="codigo=1";
 
 	$.ajax({
 		

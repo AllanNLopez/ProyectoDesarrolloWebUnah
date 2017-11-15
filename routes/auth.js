@@ -12,14 +12,20 @@ var urlEncodeParser = bodyParser.urlencoded({
 
 
 
-router.use(bodyParser.json());
-var publicAdmin = express.static("public-admin");
+//router.use(bodyParser.json());
+//var publicAdmin = express.static("public-admin");
+
+router.get("/",function(request,response){
+
+
+});
 
 router.post("/signin", urlEncodeParser, function(request, response) {
     var hash = sha512(request.body.contrasena);
     var pass = hash.toString('hex');
-    var sql = "SELECT codUsuario, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario FROM tblusuarios WHERE correo=? and contrasena=?";
-    var values = [request.body.correo, pass];
+    var sql = "SELECT codUsuario, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario FROM tblUsuarios WHERE correo=? and contrasena=?";
+    var values = [request.body.correo, request.body.contrasena];
+    console.log(request.body.contrasena);
     
     realizarQuery(sql,values, function(res){
         response.send(res);
@@ -55,6 +61,9 @@ router.post("/login", urlEncodeParser, function(peticion, respuesta){
 		}
 		
 });
+
+
+
 
 router.get("/logout", function(peticion, respuesta){
 		peticion.session.destroy();
