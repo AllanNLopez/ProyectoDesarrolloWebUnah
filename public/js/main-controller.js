@@ -60,10 +60,9 @@ function validarCampo(valor, tipoCampo, id) {
             break;
         case 'id':
             if (/\d{4}-\d{4}-\d{5}/.test(input) && (input.length == 15)) {
-              is_correct = true;
-            }
-            else {
-              is_correct = false;
+                is_correct = true;
+            } else {
+                is_correct = false;
             }
             break;
         case 'fecha':
@@ -108,10 +107,9 @@ function validarCampo(valor, tipoCampo, id) {
             break;
         case 'rtn':
             if (/\d{4}-\d{4}-\d{6}/.test(input) && (input.length == 16)) {
-              is_correct = true;
-            }
-            else {
-              is_correct = false;
+                is_correct = true;
+            } else {
+                is_correct = false;
             }
             break;
         case 'website':
@@ -162,7 +160,7 @@ function submitForm(formulario, tipoFormulario) {
 
     if (id == '#formularioEmpresa2') {
         suma = suma + validarForm('formularioEmpresa');
-        id2= '#formularioEmpresa';
+        id2 = '#formularioEmpresa';
     }
 
     if (suma === 0) {
@@ -187,26 +185,26 @@ function submitForm(formulario, tipoFormulario) {
 
 
         if (tipoFormulario == 'registroUsuario') {
-          var data = $(id).serializeObject();
-          $.ajax({
-              url: "registro-usuario/",
-              method: "POST",
-              data: JSON.stringify(data),
-              crossDomain: true,
-              contentType: 'application/json',
-              dataType: "json",
-              success: function(respuesta) {
-                if (respuesta.affectedRows == 1){
-                  $(id).trigger("reset");
-                  $(':input').removeClass('valid');
-                  alert("Usuario registrado exitosamente.");
+            var data = $(id).serializeObject();
+            $.ajax({
+                url: "registro-usuario/",
+                method: "POST",
+                data: JSON.stringify(data),
+                crossDomain: true,
+                contentType: 'application/json',
+                dataType: "json",
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        $(id).trigger("reset");
+                        $(':input').removeClass('valid');
+                        alert("Usuario registrado exitosamente.");
+                    }
+                },
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
                 }
-              },
-            error: function(e) {
-              alert("Ocurrio un error.");
-              console.log(JSON.stringify(e));
-            }
-          });
+            });
         }
 
 
@@ -220,18 +218,18 @@ function submitForm(formulario, tipoFormulario) {
                 crossDomain: true,
                 contentType: 'application/json',
                 dataType: "json",
-                success: function(respuesta) {
-                  if (respuesta.affectedRows == 1){
-                      console.log(respuesta);
-                    $(id).trigger("reset");
-                    $(':input').removeClass('valid');
-                    alert("Aspirante registrado exitosamente.");
-                  }
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        console.log(respuesta);
+                        $(id).trigger("reset");
+                        $(':input').removeClass('valid');
+                        alert("Aspirante registrado exitosamente.");
+                    }
                 },
-              error: function(e) {
-                alert("Ocurrio un error.");
-                console.log(JSON.stringify(e));
-              }
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
+                }
             });
         }
         // NO BORRAR ESTE BLOQUE
@@ -257,19 +255,19 @@ function submitForm(formulario, tipoFormulario) {
                 crossDomain: true,
                 contentType: 'application/json',
                 dataType: "json",
-                success: function(respuesta) {
-                  if (respuesta.affectedRows == 1){
-                    alert("Usuario agregado con exito.")
-                    $(id).trigger('reset');
-                    $(id2).trigger('reset');
-                    $(':input').removeClass('valid');
-                    $(':select').removeClass('valid');
-            			}
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        alert("Usuario agregado con exito.")
+                        $(id).trigger('reset');
+                        $(id2).trigger('reset');
+                        $(':input').removeClass('valid');
+                        $(':select').removeClass('valid');
+                    }
                 },
-              error: function(e) {
-                alert("Ocurrio un error.");
-                console.log(JSON.stringify(e));
-              }
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
+                }
             });
 
             /*
@@ -356,6 +354,57 @@ function validarForm(formulario) {
     return suma;
 }
 
+function userLogin(user, pass) {
+    var data = "correo="+user+"&"+"contrasena="+pass;
+    
+    $.ajax({
+        url: "auth/signin",
+        method: "POST",
+        data: data,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: "json",
+        success: function (respuesta) {
+            
+            if (respuesta.affectedRows == 1) {
+                window.location.replace("../catalogo/index.html");
+                var datos = "codigo="+respuesta[0].codUsuario+"&"+"tipo="+respuesta[0].codUsuario;
+                return datos;
+            }
+         
+        },
+        error: function (e) {
+            alert("Ocurrio un error.");
+            console.log(JSON.stringify(e));
+        }
+    });
+}
+
+$("#btn-acceder").click(function(){
+    var mail = $("#txtMail").val();
+    var pass = $("#txtPass").val();
+
+    var data = userLogin(mail, pass);
+    $.ajax({
+        url: "auth/login",
+        method: "POST",
+        data: data,
+        crossDomain: true,
+        contentType: 'application/json',
+        dataType: "json",
+        success: function (respuesta) {
+            if (respuesta.status == 1) {
+                console.log("variable de sesion creada");
+            }
+        },
+        error: function (e) {
+            alert("Ocurrio un error.");
+            console.log(JSON.stringify(e));
+        }
+    });
+    
+});
+
 /*
  * La siguiente funcion convierte un objeto a formato JSON. Normalmente es llamada
  * luego de llamar a la funcion 'serializeArray'. La funcion serializeArray recibe
@@ -387,13 +436,13 @@ $('#btn-reg-user').click(function () {
 
 });
 
-function setDireccionMaps(results,latlng){
-        array = {
-          latitud : latlng.lat(),
-          longitud : latlng.lng(),
-          region: results[1].address_components[0].long_name,
-          ciudad: results[1].address_components[1].long_name,
-          departamento: results[1].address_components[2].long_name,
-          pais: results[1].address_components[3].long_name
-        };
+function setDireccionMaps(results, latlng) {
+    array = {
+        latitud: latlng.lat(),
+        longitud: latlng.lng(),
+        region: results[1].address_components[0].long_name,
+        ciudad: results[1].address_components[1].long_name,
+        departamento: results[1].address_components[2].long_name,
+        pais: results[1].address_components[3].long_name
+    };
 }

@@ -6,6 +6,7 @@ var registroUsuario = require('./routes/registro-usuario');
 var registroAspirante = require('./routes/registro-aspirante');
 var registroEmpresa = require('./routes/registro-empresa');
 var usuario = require('./routes/usuario');
+var login = require('./routes/auth');
 
 var catalogo = require('./routes/catalogo');
 var userTiendas = require('./routes/userTiendas');
@@ -40,6 +41,7 @@ app.use('/login/registro-empresa', registroEmpresa);
 app.use('/user/usuario', usuario);
 app.use('/catalogo', catalogo);
 app.use('/userTiendas', userTiendas);
+app.use('/login/auth', login);
 
 		//Tam
 app.listen(3000, () => {
