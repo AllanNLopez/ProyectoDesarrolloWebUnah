@@ -120,15 +120,11 @@ function extraersDatosdeBD(){
 	$.ajax({
 		
 		url:"usuario/",
-		//Tambien se puede utilizar el siguiente patron:
-		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
 		data: parametro,
 		method:"POST",
 		dataType:"json",
 		success:function(respuesta){
-            console.log(respuesta);
             for(var i=0;i<respuesta.length;i++){
-                            console.log(respuesta[i]);
 							$("#txtNames").val(respuesta[i].nombres);
 							$("#txtLastname").val(respuesta[i].apellidos);
 							$("#txtEmail").val(respuesta[i].telefono);
