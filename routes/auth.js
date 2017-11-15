@@ -13,9 +13,34 @@ var urlEncodeParser = bodyParser.urlencoded({
   extended: false
 });
 
+<<<<<<< HEAD
 router.use(bodyParser.json());
 router.use(cookieParser());
 router.use(session({secret:'sesioncarry',resave:true,saveUninitialized:true}));
+=======
+
+
+//router.use(bodyParser.json());
+//var publicAdmin = express.static("public-admin");
+
+router.get("/",function(request,response){
+
+
+});
+
+router.post("/signin", urlEncodeParser, function(request, response) {
+    var hash = sha512(request.body.contrasena);
+    var pass = hash.toString('hex');
+    var sql = "SELECT codUsuario, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario FROM tblUsuarios WHERE correo=? and contrasena=?";
+    var values = [request.body.correo, request.body.contrasena];
+    console.log(request.body.contrasena);
+    
+    realizarQuery(sql,values, function(res){
+        response.send(res);
+    });
+    
+});
+>>>>>>> dc62e97fb81e734477824fedc4168a3fdfe3349a
 
 function verificarAutenticacion(peticion, respuesta, next){
 	if(peticion.session.usuario)
@@ -59,6 +84,9 @@ router.post("/login", urlEncodeParser, function(peticion, respuesta){
 		}
 		
 });
+
+
+
 
 router.get("/logout", function(peticion, respuesta){
         respuesta.clearCookie("codigo");

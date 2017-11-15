@@ -354,6 +354,7 @@ function validarForm(formulario) {
     return suma;
 }
 
+<<<<<<< HEAD
 /*
 function userLogin(parametros) {
     var mail = $("#txtMail").val();
@@ -361,6 +362,12 @@ function userLogin(parametros) {
     var data = "correo=" + mail + "&" + "contrasena=" + pass;
 
     console.log(data);
+=======
+function userLogin(user, pass) {
+    var data = "correo="+user+"&"+"contrasena="+pass;
+    console.log(data);
+    
+>>>>>>> dc62e97fb81e734477824fedc4168a3fdfe3349a
     $.ajax({
         url: "auth/signin",
         method: "POST",
@@ -368,10 +375,19 @@ function userLogin(parametros) {
         dataType: "json",
         async: false,
         success: function (respuesta) {
+<<<<<<< HEAD
             if (respuesta.length == 1) {
                 parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
             } else {
                 alert("Credenciales invalidas; verifique sus datos por favor");
+=======
+            console.log(respuesta.length);
+            
+            if (respuesta.length >0) {
+                window.location.replace("../catalogo/index.html");
+                var datos = "codigo="+respuesta[0].codUsuario+"&"+"tipo="+respuesta[0].codUsuario;
+                return datos;
+>>>>>>> dc62e97fb81e734477824fedc4168a3fdfe3349a
             }
         },
         error: function (e) {
@@ -398,8 +414,15 @@ $("#btn-acceder").click(function () {
     var parametros = null;
     console.log(data);
 
+<<<<<<< HEAD
     var promise = $.ajax({
         url: "auth/signin",
+=======
+
+    var data = userLogin(mail, pass);
+    $.ajax({
+        url: "auth/login",
+>>>>>>> dc62e97fb81e734477824fedc4168a3fdfe3349a
         method: "POST",
         data: data,
         dataType: "json",
