@@ -92,6 +92,7 @@ function getCookie(cname) {
     return "";
 }
 
+//Cerrar sesion
 $("#btn-logout").click(function(){
     $.ajax({
         url: "auth/logout",
