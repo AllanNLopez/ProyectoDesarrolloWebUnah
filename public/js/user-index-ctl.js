@@ -92,6 +92,25 @@ function getCookie(cname) {
     return "";
 }
 
+$("#btn-logout").click(function(){
+    $.ajax({
+        url: "auth/logout",
+        method: "GET",
+        data: '',
+        dataType: "json",
+        success: function (respuesta) {
+            if(respuesta.status == 1){
+                window.location.href="../index.html";
+                alert(respuesta.mensaje);
+            }
+        },
+        error: function (e) {
+            alert("Ocurrio un error.");
+            console.log(JSON.stringify(e));
+        }
+    });
+});
+
 
 function extraersDatosdeBD(){
         

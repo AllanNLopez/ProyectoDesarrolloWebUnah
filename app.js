@@ -42,6 +42,7 @@ app.use('/user/usuario', usuario);
 app.use('/catalogo', catalogo);
 app.use('/userTiendas', userTiendas);
 app.use('/login/auth', auth);
+app.use('/user/auth', auth);
 
 		//Tam
 app.listen(3000, () => {

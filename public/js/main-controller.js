@@ -354,33 +354,6 @@ function validarForm(formulario) {
     return suma;
 }
 
-/*
-function userLogin(parametros) {
-    var mail = $("#txtMail").val();
-    var pass = $("#txtPass").val();
-    var data = "correo=" + mail + "&" + "contrasena=" + pass;
-
-    console.log(data);
-    $.ajax({
-        url: "auth/signin",
-        method: "POST",
-        data: data,
-        dataType: "json",
-        async: false,
-        success: function (respuesta) {
-            if (respuesta.length == 1) {
-                parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
-            } else {
-                alert("Credenciales invalidas; verifique sus datos por favor");
-            }
-        },
-        error: function (e) {
-            alert("Ocurrio un error.");
-            console.log(JSON.stringify(e));
-        }
-    });
-}
-*/
 
 //Aqui validamos las credenciales ingresadas en el login
 //Si las credenciales son correctas se procede a crear las variables de sesion y cookies

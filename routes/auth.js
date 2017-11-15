@@ -64,7 +64,8 @@ router.get("/logout", function(peticion, respuesta){
         respuesta.clearCookie("codigo");
 		respuesta.clearCookie("tipo_acceso");
 		peticion.session.destroy();
-		respuesta.sendFile(__dirname+"../public/index.html");
+        respuesta.send({status:1,mensaje:"Ha terminado la sesion"});
+        
 });
 
 router.get("/get-session",function(peticion, respuesta){
