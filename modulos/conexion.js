@@ -35,7 +35,6 @@ exports.conexion;
 exports.realizarQuery = function(sql, arreglo, callback) {
   conexion.query(sql, arreglo, (err, result) => {
     if (err) throw err;
-    console.log(result);
     callback(result);
     //console.log(JSON.stringify(result)+'DESDE realizarQuery');
     //return result;

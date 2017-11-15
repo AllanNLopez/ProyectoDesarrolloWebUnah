@@ -93,13 +93,9 @@ function getCookie(cname) {
 }
 
 
-<<<<<<< HEAD
 function extraersDatosdeBD(){
         
 		var parametro="codigo="+getCookie("codigo");
-=======
-		var parametro="codigo=1";
->>>>>>> dc62e97fb81e734477824fedc4168a3fdfe3349a
 
 	$.ajax({
 		
