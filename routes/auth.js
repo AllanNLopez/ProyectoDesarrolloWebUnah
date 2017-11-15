@@ -38,7 +38,7 @@ router.use(function(peticion,respuesta,next){
 router.post('/signin', urlEncodeParser, function(request, response) {
     var hash = sha512(request.body.contrasena);
     var pass = hash.toString('hex');
-    var sql = "SELECT codUsuario as codigo, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario as tipo FROM tblUsuarios WHERE correo=? and contrasena=?";
+    var sql = "SELECT codUsuario as codigo, nombres, apellidos, telefono, correo, contrasena, codTipoUsuario as tipo FROM tblusuarios WHERE correo=? and contrasena=?";
     var values = [request.body.correo, pass];
     var valores;
     realizarQuery(sql,values, function(res){
