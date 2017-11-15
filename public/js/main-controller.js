@@ -369,7 +369,7 @@ $("#btn-acceder").click(function () {
     var pass = $("#txtPass").val();
     var data = "correo=" + mail + "&" + "contrasena=" + pass;
     var parametros = null;
-    console.log(data);
+    //console.log(data);
 
     var promise = $.ajax({
         url: "auth/signin",
@@ -381,6 +381,7 @@ $("#btn-acceder").click(function () {
                 parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
             } else {
                 alert("Credenciales invalidas; verifique sus datos por favor");
+    
             }
         },
         error: function (e) {

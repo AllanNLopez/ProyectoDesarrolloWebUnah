@@ -18,10 +18,10 @@ router.use(cookieParser());
 router.use(session({secret:'sesioncarry',resave:true,saveUninitialized:true}));
 
 function verificarAutenticacion(peticion, respuesta, next){
-	if(peticion.session.usuario)
+	if(peticion.session.codigo)
 		return next();
 	else
-		respuesta.send("ERROR, ACCESO NO AUTORIZADO");
+		respuesta.send("NO HA INICIADO SESION: ERROR, ACCESO NO AUTORIZADO");
 }
 
 var catalogo = express.static("../catalogo");
@@ -47,7 +47,8 @@ router.post('/signin', urlEncodeParser, function(request, response) {
 });
 
 router.post("/login", urlEncodeParser, function(peticion, respuesta){
-		if(peticion.body.codigo !== '' && peticion.body.tipo !==''){
+
+		if(peticion.body.codigo && peticion.body.tipo){
 			peticion.session.codigo = peticion.body.codigo;
 			peticion.session.tipo = peticion.body.tipo;
             respuesta.cookie("codigo",peticion.body.codigo);
@@ -68,7 +69,7 @@ router.get("/logout", function(peticion, respuesta){
         
 });
 
-router.get("/get-session",function(peticion, respuesta){
+router.get("/get-session", verificarAutenticacion, function(peticion, respuesta){
 	respuesta.send(JSON.stringify(peticion.session));
 });
 
