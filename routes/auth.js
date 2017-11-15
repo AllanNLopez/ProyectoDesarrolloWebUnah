@@ -72,4 +72,10 @@ router.get("/get-session",function(peticion, respuesta){
 	respuesta.send(JSON.stringify(peticion.session));
 });
 
+/*  En proceso de utilizar rutas seguras
+*/
+app.get("/ruta-segura1",verificarAutenticacion,function(peticion, respuesta){
+	respuesta.send("Ruta 1. No se deberia visualizar o acceder a esta ruta si no esta autenticado");
+});
+
 module.exports = router;

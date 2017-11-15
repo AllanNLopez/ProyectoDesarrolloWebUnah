@@ -43,8 +43,10 @@ app.use('/catalogo', catalogo);
 app.use('/userTiendas', userTiendas);
 app.use('/login/auth', auth);
 app.use('/user/auth', auth);
+app.use('/catalogo/auth', auth);
 
-		//Tam
+
+
 app.listen(3000, () => {
   console.log('Servidor iniciado en puerto 3000.');
 });
