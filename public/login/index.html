@@ -37,19 +37,19 @@
                                 <center>
                                     <h3 style="font-family:'Roboto Light';">Inicio de sesión</h3><br>
                                 </center>
-                                <form action="catalogo.html">
+                                <form >
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">
 									  <i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                            <input type="text" class="form-control input-text-box" placeholder="Tu correo electrónico" aria-describedby="basic-addon1">
+                                            <input type="text" class="form-control input-text-box" name="txtMail" id="txtMail" placeholder="Tu correo electrónico" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon2">
 									  <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
-                                            <input type="password" class="form-control input-text-box" placeholder="Tu contraseña" aria-describedby="basic-addon2">
+                                            <input type="password" class="form-control input-text-box" name="txtPass" id="txtPass" placeholder="Tu contraseña" aria-describedby="basic-addon2">
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                            <button type="submit" class="btn btn-success">Acceder</button>
+                                            <button type="button" id="btn-acceder" class="btn btn-success">Acceder</button>
                                         </div>
                                     </div>
                                 </form>
@@ -148,6 +148,8 @@
     <!--Scripts -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/main-controller.js"></script>
+    <script type="text/javascript" src="../js/session-controller.js"></script>
     <script>
         // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {

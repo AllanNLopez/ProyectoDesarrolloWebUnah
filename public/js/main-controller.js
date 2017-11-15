@@ -60,10 +60,9 @@ function validarCampo(valor, tipoCampo, id) {
             break;
         case 'id':
             if (/\d{4}-\d{4}-\d{5}/.test(input) && (input.length == 15)) {
-              is_correct = true;
-            }
-            else {
-              is_correct = false;
+                is_correct = true;
+            } else {
+                is_correct = false;
             }
             break;
         case 'fecha':
@@ -108,10 +107,9 @@ function validarCampo(valor, tipoCampo, id) {
             break;
         case 'rtn':
             if (/\d{4}-\d{4}-\d{6}/.test(input) && (input.length == 16)) {
-              is_correct = true;
-            }
-            else {
-              is_correct = false;
+                is_correct = true;
+            } else {
+                is_correct = false;
             }
             break;
         case 'website':
@@ -162,7 +160,7 @@ function submitForm(formulario, tipoFormulario) {
 
     if (id == '#formularioEmpresa2') {
         suma = suma + validarForm('formularioEmpresa');
-        id2= '#formularioEmpresa';
+        id2 = '#formularioEmpresa';
     }
 
     if (suma === 0) {
@@ -187,26 +185,26 @@ function submitForm(formulario, tipoFormulario) {
 
 
         if (tipoFormulario == 'registroUsuario') {
-          var data = $(id).serializeObject();
-          $.ajax({
-              url: "registro-usuario/",
-              method: "POST",
-              data: JSON.stringify(data),
-              crossDomain: true,
-              contentType: 'application/json',
-              dataType: "json",
-              success: function(respuesta) {
-                if (respuesta.affectedRows == 1){
-                  $(id).trigger("reset");
-                  $(':input').removeClass('valid');
-                  alert("Usuario registrado exitosamente.");
+            var data = $(id).serializeObject();
+            $.ajax({
+                url: "registro-usuario/",
+                method: "POST",
+                data: JSON.stringify(data),
+                crossDomain: true,
+                contentType: 'application/json',
+                dataType: "json",
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        $(id).trigger("reset");
+                        $(':input').removeClass('valid');
+                        alert("Usuario registrado exitosamente.");
+                    }
+                },
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
                 }
-              },
-            error: function(e) {
-              alert("Ocurrio un error.");
-              console.log(JSON.stringify(e));
-            }
-          });
+            });
         }
 
 
@@ -220,18 +218,18 @@ function submitForm(formulario, tipoFormulario) {
                 crossDomain: true,
                 contentType: 'application/json',
                 dataType: "json",
-                success: function(respuesta) {
-                  if (respuesta.affectedRows == 1){
-                      console.log(respuesta);
-                    $(id).trigger("reset");
-                    $(':input').removeClass('valid');
-                    alert("Aspirante registrado exitosamente.");
-                  }
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        console.log(respuesta);
+                        $(id).trigger("reset");
+                        $(':input').removeClass('valid');
+                        alert("Aspirante registrado exitosamente.");
+                    }
                 },
-              error: function(e) {
-                alert("Ocurrio un error.");
-                console.log(JSON.stringify(e));
-              }
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
+                }
             });
         }
         // NO BORRAR ESTE BLOQUE
@@ -257,19 +255,19 @@ function submitForm(formulario, tipoFormulario) {
                 crossDomain: true,
                 contentType: 'application/json',
                 dataType: "json",
-                success: function(respuesta) {
-                  if (respuesta.affectedRows == 1){
-                    alert("Usuario agregado con exito.")
-                    $(id).trigger('reset');
-                    $(id2).trigger('reset');
-                    $(':input').removeClass('valid');
-                    $(':select').removeClass('valid');
-            			}
+                success: function (respuesta) {
+                    if (respuesta.affectedRows == 1) {
+                        alert("Usuario agregado con exito.")
+                        $(id).trigger('reset');
+                        $(id2).trigger('reset');
+                        $(':input').removeClass('valid');
+                        $(':select').removeClass('valid');
+                    }
                 },
-              error: function(e) {
-                alert("Ocurrio un error.");
-                console.log(JSON.stringify(e));
-              }
+                error: function (e) {
+                    alert("Ocurrio un error.");
+                    console.log(JSON.stringify(e));
+                }
             });
 
             /*
@@ -356,6 +354,86 @@ function validarForm(formulario) {
     return suma;
 }
 
+
+//Aqui validamos las credenciales ingresadas en el login
+//Si las credenciales son correctas se procede a crear las variables de sesion y cookies
+//las cookies contienen codigo de usuario y su tipo de acceso
+//El nombre de los cookies son "codigo" y "tipo_acceso"
+//See ejecuta una peticion ajax despues de otra
+//Para obtener los valores y evitar problemas de enviar valores null se usaron promesas
+//Las promesas nos dicen que un evento pasara en cualquier momento
+//y que despues de que ese evento pase se asegura que lo que queremos obtener de ese
+//evento lo tendremos, para luego ejecutar la logica que queramos de acuerdo a los resultados
+$("#btn-acceder").click(function () {
+    var mail = $("#txtMail").val();
+    var pass = $("#txtPass").val();
+    var data = "correo=" + mail + "&" + "contrasena=" + pass;
+    var parametros = null;
+    //console.log(data);
+
+    var promise = $.ajax({
+        url: "auth/signin",
+        method: "POST",
+        data: data,
+        dataType: "json",
+        success: function (respuesta) {
+            if (respuesta.length == 1) {
+                parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
+            } else {
+                alert("Credenciales invalidas; verifique sus datos por favor");
+    
+            }
+        },
+        error: function (e) {
+            alert("Ocurrio un error.");
+            console.log(JSON.stringify(e));
+        }
+    });
+    promise.then(function () {
+        $.ajax({
+            url: "auth/login",
+            method: "POST",
+            data: parametros,
+            dataType: "json",
+            success: function (respuesta) {
+                if (respuesta.status == 1) {
+                    window.location.replace("../catalogo");
+                    console.log("variable de sesion creada");
+                    console.log("Cookie creada");
+                }
+            },
+            error: function (e) {
+                alert("Ocurrio un error.");
+                console.log(JSON.stringify(e));
+            }
+        });
+    });
+
+});
+
+//Funcion para obtener datos de una cookie
+//Las cookies definidas en routes/auth.js son
+//codigo: codigo del usuario
+//tipo_acceso: codigo de acceso para 3 tipos de usuario
+//Para obtener codigo de usuario
+//var user = getCookie("codigo");
+//Para obtener el tipo de acceso
+//var access = getCookie("tipo_acceso");
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 /*
  * La siguiente funcion convierte un objeto a formato JSON. Normalmente es llamada
  * luego de llamar a la funcion 'serializeArray'. La funcion serializeArray recibe
@@ -387,13 +465,13 @@ $('#btn-reg-user').click(function () {
 
 });
 
-function setDireccionMaps(results,latlng){
-        array = {
-          latitud : latlng.lat(),
-          longitud : latlng.lng(),
-          region: results[1].address_components[0].long_name,
-          ciudad: results[1].address_components[1].long_name,
-          departamento: results[1].address_components[2].long_name,
-          pais: results[1].address_components[3].long_name
-        };
+function setDireccionMaps(results, latlng) {
+    array = {
+        latitud: latlng.lat(),
+        longitud: latlng.lng(),
+        region: results[1].address_components[0].long_name,
+        ciudad: results[1].address_components[1].long_name,
+        departamento: results[1].address_components[2].long_name,
+        pais: results[1].address_components[3].long_name
+    };
 }
