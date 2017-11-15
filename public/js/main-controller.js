@@ -354,24 +354,25 @@ function validarForm(formulario) {
     return suma;
 }
 
-function userLogin(user, pass) {
-    var data = "correo="+user+"&"+"contrasena="+pass;
-    
+/*
+function userLogin(parametros) {
+    var mail = $("#txtMail").val();
+    var pass = $("#txtPass").val();
+    var data = "correo=" + mail + "&" + "contrasena=" + pass;
+
+    console.log(data);
     $.ajax({
         url: "auth/signin",
         method: "POST",
         data: data,
-        crossDomain: true,
-        contentType: 'application/json',
         dataType: "json",
+        async: false,
         success: function (respuesta) {
-            
-            if (respuesta.affectedRows == 1) {
-                window.location.replace("../catalogo/index.html");
-                var datos = "codigo="+respuesta[0].codUsuario+"&"+"tipo="+respuesta[0].codUsuario;
-                return datos;
+            if (respuesta.length == 1) {
+                parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
+            } else {
+                alert("Credenciales invalidas; verifique sus datos por favor");
             }
-         
         },
         error: function (e) {
             alert("Ocurrio un error.");
@@ -379,22 +380,34 @@ function userLogin(user, pass) {
         }
     });
 }
+*/
 
-$("#btn-acceder").click(function(){
+//Aqui validamos las credenciales ingresadas en el login
+//Si las credenciales son correctas se procede a crear las variables de sesion y cookies
+//las cookies contienen codigo de usuario y su tipo de acceso
+//El nombre de los cookies son "codigo" y "tipo_acceso"
+//See ejecuta una peticion ajax despues de otra
+//Para obtener los valores y evitar problemas de enviar valores null se usaron promesas
+//Las promesas nos dicen que un evento pasara en cualquier momento
+//y que despues de que ese evento pase se asegura que lo que queremos obtener de ese
+//evento lo tendremos, para luego ejecutar la logica que queramos de acuerdo a los resultados
+$("#btn-acceder").click(function () {
     var mail = $("#txtMail").val();
     var pass = $("#txtPass").val();
+    var data = "correo=" + mail + "&" + "contrasena=" + pass;
+    var parametros = null;
+    console.log(data);
 
-    var data = userLogin(mail, pass);
-    $.ajax({
-        url: "auth/login",
+    var promise = $.ajax({
+        url: "auth/signin",
         method: "POST",
         data: data,
-        crossDomain: true,
-        contentType: 'application/json',
         dataType: "json",
         success: function (respuesta) {
-            if (respuesta.status == 1) {
-                console.log("variable de sesion creada");
+            if (respuesta.length == 1) {
+                parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
+            } else {
+                alert("Credenciales invalidas; verifique sus datos por favor");
             }
         },
         error: function (e) {
@@ -402,8 +415,50 @@ $("#btn-acceder").click(function(){
             console.log(JSON.stringify(e));
         }
     });
-    
+    promise.then(function () {
+        $.ajax({
+            url: "auth/login",
+            method: "POST",
+            data: parametros,
+            dataType: "json",
+            success: function (respuesta) {
+                if (respuesta.status == 1) {
+                    window.location.replace("../catalogo");
+                    console.log("variable de sesion creada");
+                    console.log("Cookie creada");
+                }
+            },
+            error: function (e) {
+                alert("Ocurrio un error.");
+                console.log(JSON.stringify(e));
+            }
+        });
+    });
+
 });
+
+//Funcion para obtener datos de una cookie
+//Las cookies definidas en routes/auth.js son
+//codigo: codigo del usuario
+//tipo_acceso: codigo de acceso para 3 tipos de usuario
+//Para obtener codigo de usuario
+//var user = getCookie("codigo");
+//Para obtener el tipo de acceso
+//var access = getCookie("tipo_acceso");
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 /*
  * La siguiente funcion convierte un objeto a formato JSON. Normalmente es llamada
