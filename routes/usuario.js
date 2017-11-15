@@ -16,7 +16,6 @@ router.post('/', urlEncodeParser, function(peticion,respuesta){
 	console.log("consiguiendo datos");
 	var sql = "SELECT codUsuario as codigo, nombres, apellidos, telefono, correo, contrasena FROM tblUsuarios WHERE codUsuario=?";
     var values = [peticion.body.codigo];
-    console.log(values);
     realizarQuery(sql, values, function(data){
          respuesta.send(data);
      });
