@@ -1,6 +1,7 @@
 
 var codRubroTemp = 0;
 var rubroTemp = 0;
+var lastinsert;
 
 $('#btnAddDetalle').click(function(){
     $('#tblDetalles').append('<tr><td>'+$('#selDetalles option:selected').text()+'</td><td>'+$('#txtValorDetalle').val()+'</td></tr>');
@@ -159,6 +160,34 @@ function getCookie(cname) {
 }
 
 $('#btnGuardarArticulo').click(function(){
+    $('#formularioImagenes').removeClass("hidden");
+    var parametros ="nombreArticulo="+$('#txtNombreArticulo').val()
+    +"&descripcion="+$('#txtDescripcion').val()
+    +"&precio="+$('#txtPrecio').val()
+    +"&saldo="+$('#selCantidad').val()  
+    +"&estado=activo"
+    +"&codCategoria="+$('#selCategorias').val() 
+    +"&codUsuarioPublicador="+$('#slcMisTiendas').val();
+    $.ajax({
+    url:"/user/guardarArticulo",
+    method:"POST",
+    data:parametros,
+    dataType:"json",
+    success:function(respuesta){ 
+        alert(respuesta[0].id);	
+        lastinsert = respuesta[0].id;
+        $('#formularioImagenes').removeClass("hidden");
+    },
+    error:function(respuesta){
+    alert("Hubo un error");
+    }
+    });
+   
+});
+ 
+
+$(document).ready(function(){
+    cargarTiendas();
     $('.uploadImage').submit(function(e){
         e.preventDefault();
         
@@ -175,10 +204,4 @@ $('#btnGuardarArticulo').click(function(){
       });
         return false;
    });
- 
-});
-
-$(document).ready(function(){
-    cargarTiendas();
-   
 });

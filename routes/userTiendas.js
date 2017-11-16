@@ -10,6 +10,7 @@ var storage = multer.diskStorage({
         callback(null, Date.now() + '.jpg'); // set the file name and extension
     }
 });
+
 var upload = multer({storage: storage});
  
 var realizarQuery = require('../modulos/conexion').realizarQuery;
@@ -22,7 +23,7 @@ var urlEncodeParser = bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.post('/add', upload.single('imagename'), function(req, res, next) {
-  var image = req.file.filename;
+  var image = req.file.filename; 
   res.send(image);
 });
 
@@ -82,7 +83,7 @@ router.post("/guardarArticulo", urlEncodeParser, function(request, response){
                             +"codCategoria, "
                            +" codUsuarioPublicador "
                           +") "
-                +" VALUES (null,?,?,?,'Honduras',?,'NOW()',?,?,?)";
+                +" VALUES (null,?,?,?,'Honduras',?,NOW(),?,?,?)";
   var values = [ 
                 request.body.nombreArticulo, 
                 request.body.descripcion, 
@@ -94,7 +95,8 @@ router.post("/guardarArticulo", urlEncodeParser, function(request, response){
               ];
   realizarQuery(sql, values, function(res){
     response.send(res);
-  })
+  });
+  
 });
 
 
