@@ -4,7 +4,7 @@ $('#btnAddDetalle').click(function(){
 });
 
 function cargarTiendas(){
-    var parametros ="codigoUsuario=2";
+    var parametros ="codigoUsuario="+getCookie("codigo");
 	$.ajax({
 		url:"/user/getTiendas",
 		method:"POST",
@@ -16,7 +16,7 @@ function cargarTiendas(){
                     $('#slcMisTiendas').append('<option value="'+respuesta[i].codEmpresa+'">'+respuesta[i].nombreEmpresa+'</option>');
                 }
 			}else
-				alert("No hay tiendas");			
+            $('#slcMisTiendas').append('<option>No hay tiendas</option>');		
 		},
 		error:function(respuesta){
 			alert("Hubo un error");

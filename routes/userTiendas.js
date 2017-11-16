@@ -17,6 +17,14 @@ router.post("/getTiendas", urlEncodeParser, function(request, response){
     });
 });
 
+router.post("/getDepartamentos", urlEncodeParser, function(request, response){
+  var sql = "SELECT codEmpresa, nombreEmpresa from tblempresas where codUsuario = ?";
+  var values = [request.body.codigoUsuario];
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
+});
+
 router.post("/guardarArticulo", urlEncodeParser, function(request, response){
   var sql = "INSERT INTO tblarticulos("
                             +"codArticulo, "
