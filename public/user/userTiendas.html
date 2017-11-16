@@ -119,9 +119,8 @@
 								<div id="collapseFiltro2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFiltro2">
 									<div class="panel-body  ">
 										<ul class="nav nav-pills nav-stacked">
-											<select class="form-control input-text-box">
-												<option>Seleccione una tienda</option>
-												<option value="1">Tienda 1</option>
+											<select id="slcMisTiendas" class="form-control input-text-box">
+												<option name="rubro">Seleccione una tienda</option> 
 											</select>
 											<br>
 											<li class="active" ><a href="#tab-misArticulos" data-toggle="pill">Mis articulos</a></li>
@@ -168,6 +167,7 @@
 								<div id="tab-misArticulos" class="tab-pane active col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 									<!-- tabs para mostrar todos los articulo y los detalles de cada articulo  -->
 									<ul class="nav nav-tabs" role="tablist">
+										<li role="presentation"><a href="#detalleTienda" aria-controls="detalleTienda" role="tab" data-toggle="tab">Detalles de tienda</a></li>
 										<li role="presentation" class="active"><a href="#listaArticulos" aria-controls="listaArticulos" role="tab" data-toggle="tab">Mis artículos</a></li>
 										<li role="presentation"><a href="#detalleArticulo" aria-controls="detalleArticulo" role="tab" data-toggle="tab">Detalle</a></li>
 									</ul>
@@ -262,19 +262,17 @@
 													<div class="form-group col-xs-12 forms-padding">
 														<div class="input-group">
 															<span class="input-group-addon" id="basic-addon1">Unidades disponibles </span>
-															<select class="form-control input-text-box" id="selCantidad"><option>1</option></select>
+															<select class="form-control input-text-box" id="selCantidad"><option value="1">1</option></select>
 														</div>
 													</div>  
 													<div class="form-group col-xs-12 forms-padding">
 														<select id="selDepartamentos" class="form-control input-text-box">
-															<option>Seleccione un departamento</option>
-															<option>Option 1</option>
+															<option value="0">Seleccione un departamento</option> 
 														</select>
 													</div>
 													<div class="form-group col-xs-12 forms-padding">
 														<select id="selCategorias" class="form-control input-text-box">
-															<option>Seleccione una categoría</option>
-															<option>Option 1</option>
+															<option value="0">Seleccione una categoría</option> 
 														</select>
 													</div> 
 													<div class="form-group col-xs-12 forms-padding">
@@ -315,7 +313,7 @@
 													<div class="form-group col-xs-12 forms-padding">
 														<div class="btn-toolbar pull-right" role="toolbar"  >
 															<div class="btn-group" role="group"  >
-																<button class="btn ">Guardar</button>
+																<button id="btnGuardarArticulo" class="btn">Guardar</button>
 															</div>
 															<div class="btn-group" role="group"  >
 																<button class="btn  ">Cancelar</button>
@@ -323,6 +321,38 @@
 														</div>
 													</div> 
 												</div>		
+											</div><!--fin de sección de detalles articulo -->
+										</div> 
+										<div  id="detalleTienda" role="tabpanel" class="tab-pane col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2"><!-- inicio de tab con info de articulo seleccionado -->
+											<!-- Formulario para mostrar los datos detalles de un articulo -->
+											<div class="row">
+												<div >   <br>
+													<div class="form-group col-xs-12 forms-padding"><label class="form-label"> <i class="fa fa-user fa " aria-hidden="true"></i> Información de tienda </label></div>
+													<form id="formularioEmpresa">
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtRTN" id="txtRTN" onkeyup="validarCampo(txtRTN.value,'rtn','txtRTN')" placeholder="Escribe tu RTN (0000-0000-000000)"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtEmpresa" id="txtEmpresa" onkeyup="validarCampo(txtEmpresa.value,'nombre','txtEmpresa')" placeholder="Nombre de tu empresa  "  readonly/>
+														</div> 
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtPhone" id="txtPhone" onkeyup="validarCampo(txtPhone.value,'phone','txtPhone')" placeholder="Ingresa el número de teléfono"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtWebsite" id="txtWebsite" onkeyup="validarCampo(txtWebsite.value,'website','txtWebsite')" placeholder="Ingresa el sitio web de tu empresa"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<textarea type="text" class="form-control input-text-box" name="txtDomicilio" id="txtDomicilio" onkeyup="validarCampo(txtDomicilio.value,'domicilio','txtDomicilio')" rows="2" placeholder="¿Dónde esta ubicada?" readonly></textarea>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<textarea type="text" class="form-control input-text-box" name="txtDescripcion" id="txtDescripcion" onkeyup="validarCampo(txtDescripcion.value,'domicilio','txtDescripcion')" rows="3" placeholder="Describe brevemente tu empresa" readonly></textarea>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtRubro" id="txtRubro"  placeholder="Rubro de la empresa " readonly/>
+														</div>
+													</form>
+												         
+												 	</div>
 											</div><!--fin de sección de detalles articulo -->
 										</div> 
 									</div>

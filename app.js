@@ -43,6 +43,7 @@ app.use('/user/usuario', usuario);
 app.use('/catalogo', catalogo);
 app.use('/catalogo/listaDeseos', listaDeseos);
 app.use('/userTiendas', userTiendas);
+app.use('/user', userTiendas);
 app.use('/login/auth', auth);
 app.use('/user/auth', auth);
 app.use('/catalogo/auth', auth);
