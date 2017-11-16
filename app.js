@@ -11,6 +11,7 @@ var auth = require('./routes/auth');
 var listaDeseos = require('./routes/listaDeseos');
 var catalogo = require('./routes/catalogo');
 var userTiendas = require('./routes/userTiendas');
+var userSuscripcion = require('./routes/userSuscripcion');
 
 /*
  * En los imports esta var registroUsuario = require('./routes/registro-usuario')
@@ -47,6 +48,7 @@ app.use('/user', userTiendas);
 app.use('/login/auth', auth);
 app.use('/user/auth', auth);
 app.use('/catalogo/auth', auth);
+app.use('/user/userSuscripcion', userSuscripcion);
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en puerto 3000.');

@@ -127,25 +127,7 @@ router.post("/user", urlEncodeParser, function(request, response) {
       idRubro = 1;
   }
 
-  var sql2 = `INSERT INTO tblempresas(
-                codEmpresa,
-                rtn,
-                nombreEmpresa,
-                ubicacion,
-                actividad,
-                sitioweb,
-                telefono,
-                informacion,
-                calificacion,
-                activa,
-                codRubro,
-                mapslatitud,
-                mapslongitud,
-                mapsregion,
-                mapsciudad,
-                mapsdeparamento,
-                mapspais,
-                codUsuario) VALUES (NULL,?,?,?,?,?,?,?,NULL,NULL,?,?,?,?,?,?,?,?)`;
+  var sql2 = "INSERT INTO tblempresas(codEmpresa, rtn, nombreEmpresa, ubicacion, actividad, sitioweb, telefono, informacion, calificacion, activa, codRubro, mapslatitud, mapslongitud, mapsregion, mapsciudad, mapsdeparamento, mapspais, codUsuario) VALUES (NULL,?,?,?,?,?,?,?,NULL,NULL,?,?,?,?,?,?,?,?)";
 
   var values2 = [request.body.txtRTN,
     request.body.txtEmpresa,
@@ -161,7 +143,7 @@ router.post("/user", urlEncodeParser, function(request, response) {
     request.body.ciudad,
     request.body.departamento,
     request.body.pais
-  ]
+  ];
 
   realizarQrCB(sql, values, sql2, values2, function(res) {
     response.send(res);
