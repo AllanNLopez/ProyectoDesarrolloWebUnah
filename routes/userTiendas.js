@@ -94,14 +94,10 @@ router.post("/guardarArticulo", urlEncodeParser, function(request, response){
                 request.body.codUsuarioPublicador 
               ];
   realizarQuery(sql, values, function(res){
+    response.send(res);
   });
-  realizarQuery("SELECT LAST_INSERT_ID()", function(res){ 
-    response.send(JSON.stringify(res));
-  });
+  
 });
 
-function getlastid(){
-  
-}
 
 module.exports = router;

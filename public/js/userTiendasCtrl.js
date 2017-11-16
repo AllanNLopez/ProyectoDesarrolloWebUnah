@@ -174,8 +174,8 @@ $('#btnGuardarArticulo').click(function(){
     data:parametros,
     dataType:"json",
     success:function(respuesta){ 
-        alert(respuesta);	
-        lastinsert = respuesta;
+        alert(respuesta[0].id);	
+        lastinsert = respuesta[0].id;
         $('#formularioImagenes').removeClass("hidden");
     },
     error:function(respuesta){
