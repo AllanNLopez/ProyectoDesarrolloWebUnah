@@ -167,12 +167,13 @@
 								<div id="tab-misArticulos" class="tab-pane active col-xs-12  col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 									<!-- tabs para mostrar todos los articulo y los detalles de cada articulo  -->
 									<ul class="nav nav-tabs" role="tablist">
-										<li role="presentation" class="active"><a href="#listaArticulos" aria-controls="listaArticulos" role="tab" data-toggle="tab">Mis artículos</a></li>
+										<li role="presentation" class="active"><a href="#detalleTienda" aria-controls="detalleTienda" role="tab" data-toggle="tab">Detalles de tienda</a></li>
+										<!-- <li role="presentation" ><a href="#listaArticulos" aria-controls="listaArticulos" role="tab" data-toggle="tab">Mis artículos</a></li> -->
 										<li role="presentation"><a href="#detalleArticulo" aria-controls="detalleArticulo" role="tab" data-toggle="tab">Detalle</a></li>
 									</ul>
 									<!-- Tab panes -->
 									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="listaArticulos"><!-- Inioio de tab con todas los articulos -->
+										<div role="tabpanel" class="tab-pane  " id="listaArticulos"><!-- Inioio de tab con todas los articulos -->
 											<br>
 											<div class="col-xs-12 col-sm-6 col-md-8">	
 												<div class=""> 
@@ -266,21 +267,18 @@
 													</div>  
 													<div class="form-group col-xs-12 forms-padding">
 														<select id="selDepartamentos" class="form-control input-text-box">
-															<option>Seleccione un departamento</option>
-															<option>Option 1</option>
+															<option value="0">Seleccione un departamento</option> 
 														</select>
 													</div>
 													<div class="form-group col-xs-12 forms-padding">
 														<select id="selCategorias" class="form-control input-text-box">
-															<option>Seleccione una categoría</option>
-															<option>Option 1</option>
+															<option value="0">Seleccione una categoría</option> 
 														</select>
 													</div> 
-													<div class="form-group col-xs-12 forms-padding">
+													<!-- <div class="form-group col-xs-12 forms-padding">
 														<div class="form-group col-xs-5 cols-margin">
 															<select id="selDetalles" class="form-control input-text-box">
-																<option>Seleccione un detalle</option>
-																<option>Option 1</option>
+																<option value="0">Seleccione un detalle</option> 
 															</select>
 														</div>
 														<div class="form-group col-xs-5 cols-margin">
@@ -289,28 +287,11 @@
 														<div class="form-group col-xs-2 cols-margin">
 															<button id="btnAddDetalle" class="btn"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
 														</div>
-													</div>
+													</div> -->
 													<div class="form-group col-xs-12 forms-padding">
-														<table id="tblDetalles" class="table">
-															<tr><td>Detalle x</td><td>Valor de x</td></tr>
+														<table id="tblDetalles" class="table"> 
 														</table>
 													</div>
-													<div class="form-group col-xs-12 forms-padding">
-														<div class="form-group col-xs-8 cols-margin">
-															<input type="file" class="btn btn-default" multiple>
-														</div>
-														<div class="form-group col-xs-2 cols-margin">
-															<button id="btnAddImagen" class="btn">Agregar <i class="fa fa-file-image-o" aria-hidden="true"></i></button>
-														</div>
-													</div>
-													<div id="imageContainer" class="form-group col-xs-12 forms-padding"> 
-														<img src="../img/comidas/combo-hamburguesa.jpeg" class="img-thumbnail image-small"> 
-														<img src="../img/comidas/combo-hamburguesa.jpeg" class="img-thumbnail image-small"> 
-														<img src="../img/comidas/fish-2366925_640.jpg" class="img-thumbnail image-small"> 
-														<img src="../img/comidas/combo-hamburguesa.jpeg" class="img-thumbnail image-small"> 
-														<img src="../img/comidas/combo-hamburguesa.jpeg" class="img-thumbnail image-small"> 
-													</div>
-													<br>
 													<div class="form-group col-xs-12 forms-padding">
 														<div class="btn-toolbar pull-right" role="toolbar"  >
 															<div class="btn-group" role="group"  >
@@ -322,6 +303,54 @@
 														</div>
 													</div> 
 												</div>		
+											</div>
+											<form id="formularioImagenes" class="uploadImage hidden" enctype="multipart/form-data" action="/user/add" method="POST">
+												<div class="form-group col-xs-12 forms-padding"><label class="form-label"> Seleccione una imagen para el articulo </label></div>
+												<div class="form-group col-xs-12 forms-padding">
+													<div class="form-group col-xs-8 cols-margin">
+														<input type="file" name="imagename" id="imagename" class="btn btn-default">
+													</div>
+													<div class="form-group col-xs-2 cols-margin">
+														<!-- <button id="btnAddImagen" class="btn">Agregar <i class="fa fa-file-image-o" aria-hidden="true"></i></button> -->
+														<input type="submit"  name="submit" value="Guardar" class="btn"><i class="fa fa-file-image-o" aria-hidden="true"></i>
+													</div>
+												</div>
+												<div id="imageContainer" class="form-group col-xs-12 forms-padding"> 
+												 
+												</div> 
+											</form>
+											<!--fin de sección de detalles articulo -->
+										</div> 
+										<div  id="detalleTienda" role="tabpanel" class="active tab-pane col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2"><!-- inicio de tab con info de articulo seleccionado -->
+											<!-- Formulario para mostrar los datos detalles de un articulo -->
+											<div class="row">
+												<div >   <br>
+													<div class="form-group col-xs-12 forms-padding"><label class="form-label"> <i class="fa fa-user fa " aria-hidden="true"></i> Información de tienda </label></div>
+													<form id="formularioEmpresa">
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtRTN" id="txtRTN" onkeyup="validarCampo(txtRTN.value,'rtn','txtRTN')" placeholder="Escribe tu RTN (0000-0000-000000)"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtEmpresa" id="txtEmpresa" onkeyup="validarCampo(txtEmpresa.value,'nombre','txtEmpresa')" placeholder="Nombre de tu empresa  "  readonly/>
+														</div> 
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtPhone" id="txtPhone" onkeyup="validarCampo(txtPhone.value,'phone','txtPhone')" placeholder="Ingresa el número de teléfono"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtWebsite" id="txtWebsite" onkeyup="validarCampo(txtWebsite.value,'website','txtWebsite')" placeholder="Ingresa el sitio web de tu empresa"  readonly/>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<textarea type="text" class="form-control input-text-box" name="txtDomicilio" id="txtDomicilio" onkeyup="validarCampo(txtDomicilio.value,'domicilio','txtDomicilio')" rows="2" placeholder="¿Dónde esta ubicada?" readonly></textarea>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<textarea type="text" class="form-control input-text-box" name="txtDescripcion" id="txtDescripcion" onkeyup="validarCampo(txtDescripcion.value,'domicilio','txtDescripcion')" rows="3" placeholder="Describe brevemente tu empresa" readonly></textarea>
+														</div>
+														<div class="form-group col-xs-12 forms-padding">
+															<input type="text" class="form-control input-text-box" name="txtRubro" id="txtRubro"  placeholder="Rubro de la empresa " readonly/>
+														</div>
+													</form>
+												         
+												 	</div>
 											</div><!--fin de sección de detalles articulo -->
 										</div> 
 									</div>
@@ -334,7 +363,12 @@
 			</div> <!-- fin de seccion de ofertas -->
 		</div>
 
-		
+		<!-- <form class="uploadImage" enctype="multipart/form-data" action="/user/add" method="POST">
+			<input type="text" id="title">
+			<input type="file" name="imagename" id="imagename">
+			<input type="submit" name="submit" value="Submit">
+	 </form>
+		 -->
 		<!--inicio de pie de pagina-->
 		<div class="row footer-section">
 			 <div class="container footer-caption">
@@ -385,6 +419,7 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/datatables.js"></script>    
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>	
 	<script type="text/javascript" src="../js/main-controller.js"></script>  
 	<script type="text/javascript" src="../js/user-index-ctl.js"></script>  
 	<script type="text/javascript" src="../js/userTiendasCtrl.js"></script>    

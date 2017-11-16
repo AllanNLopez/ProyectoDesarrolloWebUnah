@@ -43,7 +43,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a   class="navbar-brand btn-opciones" id="btnOpciones" onclick="openNav();" ><i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
-				<a class="navbar-brand" href="#"><img alt="Brand" src="../img/carry2.png" height="30px"></a>
+				<a class="navbar-brand" href="/catalogo"><img alt="Brand" src="../img/carry2.png" height="30px"></a>
 				
 			</div>
 			<div class="collapse navbar-collapse" id="small-menu">
@@ -117,10 +117,10 @@
 										<!-- tab pills de seccio de informacion personal -->
 									   <ul class="nav nav-pills nav-stacked">
 										  <li class="active"><a href="#tab-personalInfo" data-toggle="pill">Información de perfil</a></li>
-										  <li><a href="#tab-misOrdenes" data-toggle="pill">Mis ordenes</a></li>
-										  <li><a href="#tab-misFacturas" data-toggle="pill">Mis facturas</a></li>
-											<li><a href="#tab-listaDeseos" data-toggle="pill">Mi lista de deseos</a></li>
-											<li><a href="#tab_c" data-toggle="pill">Ms tiendas favoritas</a></li>
+										  <li><a onclick="obtenerOrdenesUsuario();" href="#tab-misOrdenes" data-toggle="pill">Mis ordenes</a></li>
+										  <li><a  onclick="obtenerFactura();" href="#tab-misFacturas" data-toggle="pill">Mis facturas</a></li>
+											<li><a onclick="obtenerListaDeseo();" href="#tab-listaDeseos" data-toggle="pill">Mi lista de deseos</a></li>
+											<li><a onclick="obtenerEmpresaFavorita();" href="#tab_c" data-toggle="pill">Ms tiendas favoritas</a></li>
 										</ul>
 										<!-- fin tab pills de seccio de informacion personal -->
 									</div>
@@ -257,7 +257,7 @@
 											<!--Inicio de tabla de ordenes -->
 											<div class="row">
 												<div class="table-responsive col-md-12 col-sm-12 col-lg-12">
-													<table class="table display">
+													<table class="table display" id="tablaOrdenes">
 														<thead>
 															<th>#</th>
 															<th>Fecha</th>
@@ -269,26 +269,7 @@
 															<th>Total a pagar</th>
 														</thead>
 														<tbody>
-															<tr>
-																<td>#</td>
-																<td>12/07/2019</td>
-																<td class="hidden-xs">Juan Carlos</td>
-																<td>20 mins</td>
-																<td>2</td>
-																<td class="hidden-xs">123.80</td>
-																<td class="hidden-xs">25.00</td>
-																<td>150.00</td>
-															</tr>
-															<tr>
-																<td>#</td>
-																<td>12/07/2019</td>
-																<td class="hidden-xs">Juan Carlos</td>
-																<td>20 mins</td>
-																<td>2</td>
-																<td class="hidden-xs">123.80</td>
-																<td class="hidden-xs">25.00</td>
-																<td>150.00</td>
-															</tr>
+															
 														</tbody>
 													</table>
 												</div>
@@ -327,7 +308,7 @@
 								<div id="tab-misFacturas" class="tab-pane col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" >
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
 										<h3>Todas mis facturas</h3>
-										<table class="table display" class="display" id="dt-facturas">
+										<table class="table display"  id="dt-facturas">
 											<thead>
 												<th>Fecha</th> 
 												<th>Tienda</th> 
@@ -338,24 +319,7 @@
 												<th>Total</th> 
 											</thead>
 											<tbody>
-												<tr>
-													<td>12/03/2008</td>
-													<td>Nombre de la tienda</td>
-													<td class="hidden-xs hidden-sm">Pedro J Perez</td>
-													<td class="hidden-xs hidden-sm">2</td> 
-													<td class="hidden-xs hidden-sm">L. 150.00</td>
-													<td class="hidden-xs hidden-sm">L. 25.00</td>
-													<td>L. 175.00</td>
-												</tr>
-												<tr>
-													<td>12/03/2009</td>
-													<td>Nombre de la tienda</td>
-													<td class="hidden-xs hidden-sm">Marco A. Paguada</td>
-													<td class="hidden-xs hidden-sm">4</td>
-													<td class="hidden-xs hidden-sm">L. 50.00</td>
-													<td class="hidden-xs hidden-sm">L. 200.00</td> 
-													<td>L. 235.00</td>
-												</tr>
+												
 											</tbody>
 										</table> 
 									</div>
@@ -372,22 +336,26 @@
 											<th class="hidden-xs">Descripción</th>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td class="hidden-xs">8912</td>
-												<td>Esto pasa cuando el nombre del articulo</td>
-												<td>L. 45.00</td>
-												<td class="hidden-xs">Golosinas don Tito</td>
-												<td class="hidden-xs">Tortilla fritas con un monton de cosas revueltas</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td class="hidden-xs">8912</td>
-												<td>Maestria grande</td>
-												<td>L. 145.00</td>
-												<td class="hidden-xs">Golosinas don Tito</td>
-												<td class="hidden-xs">Tortilla fritas con un </td>
-											</tr>
+											
+										</tbody>
+									</table>
+										 
+								</div>
+								<div id="tab_c" class="tab-pane col-xs-12 cols-margin" >
+									<h4>Mi lista de deseos</h4>
+									<table id="dt-tiendaFavoritas" class="table table-bordered display responsive ">
+										<thead>
+											<th>#</th>
+											<th class="hidden-xs">cod</th>
+											<th>Nombre de la tienda</th>
+											<th>Rubro</th>
+											<th class="">Ubicacion</th>
+											<th class="hidden-xs">Calificacion</th>
+
+
+										</thead>
+										<tbody>
+											
 										</tbody>
 									</table>
 										 

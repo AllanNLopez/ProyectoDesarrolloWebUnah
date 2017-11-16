@@ -190,16 +190,34 @@ function obtenerOrdenesUsuario(){
 
 	$.ajax({
 		
-		url:"usuario/actualizarInfo",
+		url:"usuario/obtenerOrdenes",
 		//Tambien se puede utilizar el siguiente patron:
 		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
 		data: parametro,
 		method:"POST",
 		dataType:"json",
 		success:function(respuesta){
-			if (respuesta.affectedRows == 1) {
-            alert("Datos Actualizados Exitosamente");
-            extraersDatosdeBD();
+			if (respuesta.length == 1) {
+				var t = $('#tablaOrdenes').DataTable();
+			t.clear().draw();
+			for (var i=0;i<respuesta.length;i++){
+
+
+				t.row.add([i,
+						respuesta[i].fecha,
+						respuesta[i].nombreRepatidor,
+						respuesta[i].tiempoEstimado,
+						respuesta[i].cantArticulos,
+						respuesta[i].costoDeCompra,
+						respuesta[i].costoDeEntrega,
+						respuesta[i].costoOrden
+					]).draw( false );;
+				
+
+
+			
+			}
+
 			}
 
 			}
@@ -211,3 +229,149 @@ function obtenerOrdenesUsuario(){
 
 
 }
+
+
+function obtenerFactura(){
+        
+		var parametro="codigo="+getCookie("codigo");
+						
+		$.ajax({
+		
+		url:"usuario/obtenerFacturas",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"POST",
+		dataType:"json",
+		success:function(respuesta){
+			if (respuesta.length == 1) {
+				//console.log(respuesta);
+				
+				var t = $('#dt-facturas').DataTable();
+			t.clear().draw();
+			for (var i=0;i<respuesta.length;i++){
+
+
+				t.row.add([
+						respuesta[i].fecha,
+						respuesta[i].origenFabricacion,
+						respuesta[i].nombreRepatidor,
+						respuesta[i].cantArticulos,
+						respuesta[i].costoDeCompra,
+						respuesta[i].costoDeEntrega,
+						respuesta[i].costoOrden
+					]).draw( false );;
+				
+
+
+			
+			}
+
+			
+
+			}
+		}
+		,
+		error:function(e){
+			console.log("Error: " + JSON.stringify(e));
+		}
+	} );
+	}
+
+function obtenerListaDeseo(){
+	
+        
+		var parametro="codigo="+getCookie("codigo");
+						
+		$.ajax({
+		
+		url:"usuario/obtenerListaDeseo",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"POST",
+		dataType:"json",
+		success:function(respuesta){
+			if (respuesta.length >0) {
+				//console.log(respuesta);
+				
+				var t = $('#dt-listaDeseos').DataTable();
+			t.clear().draw();
+			for (var i=0;i<respuesta.length;i++){
+
+
+				t.row.add([i,
+						respuesta[i].colItem,
+						respuesta[i].nombreArticulo,
+						respuesta[i].precio,
+						respuesta[i].origenFabricacion,
+						respuesta[i].descripcion
+					]).draw( false );;
+				
+
+
+			
+			}
+
+			
+
+			}
+		}
+		,
+		error:function(e){
+			console.log("Error: " + JSON.stringify(e));
+		}
+	} );
+	}
+
+function obtenerEmpresaFavorita(){
+        
+		var parametro="codigo="+getCookie("codigo");
+						
+		$.ajax({
+		
+		url:"usuario/obtenerEmpresaFavorita",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"POST",
+		dataType:"json",
+		success:function(respuesta){
+			//console.log(respuesta);
+			if (respuesta.length >0) {
+				//console.log(respuesta);
+				
+				var t = $('#dt-tiendaFavoritas').DataTable();
+			t.clear().draw();
+			for (var i=0;i<respuesta.length;i++){
+
+
+				t.row.add([i,
+						respuesta[i].codItem,
+						respuesta[i].nombreEmpresa,
+						respuesta[i].rubro,
+						respuesta[i].ubicacion,
+						respuesta[i].calificacion
+					]).draw( false );;
+				
+
+
+			
+			}
+
+			
+
+			}
+		}
+		,
+		error:function(e){
+			console.log("Error: " + JSON.stringify(e));
+		}
+	} );
+	}
+
+
+
+
+
+

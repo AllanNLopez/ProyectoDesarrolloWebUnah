@@ -59,7 +59,7 @@ router.post("/cargarLista", urlEncodeParser, function(request, response) {
 });
 
 router.post("/cargarDetalles", urlEncodeParser, function(request, response) {
-  var sql = `select codArticulo, X.codDetalle, valor, A.detalle as detalle
+  var sql = `select codArticulo, x.codDetalle, valor, A.detalle as detalle
   from
   (
      select codArticulo, codDetalle, valor,
@@ -68,7 +68,7 @@ router.post("/cargarDetalles", urlEncodeParser, function(request, response) {
     CROSS JOIN (select @num:=0, @group:=null) c
     order by codArticulo, codDetalle desc, valor
   ) as x
-  INNER join tbldetalles A ON a.codDetalle = X.codDetalle
+  INNER join tbldetalles A ON A.codDetalle = x.codDetalle
   where x.row_number <= 2`;
 
   var values = [];

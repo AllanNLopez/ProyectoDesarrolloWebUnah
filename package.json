@@ -14,7 +14,10 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "file-type": "^7.2.0",
+    "formidable": "^1.1.1",
     "passport": "^0.4.0",
+    "read-chunk": "^2.1.0",
     "sha512": "0.0.1"
   }
 }
