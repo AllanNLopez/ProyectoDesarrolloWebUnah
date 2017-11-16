@@ -6,8 +6,9 @@ var registroUsuario = require('./routes/registro-usuario');
 var registroAspirante = require('./routes/registro-aspirante');
 var registroEmpresa = require('./routes/registro-empresa');
 var usuario = require('./routes/usuario');
-var auth = require('./routes/auth');
 
+var auth = require('./routes/auth');
+var listaDeseos = require('./routes/listaDeseos');
 var catalogo = require('./routes/catalogo');
 var userTiendas = require('./routes/userTiendas');
 
@@ -40,12 +41,11 @@ app.use('/login/registro-aspirante', registroAspirante);
 app.use('/login/registro-empresa', registroEmpresa);
 app.use('/user/usuario', usuario);
 app.use('/catalogo', catalogo);
+app.use('/catalogo/listaDeseos', listaDeseos);
 app.use('/userTiendas', userTiendas);
 app.use('/login/auth', auth);
 app.use('/user/auth', auth);
 app.use('/catalogo/auth', auth);
-
-
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en puerto 3000.');

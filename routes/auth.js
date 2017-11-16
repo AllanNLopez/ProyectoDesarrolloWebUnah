@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var sha512 = require('sha512');
 
+
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
 
@@ -12,6 +13,7 @@ var router = express.Router();
 var urlEncodeParser = bodyParser.urlencoded({
   extended: false
 });
+
 
 router.use(bodyParser.json());
 router.use(cookieParser());
@@ -24,16 +26,38 @@ function verificarAutenticacion(peticion, respuesta, next){
 		respuesta.send("NO HA INICIADO SESION: ERROR, ACCESO NO AUTORIZADO");
 }
 
-var catalogo = express.static("../catalogo");
-//var user = express.static("../user");
+var catalogo = express.static(__dirname+"/public/catalogo/");
+var user = express.static(__dirname+"/public/user/");
 
-router.use(function(peticion,respuesta,next){
-	if (peticion.session.usuario)
+function verificarCatalogo(peticion,respuesta,next){
+if (peticion.session.codigo)
 		catalogo(peticion,respuesta,next);
 	else
 		return next();
-});
+}
 
+function verificarUser(peticion,respuesta,next){
+if (peticion.session.codigo)
+		user(peticion,respuesta,next);
+	else
+		return next();
+}
+
+
+/*router.use(function(peticion,respuesta,next){
+    console.log("verifica");
+	if (peticion.session.codigo)
+		catalogo(peticion,respuesta,next);
+	else
+		return next();
+});*/
+
+/*router.use(function(peticion,respuesta,next){
+	if (peticion.session.codigo)
+		user(peticion,respuesta,next);
+	else
+		return next();
+});*/
 
 router.post('/signin', urlEncodeParser, function(request, response) {
     var hash = sha512(request.body.contrasena);
@@ -75,8 +99,14 @@ router.get("/get-session", verificarAutenticacion, function(peticion, respuesta)
 
 /*  En proceso de utilizar rutas seguras
 */
-router.get("/ruta-segura1",verificarAutenticacion,function(peticion, respuesta){
-	respuesta.send("Ruta 1. No se deberia visualizar o acceder a esta ruta si no esta autenticado");
+router.get("/rutaSeguraCatalogo",verificarAutenticacion,function(peticion, respuesta, next){
+    verificarCatalogo(peticion,respuesta,next);
+	respuesta.send({status:1,mensaje:"Usuario en sesion: puede navegar"});
+});
+
+router.get("/rutaSeguraUser",verificarAutenticacion,function(peticion, respuesta, next){
+    verificarUser(peticion,respuesta,next);
+	respuesta.send({status:1,mensaje:"Usuario en sesion: puede navegar"});
 });
 
 module.exports = router;

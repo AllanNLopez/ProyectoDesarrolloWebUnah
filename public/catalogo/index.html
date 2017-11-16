@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-
+	<title>Catalogo</title>
+	<link rel="icon" href="../img/logo.png" type="image/gif" sizes="16x16">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,8 +65,8 @@
 								<a href="../catalogo/carrito_ordenes.html">
 									<span class="fa fa-shopping-basket" aria-hidden="true"></span>&nbsp;<span class="badge badge-white">4</span>
 								</a>
-								<a href="../catalogo/carrito_ordenes.html">
-									<span class="fa fa-bell" aria-hidden="true"></span>&nbsp;<span class="badge badge-white">4</span>
+								<a href="../catalogo/lista_deseos.html">
+									<span class="fa fa-gift" aria-hidden="true"></span>&nbsp;<span id="wsNotification" class="badge badge-white"></span>
 								</a>
 								<a href="carrito_ordenes.html">
 									<span  class="fa fa-rocket" aria-hidden="true"></span>+
@@ -115,7 +115,8 @@
 							<div class="panel  square-panel">
 								<div class="panel-heading" role="tab" id="headingFiltro1">
 									<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro1" aria-expanded="true" aria-controls="collapseOne">
+									<a role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro1" aria-expanded="true" aria-controls="collapseOne"
+									onclick="setExpanded('Filtrar Categorias')">
 										<i class="fa fa-filter" aria-hidden="true"></i> Filtrar Categorias
 									</a>
 									</h4>
@@ -123,36 +124,19 @@
 								<!--Contenido de panel de categorias -->
 								<div id="collapseFiltro1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFiltro1">
 									<div class="panel-body">
-										<select class="form-control input-text-box">
-											<option>Departamento 1</option>
-											<option>Departamento 2</option>
+										<select class="form-control input-text-box" id="selectDepartamento">
+											<option value="">Departamento</option>
 										</select>
- 										<div class="checkbox">
-										  <label><input type="checkbox" value="">Categoria 1</label>
+										<div id="divCategorias">
 										</div>
-										<div class="checkbox">
-												<label><input type="checkbox" value="">Categoria 1</label>
-										</div>
-										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label>
-										</div>
-										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label>
-										</div>
-										<div class="checkbox">
-												<label><input type="checkbox" value="">Categoria 1</label>
-										</div>
-										<div class="checkbox">
-											<label><input type="checkbox" value="">Categoria 1</label>
-										</div>
-
 									</div>
 								</div>
 							</div>
 						  	<div class="panel  square-panel">
 							    <div class="panel-heading" role="tab" id="headingFiltro2">
 							      <h4 class="panel-title">
-							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro2" aria-expanded="false" aria-controls="collapseFiltro2">
+							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro2" aria-expanded="false" aria-controls="collapseFiltro2"
+											onclick="setExpanded('Filtrar por Detalles')">
 												<i class="fa fa-filter" aria-hidden="true"></i> Filtrar por Detalles
 							        </a>
 							      </h4>
@@ -192,7 +176,8 @@
 							  <div class="panel">
 							    <div class="panel-heading" role="tab" id="headingFiltro3">
 							      <h4 class="panel-title">
-							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro3" aria-expanded="false" aria-controls="collapseFiltro3">
+							        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionInterno" href="#collapseFiltro3" aria-expanded="false" aria-controls="collapseFiltro3"
+											onclick="setExpanded('Filtrar por Precio')">
 													<i class="fa fa-filter" aria-hidden="true"></i> Filtrar por Precio
 							        </a>
 							      </h4>
@@ -202,37 +187,37 @@
 							      <div class="panel-body">
 											<div class="form-group ">
 												<div class="col-xs-5 cols-margin">
-													<input type="text" class="form-control input-text-box " placeholder="Min">
+													<input type="text" class="form-control input-text-box " id="precioMin" placeholder="Min">
 												</div>
 												<div class="col-xs-5 cols-margin">
-													<input type="text" class="form-control input-text-box " placeholder="Max">
+													<input type="text" class="form-control input-text-box " id="precioMax" placeholder="Max">
 												</div>
 												<div class="col-xs-2 cols-margin">
-													<button type="button" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+													<button type="button" class="btn" id="btnBuscarPrecio" ><i class="fa fa-search" aria-hidden="true"></i></button>
 												</div>
 											</div>
 											<br>
 											<div class="radio">
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Menor a L. 50.00
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option1"> Menor a L. 50.00
 												</label>
 												<label>
 													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 50.00 y L. 100.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 100.00 y 150
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option3"> Entre L. 100.00 y L. 150.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 150.00 y L. 200.00
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option4"> Entre L. 150.00 y L. 200.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 200.00 y L. 300.00
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option5"> Entre L. 200.00 y L. 300.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Entre L. 300.00 y L. 500.00
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option6"> Entre L. 300.00 y L. 500.00
 												</label>
 												<label>
-													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Mayor a L. 500.00
+													<input type="radio" name="optionsRadios" id="optionsRadios2" value="option7"> Mayor a L. 500.00
 												</label>
 											</div>
 							      </div>
@@ -254,7 +239,7 @@
 				<div class="panel square-panel">
 					<div class="panel-body">
 						<!-- Inicio de rejilla -->
-						<div class="container-fluid" style="min-height: 698px">
+						<div class="container-fluid">
 								<!-- opciones visualizacion -->
 								<div class="row">
 									<div class="col-xs-6 col-md-6 col-lg-6 cols-margin">
@@ -268,11 +253,11 @@
 									<div class="col-xs-6 col-md-6 col-lg-6 ">
 										<form class="form-inline pull-right">
 											<div class="form-group ">
-												 <select class="form-control input-text-box ">
+												 <select class="form-control input-text-box" id="opcionMostrar">
 												 	<option>Mostrar</option>
-												 	<option>Opcion 1</option>
-												 	<option>Opcion 1</option>
-												 	<option>Opcion 1</option>
+												 	<option>Precio descendente</option>
+												 	<option>Precio ascendente</option>
+												 	<option>Fecha</option>
 												 </select>
 											</div>
 										</form>
@@ -280,7 +265,7 @@
 									</div>
 								</div>
 								<!-- inicio de rejilla -->
-								<div class="row" id="rejillaItems">
+								<div class="row" id="rejillaItems" style="min-height:860px;">
 									<!--
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin">
 										<div class="panel panel-default nopadding  ">
@@ -452,7 +437,7 @@
 							<div class="row">
 								<center>
 								<nav aria-label="Page navigation">
-									  <ul id="pagination"class="pagination-sm">
+									  <ul id="pagination" class="pagination-sm">
 									  </ul>
 								</nav>
 								</center>
@@ -567,6 +552,7 @@
 	<script type="text/javascript" src="../js/jquery.twbsPagination.min.js"></script>
 	<script type="text/javascript" src="../js/catalogo-index-controller.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	
 <!-- 	<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlo6NXGmYl_d4BAS_23HNm_K9qOoI5U7s&callback=initMap">
 	</script>

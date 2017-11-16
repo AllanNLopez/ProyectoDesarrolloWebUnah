@@ -13,10 +13,12 @@ router.use(bodyParser.json());
 var realizarQuery = require('../modulos/conexion').realizarQuery;
 
 router.post('/', urlEncodeParser, function(peticion,respuesta){
+
 	//console.log("consiguiendo datos");
 	var sql = "SELECT codUsuario as codigo, nombres, apellidos, telefono, correo, contrasena FROM tblusuarios WHERE codUsuario=?";
     var values = [peticion.body.codigo];
     //console.log(values);
+
     realizarQuery(sql, values, function(data){
          respuesta.send(data);
      });
