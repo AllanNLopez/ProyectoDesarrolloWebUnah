@@ -28,13 +28,15 @@ router.post('/', urlEncodeParser, function(peticion,respuesta){
 
 
 router.post('/actualizarInfo', urlEncodeParser, function(peticion,respuesta){
+	var hash = sha512(peticion.body.contrasena);
+  	var contrasena = hash.toString('hex');
 	//console.log("consiguiendo datos");
 	var sql = "UPDATE tblusuarios SET nombres=?, apellidos=?, telefono=?, correo=?, contrasena=? WHERE codUsuario=?";
     var values = [peticion.body.nombre,
 				  peticion.body.apellido,
 				  peticion.body.telefono,
 				  peticion.body.email,
-				  peticion.body.contrasena,
+				  contrasena,
 				  peticion.body.codigo];
     //console.log(values);
     realizarQuery(sql, values, function(data){

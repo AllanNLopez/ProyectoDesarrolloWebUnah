@@ -175,7 +175,7 @@ function actualizarDatosUsuario(){
 			}
 		,
 		error:function(e){
-			alert("Error: " + JSON.stringify(e));
+			console.log("Error: " + JSON.stringify(e));
 		}
 	} );
 
@@ -198,14 +198,14 @@ function obtenerOrdenesUsuario(){
 		dataType:"json",
 		success:function(respuesta){
 			if (respuesta.affectedRows == 1) {
-            alert("Datos Actualizados Exitosamente")
+            alert("Datos Actualizados Exitosamente");
             extraersDatosdeBD();
 			}
 
 			}
 		,
 		error:function(e){
-			alert("Error: " + JSON.stringify(e));
+			console.log("Error: " + JSON.stringify(e));
 		}
 	} );
 
