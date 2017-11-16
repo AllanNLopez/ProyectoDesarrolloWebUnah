@@ -35,7 +35,7 @@ $(document).ready(function() {
         $('#page-content-' + totalPaginas).append(`<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin" style="height:430px">
             <div class="panel panel-default nopadding  ">
             <div class="store-btn-addtocart">
-                <button type="button" class="btn btn-sm">add</button>
+                <button type="button" class="btn btn-sm" onclick="abrirDetalleProducto(`+respuesta[i].codigoArticulo+`)"><span aria-hidden="true">Ver</span></button>
                 <button type="button" onclick="agregarToWishlist(` + respuesta[i].codigoArticulo + `)" class="btn btn-sm"><span class="fa fa-gift" aria-hidden="true"></button>
             </div>
             <img class="store-article-img" src="` + imagen + `" width="100%" style="height: 280px;">
@@ -239,7 +239,7 @@ function cargarProductos(respuesta) {
     $('#page-content-' + totalPaginas).append(`<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 cols-margin" style="height:430px">
       <div class="panel panel-default nopadding  ">
       <div class="store-btn-addtocart">
-          <button type="button" class="btn btn-sm">add</button>
+          <button type="button" class="btn btn-sm" onclick="abrirDetalleProducto(`+respuesta[i].codigoArticulo+`)"><span aria-hidden="true">Ver</span></button>
           <button type="button" class="btn btn-sm" onclick="agregarToWishlist(` + respuesta[i].codigoArticulo + `)"><span class="fa fa-gift" aria-hidden="true"></button>
       </div>
       <img class="store-article-img" src="` + imagen + `" width="100%" style="height: 280px;">
@@ -390,4 +390,36 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function setCookie(c_name,value,exdays)
+  {
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) +
+      ((exdays==null) ? "" : ("; expires="+exdate.toUTCString()));
+    document.cookie=c_name + "=" + c_value;
+  }
+
+
+function abrirDetalleProducto(valor){
+  setCookie('codigoArticulo', valor, 1);
+  window.location.replace("http://localhost:3000/catalogo/detalle_producto.html");
+  /*
+  $.ajax({
+    url: "setItemSeleccionado/"+valor,
+    method: "POST",
+    data: '',
+    crossDomain: true,
+    dataType: "json",
+    contentType: "application/json",
+    success: function(respuesta) {
+      window.location.replace("http://localhost:3000/catalogo/detalle_producto.html");
+    },
+    error: function(e) {
+      alert("Ocurrio un error.");
+      console.log(JSON.stringify(e));
+    }
+  });
+*/
 }

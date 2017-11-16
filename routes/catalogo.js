@@ -4,6 +4,7 @@
  */
 var express = require('express');
 var bodyParser = require("body-parser");
+var session = require("express-session");
 /*
  * Importamos la funcion realizarQuery para facilitar la insercion de informacion
  * en la base de datos
@@ -17,6 +18,7 @@ var router = express.Router();
 var urlEncodeParser = bodyParser.urlencoded({
   extended: false
 });
+//router.use(session({secret:'sesioncarry',resave:true,saveUninitialized:true}));
 
 router.use(bodyParser.json());
 
@@ -285,6 +287,67 @@ router.post("/refreshWishlist/:codigo", urlEncodeParser, function(request, respo
     response.send(res);
   });
 });
+
+router.post("/agregarToWishlist/:codigo", urlEncodeParser, function(request, response) {
+  var sql = ` INSERT INTO
+              tbllistadeseos(colItem, codArticulo, codUsuario, fechaRegistro)
+              VALUES(NULL,?,?,NOW())`;
+  var values = [request.body.codigoArticulo, request.params.codigo];
+  realizarQuery(sql, values, function(res) {
+    response.send(res);
+  });
+});
+/*
+router.post("/setItemSeleccionado/:id", urlEncodeParser, function(request, response) {
+  request.session.idArticulo = request.params.id;
+  var data = {};
+  response.send(JSON.stringify(data));
+});
+*/
+router.post("/getItemSeleccionado/:id", urlEncodeParser, function(request, response) {
+  var sql = `SELECT A.codArticulo as codigoArticulo,
+  		      tblimagenesarticulo.urlUbicacion as imagen,
+            A.nombreArticulo as nombre,
+            A.descripcion as descripcion,
+            A.precio as precio,
+            A.origenFabricacion as origen,
+            A.saldo as saldo,
+            A.fechaPublicacion as fecha,
+            A.estado as estado,
+            A.codCategoria as codigoCategoria,
+            A.codUsuarioPublicador as codUsuarioPublicador
+  FROM tblarticulos AS A
+  LEFT JOIN tblimagenesarticulo ON tblimagenesarticulo.codArticulo = A.codArticulo
+  WHERE A.codArticulo = ?`;
+
+  var values = [request.params.id];
+
+  realizarQuery(sql, values, function(res) {
+    response.send(res);
+  });
+
+});
+
+router.post("/getDetallesSeleccionado/:id", urlEncodeParser, function(request, response) {
+  var sql = `SELECT A.codArticulo as codigoArticulo,
+  		    MAX(tblimagenesarticulo.urlUbicacion) as imagen,
+            B.valor as valor,
+            C.detalle as detalle
+  FROM tblarticulos AS A
+  LEFT JOIN tblimagenesarticulo ON tblimagenesarticulo.codArticulo = A.codArticulo
+  INNER JOIN tbldetallesarticulo B ON B.codArticulo = A.codArticulo
+  INNER JOIN tbldetalles C ON C.codDetalle = B.codDetalle
+    WHERE A.codArticulo=?
+  GROUP BY A.codArticulo, B.valor,C.detalle`;
+
+  var values = [request.params.id];
+
+  realizarQuery(sql, values, function(res) {
+    response.send(res);
+  });
+
+});
+
 
 
 module.exports = router;
