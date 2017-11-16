@@ -189,6 +189,7 @@ function submitForm(formulario, tipoFormulario) {
                         $(id).trigger("reset");
                         $(':input').removeClass('valid');
                         alert("Usuario registrado exitosamente.");
+                        window.location.replace("http://localhost:3000/login/");
                     }
                 },
                 error: function (e) {
@@ -215,6 +216,7 @@ function submitForm(formulario, tipoFormulario) {
                         $(id).trigger("reset");
                         $(':input').removeClass('valid');
                         alert("Aspirante registrado exitosamente.");
+                        window.location.replace("http://localhost:3000/login/");
                     }
                 },
                 error: function (e) {
@@ -253,6 +255,7 @@ function submitForm(formulario, tipoFormulario) {
                         $(id2).trigger('reset');
                         $(':input').removeClass('valid');
                         $(':select').removeClass('valid');
+                        window.location.replace("http://localhost:3000/login/");
                     }
                 },
                 error: function (e) {
@@ -361,7 +364,7 @@ $("#btn-acceder").click(function () {
     var data = "correo=" + mail + "&" + "contrasena=" + pass;
     var parametros = null;
     var estado = null;
-    
+
     //console.log(data);
 
     var promise = $.ajax({
@@ -374,7 +377,7 @@ $("#btn-acceder").click(function () {
                 parametros = "codigo=" + respuesta[0].codigo + "&" + "tipo=" + respuesta[0].tipo;
             } else {
                 alert("Credenciales invalidas; verifique sus datos por favor");
-    
+
             }
         },
         error: function (e) {
