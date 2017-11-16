@@ -3,6 +3,29 @@ $('#btnAddDetalle').click(function(){
     $('#tblDetalles').append('<tr><td>Detalle x</td><td>Valor de x</td></tr>');
 });
 
+function cargarTiendas(){
+    var parametros ="codigoUsuario=2";
+	$.ajax({
+		url:"/user/getTiendas",
+		method:"POST",
+		data:parametros,
+		dataType:"json",
+		success:function(respuesta){ 
+			if(respuesta.length>0){ 
+                for (let i = 0; i < respuesta.length; i++) {
+                    $('#slcMisTiendas').append('<option value="'+respuesta[i].codEmpresa+'">'+respuesta[i].nombreEmpresa+'</option>');
+                }
+			}else
+				alert("No hay tiendas");			
+		},
+		error:function(respuesta){
+			alert("Hubo un error");
+		}
+	});
+}
+
+
+
 //Funcion para obtener datos de una cookie
 //Las cookies definidas en routes/auth.js son
 //codigo: codigo del usuario
@@ -25,3 +48,7 @@ function getCookie(cname) {
     }
     return "";
 }
+
+$(document).ready(function(){
+    cargarTiendas();
+});
