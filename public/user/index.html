@@ -14,6 +14,7 @@
    	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css"> 
 	<link rel="stylesheet" type="text/css" href="../css/main-rules.css"> 		
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/registro-usuario-style.css">
    	<link href="https://fonts.googleapis.com/css?family=Amaranth|Roboto" rel="stylesheet">
 		<style>
 			.rscroll{
@@ -189,24 +190,36 @@
 									</div> 
 									<div >   
 										<div class="form-group col-xs-12 forms-padding"></div>
+										
 										<div class="form-group col-xs-12 forms-padding ">
-											<input type="text" class="form-control input-text-box campoUsuario " id="txtNames"  placeholder="Ingresa tus nombres" readonly/>
+											<input type="text" class="form-control input-text-box campoUsuario " id="txtNames" onkeyup="validarCampo(txtNames.value, 'nombre', 'txtNames')" placeholder="Ingresa tus nombres" readonly/>
+										</div>
+
+
+										<div class="form-group col-xs-12 forms-padding">
+											<input type="text" class="form-control input-text-box campoUsuario" id="txtLastname"  onkeyup="validarCampo(txtLastname.value, 'apellido', 'txtLastname')" placeholder="Ingresa tu apellido" readonly />
 										</div>
 										<div class="form-group col-xs-12 forms-padding">
-											<input type="text" class="form-control input-text-box campoUsuario" id="txtLastname"  placeholder="Ingresa tu apellido" readonly />
+											<input type="text" class="form-control input-text-box campoUsuario" id="txtEmail" onkeyup="validarCampo(txtEmail.value, 'email', 'txtEmail')"
+											placeholder="Ingresa tu correo electrónico" readonly/>
 										</div>
 										<div class="form-group col-xs-12 forms-padding">
-											<input type="text" class="form-control input-text-box campoUsuario" id="txtEmail"  placeholder="Ingresa tu correo electrónico" readonly/>
-										</div>
-										<div class="form-group col-xs-12 forms-padding">
-											<input type="text" class="form-control input-text-box campoUsuario" id="txtPhone"  placeholder="Ingresa tu número telefónico" readonly />
+											<input type="text" class="form-control input-text-box campoUsuario" id="txtPhone" onkeyup="validarCampo(txtPhone.value, 'phone', 'txtPhone')"  
+											placeholder="Ingresa tu número telefónico" readonly />
 										</div> 
 										<div class="form-group col-xs-12 forms-padding">
-											<input type="password" class="form-control input-text-box campoUsuario" id="txtPassword"  placeholder="Ingresa tu contraseña" readonly />
+											<input type="password" class="form-control input-text-box campoUsuario" id="txtPassword" 
+											onkeyup="validarCampo(txtPassword.value, 'password', 'txtPassword')"
+											 placeholder="Ingresa tu contraseña" readonly />
 										</div>
 										<!--quite las clase hiden para pruebas-->
 										<div class="form-group col-xs-12 forms-padding ">
-											<input type="password" class="form-control input-text-box campoUsuario" id="txtPasswordConfirm"  placeholder="Confirma tu contraseña" readonly />
+											<input type="password" class="form-control input-text-box campoUsuario" id="txtPasswordConfirm"  
+											onkeyup="validarCampo(txtPassword.value, 'password', 'txtPassword')"
+
+
+											placeholder="Confirma tu contraseña" readonly />
+
 										</div>
 										<div class="form-group col-xs-12 forms-padding">
 											<div class="btn-toolbar pull-right" role="toolbar"  >
@@ -483,10 +496,10 @@
 															</div>
 														</div>  
 														<div class="form-group col-xs-12 forms-padding">
-															<input type="password" class="form-control input-text-box" id="txtPassword"  placeholder="Ingresa tu contraseña"/>
+															<input type="password" class="form-control input-text-box" id="txt1Password"  placeholder="Ingresa tu contraseña"/>
 														</div>
 														<div class="form-group col-xs-12 forms-padding hidden">
-															<input type="password" class="form-control input-text-box" id="txtPasswordConfirm"  placeholder="Confirma tu contraseña"/>
+															<input type="password" class="form-control input-text-box" id="txt1PasswordConfirm"  placeholder="Confirma tu contraseña"/>
 														</div>
 														<div class="form-group col-xs-12 forms-padding">
 															<div class="btn-toolbar pull-right" role="toolbar"  >
