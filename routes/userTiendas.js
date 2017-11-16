@@ -1,5 +1,10 @@
 var express = require('express');
 var bodyParser = require("body-parser"); 
+
+fs = require('fs'),
+formidable = require('formidable'),
+readChunk = require('read-chunk'),
+fileType = require('file-type');
 var realizarQuery = require('../modulos/conexion').realizarQuery;
 
 var router = express.Router();
@@ -41,6 +46,18 @@ router.post("/getCategorias", urlEncodeParser, function(request, response){
   realizarQuery(sql,values, function(res){
     response.send(res);
   });
+});
+
+router.post("/saveFiles", urlEncodeParser, function(request, request){
+  var sql = "";
+  var values = [];
+  var form = new formidable.IncomingForm();
+  form.parse(request, function (err, fields, files) {
+    response.send("uploaded");
+  });
+  // realizarQuery(sql,values, function(res){
+  //   response.send(res);
+  // });
 });
 
 router.post("/getDetalles", urlEncodeParser, function(request, response){

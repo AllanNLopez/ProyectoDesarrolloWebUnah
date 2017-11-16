@@ -158,6 +158,78 @@ function getCookie(cname) {
     return "";
 }
 
+$('#btnGuardarArticulo').click(function(){
+    // Get the files from input, create new FormData.
+    var files = $('#files-in').get(0).files,
+    formData = new FormData();
+
+    if (files.length === 0) {
+        alert('Select atleast 1 file to upload.');
+        return false;
+    }
+
+    if (files.length > 3) {
+        alert('You can only upload up to 3 files.');
+        return false;
+    }
+
+    // Append the files to the formData.
+    for (var i=0; i < files.length; i++) {
+        var file = files[i];
+        formData.append('photos[]', file, file.name);
+    }
+
+    // Note: We are only appending the file inputs to the FormData.
+    uploadFiles(formData);
+});
+
+function uploadFiles(formData) {
+    $.ajax({
+        url: '/user/saveFiles',
+		method:"POST",
+		data:formData,
+        processData: false,
+        contentType: false,
+		dataType:"json",
+		success:function(respuesta){  
+            alert(respuesta);	
+		},
+		error:function(respuesta){
+			alert("Hubo un error");
+		}
+    });
+    
+    // $.ajax({
+    //     url: '/user/saveFiles',
+    //     method: 'post',
+    //     data: formData,
+    //     processData: false,
+    //     contentType: false, 
+    // }).done(handleSuccess).fail(function (xhr, status) {
+    //     alert(status);
+    // });
+}
+
+function handleSuccess(data) {
+    if (data.length > 0) {
+        var html = '';
+        for (var i=0; i < data.length; i++) {
+            var img = data[i];
+
+            if (img.status) {
+                alert(img.publicPath);
+                html += '<img src="' + img.publicPath + '" alt="' + img.filename  + '" class="img-thumbnail image-small"></a>';
+            } else {
+                html += '<div class="col-xs-6 col-md-4"><a href="#" class="thumbnail">Invalid file type - ' + img.filename  + '</a></div>';
+            }
+        }
+
+        $('#imageContainer').html(html);
+    } else {
+        alert('No images were uploaded.')
+    }
+}
+
 $(document).ready(function(){
     cargarTiendas();
 });
