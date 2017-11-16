@@ -17,9 +17,27 @@ router.post("/getTiendas", urlEncodeParser, function(request, response){
     });
 });
 
+router.post("/getStoreInfo", urlEncodeParser, function(request, response){
+  var sql = "SELECT a.rtn, a.nombreEmpresa, a.ubicacion, a.actividad, a.sitioweb, a.telefono, a.informacion, a.codRubro, b.rubro "
+            +"FROM tblempresas a INNER join tblrubro b on a.codRubro = b.codRubro "
+            +"WHERE a.codEmpresa = ?";
+  var values = [request.body.codEmpresa];
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
+});
+
 router.post("/getDepartamentos", urlEncodeParser, function(request, response){
-  var sql = "SELECT codEmpresa, nombreEmpresa from tblempresas where codUsuario = ?";
-  var values = [request.body.codigoUsuario];
+  var sql = "SELECT codDepartamento, departamento FROM tbldepartamentos where codRubro = ?";
+  var values = [request.body.codigoRubro];
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
+});
+
+router.post("/getCategorias", urlEncodeParser, function(request, response){
+  var sql = "select codCategoria, categoria from tblcategorias where codDepartamento = ?";
+  var values = [request.body.codigoDepartamento];
   realizarQuery(sql,values, function(res){
     response.send(res);
   });
