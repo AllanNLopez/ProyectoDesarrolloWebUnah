@@ -1,6 +1,3 @@
-
-
-
 var marker;
 var map;
 var infoWindow;
@@ -9,14 +6,19 @@ var geocoder;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 14.987239525774244, lng: -86.81396484375},
+    center: {
+      lat: 14.987239525774244,
+      lng: -86.81396484375
+    },
     zoom: 17
 
 
   });
 
   geocoder = new google.maps.Geocoder;
-  infoWindow = new google.maps.InfoWindow({map: map});
+  infoWindow = new google.maps.InfoWindow({
+    map: map
+  });
 
 
   google.maps.event.addListener(map, 'click', function(event) {
@@ -30,7 +32,9 @@ function initMap() {
   });
 
   google.maps.event.addListener(map, 'mousemove', function(event) {
-  map.setOptions({ draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move' });
+    map.setOptions({
+      draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'
+    });
 
 
 
@@ -62,66 +66,66 @@ function initMap() {
 
 
 
-  }
+}
 
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  }
-
-  /*
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+}
 
 function addMarker(location, map) {
-// Add the marker at the clicked location, and add the next-available label
-// from the array of alphabetical characters.
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
 
-marker = new google.maps.Marker({
-  position: location,
-  label: "A",
-  map: map
-});
+  marker = new google.maps.Marker({
+    position: location,
+    label: "A",
+    map: map
+  });
 
 
-var lat = location.lat();
-var lng = location.lng();
+  var lat = location.lat();
+  var lng = location.lng();
 
-//valores de las coordenadas lista ser enviadas al servidor
+  //valores de las coordenadas lista ser enviadas al servidor
 
-console.log(lat+" "+lng)
+  console.log(lat + " " + lng)
 
 
 }
-*/
+
 
 function clearMarker() {
-marker.setMap(null);
+  marker.setMap(null);
 }
 
 function geocodeLatLng(geocoder, map, infowindow, latlng) {
 
-        geocoder.geocode({'location': latlng}, function(results, status) {
-          if (status === 'OK') {
-            if (results[1]) {
-              map.setZoom(17);
-              marker = new google.maps.Marker({
-                position: latlng,
-                map: map
-              });
-              infowindow.setContent(results[1].formatted_address);
-              infowindow.open(map, marker);
-              setDireccionMaps(results,latlng);
-              //imprimirDatosObtenido(results ,latlng);//funcion para imprimir los datos obtenidos
-
-            } else {
-              window.alert('Resultados no encontrados');
-            }
-          } else {
-            window.alert('Geocoder fallo debido a: ' + status);
-          }
+  geocoder.geocode({
+    'location': latlng
+  }, function(results, status) {
+    if (status === 'OK') {
+      if (results[1]) {
+        map.setZoom(17);
+        marker = new google.maps.Marker({
+          position: latlng,
+          map: map
         });
+        infowindow.setContent(results[1].formatted_address);
+        infowindow.open(map, marker);
+        setDireccionMaps(results, latlng);
+        //imprimirDatosObtenido(results ,latlng);//funcion para imprimir los datos obtenidos
+
+      } else {
+        window.alert('Resultados no encontrados');
       }
+    } else {
+      window.alert('Geocoder fallo debido a: ' + status);
+    }
+  });
+}
 
 
 
@@ -140,32 +144,32 @@ function imprimirDatosObtenido(results,latlng){
 */
 
 $('a[data-toggle="tab"').on('click', function() {
-    setTimeout(function(){
+  setTimeout(function() {
 
-        x = map.getZoom();
-        c = map.getCenter();
-        google.maps.event.trigger(map, 'resize');
-        map.setZoom(x);
-        map.setCenter(c);
-        google.maps.event.trigger(map, 'resize');
+    x = map.getZoom();
+    c = map.getCenter();
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom(x);
+    map.setCenter(c);
+    google.maps.event.trigger(map, 'resize');
 
-    }, 5);
+  }, 5);
 });
 
 
-$("#myModal").on("shown.bs.modal", function () {
-    setTimeout(function(){
+$("#myModal").on("shown.bs.modal", function() {
+  setTimeout(function() {
 
-        x = map.getZoom();
-        c = map.getCenter();
-        google.maps.event.trigger(map, 'resize');
-        map.setZoom(17);
-        map.setCenter(c);
-        infoWindow.setPosition(c);
-        infoWindow.setContent('marca tu ubicacion mas exacta.');
+    x = map.getZoom();
+    c = map.getCenter();
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom(17);
+    map.setCenter(c);
+    infoWindow.setPosition(c);
+    infoWindow.setContent('marca tu ubicacion mas exacta.');
 
 
 
-    },5);
+  }, 5);
 
 });
