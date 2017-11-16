@@ -1,10 +1,17 @@
 var express = require('express');
 var bodyParser = require("body-parser"); 
+var multer = require("multer");
 
-fs = require('fs'),
-formidable = require('formidable'),
-readChunk = require('read-chunk'),
-fileType = require('file-type');
+var storage = multer.diskStorage({
+    destination: function(req, file, callback){
+        callback(null, './public/img'); // set the destination
+    },
+    filename: function(req, file, callback){
+        callback(null, Date.now() + '.jpg'); // set the file name and extension
+    }
+});
+var upload = multer({storage: storage});
+ 
 var realizarQuery = require('../modulos/conexion').realizarQuery;
 
 var router = express.Router();
@@ -13,6 +20,11 @@ var urlEncodeParser = bodyParser.urlencoded({
 });
 
 router.use(bodyParser.json());
+
+router.post('/add', upload.single('imagename'), function(req, res, next) {
+  var image = req.file.filename;
+  res.send(image);
+});
 
 router.post("/getTiendas", urlEncodeParser, function(request, response){
     var sql = "SELECT codEmpresa, nombreEmpresa from tblempresas where codUsuario = ?";
@@ -47,19 +59,7 @@ router.post("/getCategorias", urlEncodeParser, function(request, response){
     response.send(res);
   });
 });
-
-router.post("/saveFiles", urlEncodeParser, function(request, request){
-  var sql = "";
-  var values = [];
-  var form = new formidable.IncomingForm();
-  form.parse(request, function (err, fields, files) {
-    response.send("uploaded");
-  });
-  // realizarQuery(sql,values, function(res){
-  //   response.send(res);
-  // });
-});
-
+ 
 router.post("/getDetalles", urlEncodeParser, function(request, response){
   var sql = "SELECT codDetalle, detalle from tbldetalles";
   var values = [];
@@ -97,12 +97,5 @@ router.post("/guardarArticulo", urlEncodeParser, function(request, response){
   })
 });
 
-router.get("/getTiendas", function(request, response){
-    var sql = "SELECT codEmpresa, nombreEmpresa from tblempresas where codUsuario = 2";
-    var values = [request.query.codigoUsuario];
-    realizarQuery(sql,values, function(res){
-      response.send(res);
-    });
-});
 
 module.exports = router;
