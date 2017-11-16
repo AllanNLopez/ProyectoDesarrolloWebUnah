@@ -198,7 +198,7 @@ router.post("/cargarListaDepartamento", urlEncodeParser, function(request, respo
 
 router.post("/cargarCategorias", urlEncodeParser, function(request, response) {
   var sql = ` SELECT A.codCategoria as codigo, A.codDepartamento as codDepartamento, A.categoria as categoria
-              FROM tblCategorias A`;
+              FROM tblcategorias A`;
   var values = [];
 
   realizarQuery(sql, values, function(res) {
@@ -266,22 +266,21 @@ router.post("/cargarPorCategoria", urlEncodeParser, function(request, response) 
   });
 });
 
-router.post("/agregarToWishlist", urlEncodeParser, function(request, response) {
+router.post("/agregarToWishlist/:codigo", urlEncodeParser, function(request, response) {
   var sql = ` INSERT INTO
               tbllistadeseos(colItem, codArticulo, codUsuario, fechaRegistro)
-              VALUES(NULL,?,'1',NOW())`; //EDITAR CUANDO SE HAYAN IMPLEMENTADO SESIONES!
-  var values = [request.body.codigoArticulo];
+              VALUES(NULL,?,?,NOW())`;
+  var values = [request.body.codigoArticulo, request.params.codigo];
   realizarQuery(sql, values, function(res) {
     response.send(res);
   });
 });
 
-router.post("/refreshWishlist", urlEncodeParser, function(request, response) {
+router.post("/refreshWishlist/:codigo", urlEncodeParser, function(request, response) {
   var sql = ` SELECT COUNT(*) as totalItems
               FROM tbllistadeseos A
-              WHERE A.codUsuario = '1';`; //EDITAR CUANDO SE HAYAN IMPLEMENTADO SESIONES!
-  //var values = [request.body.codigoArticulo];
-  var values = [];
+              WHERE A.codUsuario = ?`;
+  var values = [request.params.codigo];
   realizarQuery(sql, values, function(res) {
     response.send(res);
   });
