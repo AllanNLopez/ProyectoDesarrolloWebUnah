@@ -4,5 +4,5 @@ Carry Market web-page
 
 Allan Lopez/
 Jesus Arias/
-Oscar Cruz/
+Oscar Vasquez/
 Saul Guzman

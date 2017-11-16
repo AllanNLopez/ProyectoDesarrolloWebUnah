@@ -1,22 +1,22 @@
-/*
-*Si un usuario ya ha iniciado sesion, al darle click en el boton acceder redirige a catalogo
-*De lo contrario redirige a login
-*/
 $(document).ready(function() {
 
         $.ajax({
 		
-		url:"auth/get-session",
+		url:"auth/rutaSeguraCatalogo",
 		data: '',
 		method:"GET",
 		dataType:"json",
 		success:function(respuesta){
-            window.location.replace("../catalogo");
+            if(respuesta.status == 1){
+                console.log(respuesta.mensaje)
+            }
+            
         },
 		error:function(e){
+            window.location.replace("../index.html");
 			console.log("Error: " + JSON.stringify(e));
+            
 		}
       });
     
 });
-

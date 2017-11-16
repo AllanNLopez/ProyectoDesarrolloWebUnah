@@ -17,6 +17,7 @@ $(document).ready(function() {
 	$("#btnCancelar").click(function(){
 		$('.campoUsuario').attr("readonly",true);
 		dehabilitarbotones();
+		extraersDatosdeBD();
 	});
 
 	function habilitarbotones(){
@@ -37,21 +38,20 @@ $(document).ready(function() {
 		validarCampo($("#txtEmail").val(), "email", "txtEmail");
 		validarCampo($("#txtPhone").val(), "phone", "txtPhone");
 		validarCampo($("#txtPassword").val(), "password", "txtPassword");
-		validarCampo($("#txtPassword").val(), "password", "txtPassword");
-
+		
 
 		// removi el atributo "hiden" en la archivo user/index.html 
 		var camposValidos =	validarCampo($("#txtNames").val(), "nombre", "txtNames")&&
 							validarCampo($("#txtLastname").val(), "apellido", "txtLastname")&&
 							validarCampo($("#txtEmail").val(), "email", "txtEmail")&&
 							validarCampo($("#txtPhone").val(), "phone", "txtPhone")&&
-							validarCampo($("#txtPassword").val(), "password", "txtPassword")&&
 							validarCampo($("#txtPassword").val(), "password", "txtPassword");
+						
 		
 		if( camposValidos){
 			console.log("campos validos");
 			
-			enviarInfo();
+			actualizarDatosUsuario()
 			$('.campoUsuario').attr("readonly",true);
 			dehabilitarbotones();
 		}else{
@@ -62,9 +62,7 @@ $(document).ready(function() {
 
 	}
 
-	function enviarInfo(){
-		//###### funcion donde la informacion ha sido validada y lista para enviar######## 
-	}
+	
 
     $('table.display').DataTable(  ); 
 } );
@@ -120,21 +118,21 @@ function extraersDatosdeBD(){
 	$.ajax({
 		
 		url:"usuario/",
-		//Tambien se puede utilizar el siguiente patron:
-		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
 		data: parametro,
 		method:"POST",
 		dataType:"json",
 		success:function(respuesta){
-            console.log(respuesta);
+
+            //console.log(respuesta);
             for(var i=0;i<respuesta.length;i++){
-                            console.log(respuesta[i]);
+                           // console.log(respuesta[i]);
+
 							$("#txtNames").val(respuesta[i].nombres);
 							$("#txtLastname").val(respuesta[i].apellidos);
-							$("#txtEmail").val(respuesta[i].telefono);
-							$("#txtPhone").val(respuesta[i].correo);
-							$("#txtPassword").val();
-							$("#txtPassword").val();
+							$("#txtEmail").val(respuesta[i].correo);
+							$("#txtPhone").val(respuesta[i].telefono);
+							$("#txtPassword").val("");
+							$("#txtPasswordConfirm").val("");
             }
 			
 
@@ -148,3 +146,68 @@ function extraersDatosdeBD(){
 
 }
 
+
+
+function actualizarDatosUsuario(){
+        
+		var parametro="codigo="+getCookie("codigo")+"&"+
+					  "nombre="+$("#txtNames").val()+"&"+
+					  "apellido="+$("#txtLastname").val()+"&"+
+					  "email="+$("#txtEmail").val()+"&"+
+					  "telefono="+$("#txtPhone").val()+"&"+
+					  "contrasena="+$("#txtPassword").val();
+						
+
+	$.ajax({
+		
+		url:"usuario/actualizarInfo",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"POST",
+		dataType:"json",
+		success:function(respuesta){
+			if (respuesta.affectedRows == 1) {
+            alert("Datos Actualizados Exitosamente")
+            extraersDatosdeBD();
+			}
+
+			}
+		,
+		error:function(e){
+			console.log("Error: " + JSON.stringify(e));
+		}
+	} );
+
+
+}
+
+
+function obtenerOrdenesUsuario(){
+        
+		var parametro="codigo="+getCookie("codigo");
+						
+
+	$.ajax({
+		
+		url:"usuario/actualizarInfo",
+		//Tambien se puede utilizar el siguiente patron:
+		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
+		data: parametro,
+		method:"POST",
+		dataType:"json",
+		success:function(respuesta){
+			if (respuesta.affectedRows == 1) {
+            alert("Datos Actualizados Exitosamente");
+            extraersDatosdeBD();
+			}
+
+			}
+		,
+		error:function(e){
+			console.log("Error: " + JSON.stringify(e));
+		}
+	} );
+
+
+}

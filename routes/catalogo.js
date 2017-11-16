@@ -198,7 +198,7 @@ router.post("/cargarListaDepartamento", urlEncodeParser, function(request, respo
 
 router.post("/cargarCategorias", urlEncodeParser, function(request, response) {
   var sql = ` SELECT A.codCategoria as codigo, A.codDepartamento as codDepartamento, A.categoria as categoria
-              FROM tblCategorias A`;
+              FROM tblcategorias A`;
   var values = [];
 
   realizarQuery(sql, values, function(res) {

@@ -1,14 +1,5 @@
 var array;
 
-/*
-$(document).ready(function(){
-  $('[data-toggle="popover"]').popover();
-
-
-
-
-});
-*/
 
 /*   funciones para ocultar y aparecer el sidebar  */
 if (screen.width < 480) {
@@ -369,6 +360,8 @@ $("#btn-acceder").click(function () {
     var pass = $("#txtPass").val();
     var data = "correo=" + mail + "&" + "contrasena=" + pass;
     var parametros = null;
+    var estado = null;
+    
     //console.log(data);
 
     var promise = $.ajax({
