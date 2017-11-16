@@ -12,6 +12,7 @@ function cargarSuscripcion() {
             data: parametros,
             dataType: "json",
             success: function (respuesta) {
+                console.log(respuesta);
                 if (respuesta.length == 1) {
                     empresa = "codigo=" + respuesta[0].codEmpresa;
                 }
@@ -28,6 +29,8 @@ function cargarSuscripcion() {
                 data: empresa,
                 dataType: "json",
                 success: function (respuesta) {
+
+                    console.log(respuesta);
                     if (respuesta.length > 0) {
                         for (let i = 0; i < respuesta.length; i++) {
                             $('#tab-miSuscripcion').append('<div class="row">' +
@@ -79,6 +82,7 @@ function cargarHistorial() {
             data: parametros,
             dataType: "json",
             success: function (respuesta) {
+                console.log(respuesta);
                 if (respuesta.length == 1) {
                     empresa = "codigo=" + respuesta[0].codEmpresa;
                 }

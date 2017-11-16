@@ -255,7 +255,7 @@ function submitForm(formulario, tipoFormulario) {
                         $(id2).trigger('reset');
                         $(':input').removeClass('valid');
                         $(':select').removeClass('valid');
-                        window.location.replace("http://localhost:3000/login/");
+                        window.location.replace("/login/");
                     }
                 },
                 error: function (e) {
