@@ -43,6 +43,15 @@ router.post("/getCategorias", urlEncodeParser, function(request, response){
   });
 });
 
+router.post("/getDetalles", urlEncodeParser, function(request, response){
+  var sql = "SELECT codDetalle, detalle from tbldetalles";
+  var values = [];
+  realizarQuery(sql,values, function(res){
+    response.send(res);
+  });
+});
+
+
 router.post("/guardarArticulo", urlEncodeParser, function(request, response){
   var sql = "INSERT INTO tblarticulos("
                             +"codArticulo, "

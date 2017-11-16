@@ -3,13 +3,14 @@ var codRubroTemp = 0;
 var rubroTemp = 0;
 
 $('#btnAddDetalle').click(function(){
-    $('#tblDetalles').append('<tr><td>Detalle x</td><td>Valor de x</td></tr>');
+    $('#tblDetalles').append('<tr><td>'+$('#selDetalles option:selected').text()+'</td><td>'+$('#txtValorDetalle').val()+'</td></tr>');
 });
 
 $('#slcMisTiendas').change(function(){
     //segun el codigo de la tienda cargamos los articulos...  
     $('#selDepartamentos').html("<option value='0'>Seleccione un departamento</option>"); 
     getStoreInfo($('#slcMisTiendas').val());
+    getDetalles();
 });
 
 $('#selDepartamentos').change(function(){
@@ -83,6 +84,27 @@ function getStoreCategory(codDepartamento){
                 }
 			}else
             $('#selCategorias').append('<option>No hay categorias</option>');		
+		},
+		error:function(respuesta){
+			alert("Hubo un error");
+		}
+	});
+}
+
+function getDetalles(){ 
+    $('#selDetalles').html('<option value="0">Selec. detalle</option>');	
+	$.ajax({
+		url:"/user/getDetalles",
+		method:"POST",
+		data: "",
+		dataType:"json",
+		success:function(respuesta){ 
+			if(respuesta.length>0){ 
+                for (let i = 0; i < respuesta.length; i++) {
+                    $('#selDetalles').append('<option value="'+respuesta[i].codDetalle+'">'+respuesta[i].detalle+'</option>');
+                }
+			}else
+            $('#selDetalles').append('<option>No hay detalles</option>');		
 		},
 		error:function(respuesta){
 			alert("Hubo un error");
