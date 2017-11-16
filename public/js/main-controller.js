@@ -236,9 +236,9 @@ function submitForm(formulario, tipoFormulario) {
             //data2.nuevoValor = 'NUEVO valor!';
             //console.log(data2);
             Object.assign(data, data2);
-            //console.log(data);
+            console.log(data);
             //console.log('REGISTRO EMPRESA TRIGGERED');
-
+                
             $.ajax({
                 url: "registro-empresa/user",
                 method: "POST",
