@@ -327,7 +327,7 @@ function agregarToWishlist(valor) {
   }
 
   $.ajax({
-    url: "agregarToWishlist/",
+    url: "agregarToWishlist/"+$.cookie("codigo"),
     method: "POST",
     data: JSON.stringify(data),
     crossDomain: true,
@@ -351,7 +351,7 @@ function agregarToWishlist(valor) {
 function refreshWishlist() {
 
   $.ajax({
-    url: "refreshWishlist/",
+    url: "refreshWishlist/"+$.cookie("codigo"),
     method: "POST",
     data: '',
     crossDomain: true,
