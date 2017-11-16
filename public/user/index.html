@@ -117,8 +117,8 @@
 										<!-- tab pills de seccio de informacion personal -->
 									   <ul class="nav nav-pills nav-stacked">
 										  <li class="active"><a href="#tab-personalInfo" data-toggle="pill">Información de perfil</a></li>
-										  <li><a href="#tab-misOrdenes" data-toggle="pill">Mis ordenes</a></li>
-										  <li><a href="#tab-misFacturas" data-toggle="pill">Mis facturas</a></li>
+										  <li><a onclick="obtenerOrdenesUsuario();" href="#tab-misOrdenes" data-toggle="pill">Mis ordenes</a></li>
+										  <li><a  href="#tab-misFacturas" data-toggle="pill">Mis facturas</a></li>
 											<li><a href="#tab-listaDeseos" data-toggle="pill">Mi lista de deseos</a></li>
 											<li><a href="#tab_c" data-toggle="pill">Ms tiendas favoritas</a></li>
 										</ul>
@@ -257,7 +257,7 @@
 											<!--Inicio de tabla de ordenes -->
 											<div class="row">
 												<div class="table-responsive col-md-12 col-sm-12 col-lg-12">
-													<table class="table display">
+													<table class="table display" id="tablaOrdenes">
 														<thead>
 															<th>#</th>
 															<th>Fecha</th>

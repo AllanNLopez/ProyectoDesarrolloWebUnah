@@ -190,16 +190,28 @@ function obtenerOrdenesUsuario(){
 
 	$.ajax({
 		
-		url:"usuario/actualizarInfo",
+		url:"usuario/obtenerOrdenes",
 		//Tambien se puede utilizar el siguiente patron:
 		//url:"/mensajes/"+$("#slc-usuario").val()+"/"+codigoContacto,
 		data: parametro,
 		method:"POST",
 		dataType:"json",
 		success:function(respuesta){
-			if (respuesta.affectedRows == 1) {
-            alert("Datos Actualizados Exitosamente");
-            extraersDatosdeBD();
+			if (respuesta.length == 1) {
+			for (var i=0;i<respuesta.length;i++){
+				$("#tablaOrdenes").append(
+					'<tr>'+
+						'<td>#</td>'+
+						'<td>'+respuesta[i].fecha+'</td>'+
+						'<td class="hidden-xs">'+respuesta[i].nombreRepatidor+'</td>'+
+						'<td>'+respuesta[i].tiempoEstimado+' min</td>'+
+						'<td>'+respuesta[i].cantArticulos+'</td>'+
+						'<td class="hidden-xs">'+respuesta[i].costoDeCompra+'</td>'+
+						'<td class="hidden-xs">'+respuesta[i].costoDeEntrega+'</td>'+
+						'<td>'+respuesta[i].costoOrden+'</td>'+
+					'</tr>');
+			}
+
 			}
 
 			}

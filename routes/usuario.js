@@ -45,4 +45,27 @@ router.post('/actualizarInfo', urlEncodeParser, function(peticion,respuesta){
 
 });
 
+router.post('/obtenerOrdenes', urlEncodeParser, function(peticion,respuesta){
+	
+	//console.log("consiguiendo datos");
+	var sql = 'SELECT  DATE_FORMAT(A.fecha,"%d/%m/%Y") as fecha, CONCAT(C.nombres," ",C.apellidos) as nombreRepatidor, '+
+					  'A.tiempoEstimado, A.cantArticulos, A.costoDeCompra, A.costoDeEntrega, A.costoOrden '+
+			   'FROM  tblordenes AS A '+
+			   'INNER JOIN tblarticulosordenados AS B '+
+			   'ON(A.codUsuarioRepartidor) '+
+			   'INNER JOIN tblusuarios AS C '+
+			   'ON(A.codUsuarioRepartidor=C.codUsuario) '+
+			   'WHERE A.codUsuarioCliente= ? ';
+    var values = [peticion.body.codigo];
+    
+    //console.log(values);
+    realizarQuery(sql, values, function(data){
+    	//console.log(respuesta);
+         respuesta.send(data);
+     });
+
+});
+
+
+
 module.exports=router;
